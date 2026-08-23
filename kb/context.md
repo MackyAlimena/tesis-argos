@@ -352,12 +352,11 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 |---|---|
 | **Motivación** | El gap: la IA agéntica entró al proceso de producción de software más rápido que los marcos que deberían gobernarla. Anclado en experiencia real. |
 | **Objetivo** | Pregunta de investigación + los cuatro artefactos + criterio de éxito **medible** (ej.: elevar la reconstrucción de decisiones del X% al Y%). |
-| **Palabras clave** | Las de la sección 1. |
 | **Funcionalidades** | Reinterpretar como **capacidades del marco**: clasificar autonomía, seleccionar controles, emitir evidencia, calcular indicadores, disparar escalamiento. |
 | **Tecnologías propuestas** | El componente instrumental: recolector de telemetría sobre el pipeline real (CI/CD, control de versiones, orquestador de agentes), almacenamiento de trazas, tablero. Más el corpus normativo. |
 | **Arquitectura** | **Arquitectura de gobernanza en capas** superpuesta al ciclo de desarrollo: política → control (guardrails y gates) → evidencia (telemetría) → decisión (indicadores). Un solo diagrama y la sección está ganada. |
 | **Metodología** | DSR (Peffers, 6 etapas) + caso único (Yin) + Delphi. |
-| **Carga horaria** | Cerrar con la respuesta a la pregunta 4. Referencia: ~12 h/semana × ~40 semanas ≈ 480 h. |
+| **Carga horaria** | Cerrar con la respuesta a la pregunta 4. Referencia: 8 h/semana × 40 semanas = 320 hs. |
 
 ---
 
@@ -366,10 +365,10 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 | Período / Fecha | Hito | Entregable / Foco Principal |
 |---|---|---|
 | **14/08/2026** | Definición de tema | Título + pregunta + gap + delimitación + plan B *(Completado)* |
-| **Ago–Sep 2026** | ⚡ **Captura de línea de base (Crítico)** | Extracción y congelamiento del dataset histórico de PRs pre-intervención |
 | **01/09/2026** | 🔴 **Entrega Hito 1** | **Plan de Trabajo de Grado** (formal, según template de Facultad) |
 | **15/09/2026** | 🔴 **Entrega Hito 2** | **Informe Ético y Social** (anclado en las 5 preguntas y *Magnifica Humanitas*) |
-| **Oct–Dic 2026** | Diagnóstico + A1 + A0 | Taxonomía de riesgos v1 (A1) + Criterios de gobernabilidad de topologías (A0) |
+| **Sep–Oct 2026** | Diagnóstico y Recolección | Recolección/anonimización de datos de PRs y pipelines + Taxonomía de riesgos v1 (A1) |
+| **Nov–Dic 2026** | Modelado de Topologías | Criterios de gobernabilidad de topologías (A0) |
 | **Ene–Feb 2027** | Diseño de artefactos (A2, A3) | Matriz Autonomía×Control (A2) + Motor de Conformidad & Tablero (A3) + Calibración |
 | **23/02/2027** | 🔴 **Entrega Hito 3** | **Pitch de Tesis** (defensa intermedia de avance metodológico y artefactos) |
 | **Mar–Abr 2027** | Validación cualitativa | Panel de Expertos tipo Delphi (auditores 27001/42001, tech leads) |
@@ -377,7 +376,7 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 | **May–Jun 2027** | Consolidación y redacción | Borrador integral de la memoria de tesis |
 | **Jun–Jul 2027** | 🏁 **Defensa Final** | **Tesis de Grado final y defensa oral ante el tribunal** |
 
-**Dependencias críticas:** (a) captura de línea de base antes de septiembre; (b) panel Delphi agendado en enero; (c) entrega puntual de Plan de Trabajo (01/09) e Informe Ético (15/09).
+**Dependencias críticas:** (a) entrega puntual de Plan de Trabajo (01/09) e Informe Ético (15/09); (b) panel Delphi agendado en enero; (c) consolidación de memoria en mayo.
 
 ---
 
@@ -386,8 +385,7 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 | Riesgo | Mitigación |
 |---|---|
 | La empresa despriorizara ISO 42001 | **La tesis no depende de la certificación.** La empresa es caso de estudio, no dependencia. Plan B aprobado por escrito: validación por panel + datos históricos. |
-| No conseguir acceso a datos del pipeline | Pedir el export histórico **ahora**, mientras el tema está caliente. Fallback: validación cualitativa como eje. |
-| Perder la línea de base | **Riesgo más urgente.** Capturar ago–sep 2026. Si se espera a 2027, el "antes" se pierde para siempre. |
+| No conseguir acceso a datos del pipeline | Extracción y anonimización calendarizada en Fase 1 (Sep-Oct). Fallback: validación cualitativa como eje. |
 | Deriva hacia benchmark de herramientas | Regla escrita en la delimitación: criterios, no rankings. |
 | Cuestionamiento por doble rol | Las cuatro mitigaciones de §8.1, escritas desde el Plan de Trabajo. |
 | El template empuja hacia tesis de producto | Pregunta 1 al Director, resuelta antes del Plan. |
@@ -396,14 +394,9 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 
 ## 16. Acciones inmediatas
 
-- [ ] **Hablar con el jefe** y pedir tres cosas concretas:
-  - export histórico de PRs de los últimos 6–12 meses (autor, revisor, timestamps de apertura/aprobación/merge, líneas cambiadas, comentarios, origen humano/agente);
-  - permiso escrito breve para usar datos **anonimizados** en la tesis;
-  - que el **uso agéntico en el desarrollo quede escrito en el alcance del SGIA** cuando arranque la implementación.
-- [ ] Mandar el mail al Director de Carrera y a la Directora de Tesis pidiendo reunión antes del viernes 14.
-- [ ] Reunión con las 5 preguntas de §12.
-- [ ] Congelar título y pitch.
-- [ ] Entregar definición de tema el 14/08.
+- [ ] Presentación formal del Plan de Trabajo (01/09/2026).
+- [ ] Elaboración del Informe Ético y Social (15/09/2026).
+- [ ] Gestión formal del acceso a datos históricos y anonimización en la empresa (Septiembre–Octubre 2026).
 
 ---
 
@@ -489,7 +482,13 @@ Todo lo demás son detalles de implementación.
 7. **Límites de HITL:** Definición explícita de puntos de costura indelegables donde la persona física retiene la firma y la responsabilidad.
 8. **Anclaje del Informe Ético en el Magisterio Papal:** Incorporación central de la Encíclica *Magnifica Humanitas* (León XIV, 2026) sobre la custodia de la persona humana, complementada con el concepto de *Algor-ética* y la distinción ontológica entre elección algorítmica y decisión moral humana.
 9. **Desactivación de la trampa del "Agente Auditor":** Se descarta crear un bot generalista que audite políticas empresariales (desvío a producto). Se integra en **A3** como un **Motor Evaluador de Conformidad en CI/CD**, que audita automáticamente si las trazas del agente de desarrollo cumplen con la matriz A2.
-10. **Quality Gates vs. Gobernanza de Autonomía:** Aclaración de que el *Quality Gate* es el punto de inyección técnico en CI/CD, mientras que la tesis aporta el marco de gobernanza que parametriza dinámicamente dichos gates según la autonomía del agente (A0–A4) y emite evidencia auditable ex post.
+10. **Quality Gates vs. Gobernanza de Autonomía:** Aclaración de que el *Quality Gate* es el punto de inyección técnico en CI/CD, mientras que la tesis aporta el marco de gobernanza que parametriza dinámicamente dichos gates según la autonomía del agente (A0–A4) e emite evidencia auditable ex post.
+11. **Calibración y Testbench del Orquestador (ADR-005):** Se formaliza que la evaluación no solo mide el código final, sino la gobernabilidad del proceso de orquestación (fidelidad de pases de mano, contención de fugas de contexto, curva de falsos positivos en gates, reconciliación 1:1 de telemetría y pruebas de inyección de fallos).
+12. **Adopción del Catálogo de Agentes de Marcos Giagnorio (2026):** Se adopta el catálogo de 14 categorías en 3 dominios (Gestión, Ingeniería y Meta-Gobernanza) como universo de referencia taxonómico para ARGOS. Se asume el principio rector: la industria converge en agentes verificadores/revisores con HITL; la responsabilidad nunca se delega (PMBOK 8 / modelo asignar vs. delegar de Linear), alineando el Dominio C (Meta-agentes: 14.1 Auditor, 14.2 Evaluador, 14.3 Curador) con los artefactos A0, A2 y A3.
+13. **Carga horaria y calendarización de línea de base (Acuerdo 22/08/2026):**
+    - Se formaliza una carga de **8 horas semanales durante 40 semanas (total 320 horas)**, acorde a un proyecto individual de ingeniería (Gestión).
+    - La recolección de datos y línea de base histórica se calendariza como actividad metodológica regular de la Fase 1 (Septiembre–Octubre 2026), desacoplando presiones o bloqueos inmediatos de extracción en agosto.
+dinámicamente dichos gates según la autonomía del agente (A0–A4) y emite evidencia auditable ex post.
 11. **Calibración y Testbench del Orquestador (ADR-005):** Se formaliza que la evaluación no solo mide el código final, sino la gobernabilidad del proceso de orquestación (fidelidad de pases de mano, contención de fugas de contexto, curva de falsos positivos en gates, reconciliación 1:1 de telemetría y pruebas de inyección de fallos).
 12. **Adopción del Catálogo de Agentes de Marcos Giagnorio (2026):** Se adopta el catálogo de 14 categorías en 3 dominios (Gestión, Ingeniería y Meta-Gobernanza) como universo de referencia taxonómico para ARGOS. Se asume el principio rector: la industria converge en agentes verificadores/revisores con HITL; la responsabilidad nunca se delega (PMBOK 8 / modelo asignar vs. delegar de Linear), alineando el Dominio C (Meta-agentes: 14.1 Auditor, 14.2 Evaluador, 14.3 Curador) con los artefactos A0, A2 y A3.
 
