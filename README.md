@@ -64,6 +64,7 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 │
 └── evaluation/                    # Validación del Método (DSR)
     ├── delphi/                    # Protocolo y resultados del Panel de Expertos
+    ├── hive-calibration/          # Banco de pruebas y calibración del orquestador (ADR-005)
     ├── reconstruction-test/       # Pruebas de reconstrucción de decisiones sobre PRs
     └── pre-post-analysis/         # Scripts de análisis estadístico comparativo
 ```

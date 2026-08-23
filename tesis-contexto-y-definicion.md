@@ -225,16 +225,18 @@ Pero el tribunal va a decir: *"vos diseñaste el marco, vos lo implementaste y v
 
 *Bonus de integridad: el propio comportamiento como revisora es un dato. Reconocerlo explícitamente suma.*
 
-### 8.2. Validación y Calibración (tres patas + aseguramiento de calidad)
+### 8.2. Validación y Calibración (tres patas + testbench de gobernanza del hive / orquestador)
 
-En el marco de Design Science Research (DSR), la evaluación debe probar que los artefactos no solo son conceptualmente válidos, sino operativamente eficaces y calibrados:
+En el marco de Design Science Research (DSR), la evaluación debe probar que los artefactos no solo son conceptualmente válidos, sino operativamente eficaces y calibrados bajo el ciclo PDCA (ISO 9001 / ISO 42001):
 
 1. **Auditoría simulada / evidence reconstruction test:** tomar $N$ PRs reales ya mergeados e intentar reconstruir la cadena de evidencia. Medir **% de decisiones reconstruibles** antes y después de aplicar el marco.
 2. **Panel de expertos (Delphi ligero):** 6–10 profesionales (auditores ISO 27001/42001, tech leads, investigadores académicos). Agendarlo **en enero**, no en marzo.
 3. **Métricas pre/post:** DORA (lead time, change failure rate) + defect escape rate + tasa de intervención humana vs. aprobación automática + tasa de reversión.
-4. **Calibración y aseguramiento de calidad (enfoque ISO 9001 / PDCA):**
-   - *Calibración de Quality Gates:* asegurar que los guardrails (linters, SCA, chequeo de alucinaciones) no generen falsos positivos excesivos que induzcan a los desarrolladores a saltarse los controles.
-   - *Verificación de la telemetría:* contrastar que los registros emitidos por el recolector de evidencia coincidan fielmente con las acciones reales ejecutadas en el repositorio y en el orquestador.
+4. **Calibración y aseguramiento de calidad del Hive / Orquestador (Testbench de Gobernanza - ADR-005):**
+   - *Calibración de Topología y Pases de Mano (A0):* Verificar fidelidad de fronteras de rol (*role boundary adherence*), medir la retención de contexto (*context drift/loss*) a lo largo de la delegación y bloquear la ficción de "independencia de revisión" entre agentes homogéneos sin supervisión humana.
+   - *Calibración de Quality Gates Gobernados:* Ajustar la curva de falsos positivos vs. falsos negativos en analizadores de alucinaciones (*slopsquatting*), SCA y linters sobre un dataset de referencia (*golden dataset*) para evitar *bypass fatigue*.
+   - *Verificación de la telemetría (Audit Trail Fidelity):* Reconciliación determinística entre los eventos declarados por el orquestador (`trace.json`) y las acciones reales en Git y CI/CD.
+   - *Pruebas de estrés e inyección de fallos (Fault Injection / Red Teaming):* Evaluar la efectividad de los disyuntores automáticos (*circuit breakers / kill-switches*) y el escalamiento al humano ante bucles infinitos, fuga de presupuestos o directivas ambiguas.
 
 ---
 
@@ -480,3 +482,5 @@ Todo lo demás son detalles de implementación.
 8. **Anclaje del Informe Ético en el Magisterio Papal:** Incorporación central de la Encíclica *Magnifica Humanitas* (León XIV, 2026) sobre la custodia de la persona humana, complementada con el concepto de *Algor-ética* y la distinción ontológica entre elección algorítmica y decisión moral humana.
 9. **Desactivación de la trampa del "Agente Auditor":** Se descarta crear un bot generalista que audite políticas empresariales (desvío a producto). Se integra en **A3** como un **Motor Evaluador de Conformidad en CI/CD**, que audita automáticamente si las trazas del agente de desarrollo cumplen con la matriz A2.
 10. **Quality Gates vs. Gobernanza de Autonomía:** Aclaración de que el *Quality Gate* es el punto de inyección técnico en CI/CD, mientras que la tesis aporta el marco de gobernanza que parametriza dinámicamente dichos gates según la autonomía del agente (A0–A4) y emite evidencia auditable ex post.
+11. **Calibración y Testbench del Orquestador (ADR-005):** Se formaliza que la evaluación no solo mide el código final, sino la gobernabilidad del proceso de orquestación (fidelidad de pases de mano, contención de fugas de contexto, curva de falsos positivos en gates, reconciliación 1:1 de telemetría y pruebas de inyección de fallos).
+
