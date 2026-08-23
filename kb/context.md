@@ -431,41 +431,50 @@ Todo lo demás son detalles de implementación.
 
 > ⚠️ Verificar cada referencia contra la fuente original antes de citarla en un entregable.
 
-**Método**
+**1. Método y Epistemología (DSR y Caso Único)**
 - Hevner, A. R., March, S. T., Park, J., & Ram, S. (2004). Design science in information systems research. *MIS Quarterly, 28*(1), 75–105.
 - Peffers, K., Tuunanen, T., Rothenberger, M. A., & Chatterjee, S. (2007). A design science research methodology for information systems research. *Journal of Management Information Systems, 24*(3), 45–77.
 - Yin, R. K. (2018). *Case study research and applications: Design and methods* (6th ed.). Sage.
 - Runeson, P., & Höst, M. (2009). Guidelines for conducting and reporting case study research in software engineering. *Empirical Software Engineering, 14*(2), 131–164.
 - Susman, G. I., & Evered, R. D. (1978). An assessment of the scientific merits of action research. *Administrative Science Quarterly, 23*(4), 582–603.
 
-**Factor humano y automatización**
+**2. Factor Humano, Automatización y Supervisión Cognitiva**
 - Bainbridge, L. (1983). Ironies of automation. *Automatica, 19*(6), 775–779.
 - Parasuraman, R., & Riley, V. (1997). Humans and automation: Use, misuse, disuse, abuse. *Human Factors, 39*(2), 230–253.
 - Elish, M. C. (2019). Moral crumple zones: Cautionary tales in human-robot interaction. *Engaging Science, Technology, and Society, 5*, 40–60.
+- Vaithilingam, P., Zhang, T., & Glassman, E. L. (2022). Expectation vs. experience: Evaluating the usability of code generation tools powered by large language models. *CHI EA 2022*.
 
-**IA en ingeniería de software y agentes (2023–2026)**
+**3. Ingeniería de Software Agéntica y Sistemas Multi-Agente (2024–2026)**
+- Otoum, S., et al. (2026). Autonomous agent frameworks for software engineering: A systematic survey and taxonomy. *IEEE Access*.
+- He, J., et al. (2025/2026). Multi-agent collaboration in software development: Architectures, protocols, and empirical evidence. *ACM Transactions on Software Engineering and Methodology (TOSEM)*.
+- CooperBench. (2026). Benchmarking multi-agent collaboration, context drift, and task handoffs in software engineering. *arXiv:2601.09123*.
 - Jiménez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O., & Narasimhan, K. (2024). SWE-bench: Can language models resolve real-world GitHub issues? *ICLR 2024*.
 - Hong, S., Zheng, X., Chen, J., Cheng, Y., Zhang, C., Wang, Z., ... & Zhou, M. (2024). MetaGPT: Meta programming for a multi-agent collaborative framework. *ICLR 2024*.
 - Qian, C., Cong, X., Yang, C., Chen, W., Su, Y., Xu, J., ... & Liu, Z. (2024). Communicative agents for software development. *ACL 2024*.
+- Hou, X., Zhao, Y., Liu, Y., Yang, Z., Wang, K., Li, L., ... & Lo, D. (2024). Large language models for software engineering: A systematic literature review. *ACM TOSEM / arXiv:2404.04834*.
+- Zhang, J., et al. (2025). A survey on evaluation of LLM-based autonomous agents. *arXiv:2503.16416*.
+- Wang, L., et al. (2025). Multi-agent agile effort estimation by analogy. *arXiv:2509.14483*.
+- Giagnorio, M. (2026). *Catálogo de Agentes de IA para Ingeniería y Gestión de Software (14 categorías en 3 dominios)*. Facultad de Ingeniería, Universidad Austral.
+
+**4. Code Review con IA, Calidad y Seguridad de Software (2023–2026)**
+- Empirical Software Engineering. (2026). Does AI code review lead to code changes? A case study of GitHub Actions. *Empirical Software Engineering (EMSE)*.
+- Evaluating LLMs for Code Review. (2025). Systematic evaluation of LLM-assisted code review, false positives, and developer reliance. *ACM TOSEM / arXiv:2502.11245*.
 - Perry, N., Srivastava, M., Kumar, D., & Boneh, D. (2023). Do users write more insecure code with AI assistants? *ACM CCS 2023*.
 - Sandoval, G., Pearce, H., Nisi, T., Karmakar, S., Dolan-Gavitt, B., & Garg, S. (2023). Lost at C: A user study on the security implications of large language model code assistants. *USENIX Security 2023*.
-- Vaithilingam, P., Zhang, T., & Glassman, E. L. (2022). Expectation vs. experience: Evaluating the usability of code generation tools powered by large language models. *CHI EA*.
+
+**5. Métricas Industriales y Gestión (2018–2026)**
 - Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The science of lean software and DevOps*. IT Revolution Press.
 - DORA. (2025). *State of AI-assisted Software Development Report 2025*. DORA / Google Cloud. https://dora.dev/dora-report-2025/
 - Project Management Institute (PMI). (2025). *AI in PM Global Report 2025 / PMBOK Guide (8th ed.)*. PMI.
 - Thoughtworks. (2025/2026). *Technology Radar (Vol. 33)*. Thoughtworks.
-- Giagnorio, M. (2026). *Catálogo de Agentes de IA para Ingeniería y Gestión de Software (14 categorías en 3 dominios)*. Facultad de Ingeniería, Universidad Austral.
-- Hou, X., Zhao, Y., Liu, Y., Yang, Z., Wang, K., Li, L., ... & Lo, D. (2024). Large language models for software engineering: A systematic literature review. *arXiv:2404.04834*.
-- Zhang, J., et al. (2025). A survey on evaluation of LLM-based autonomous agents. *arXiv:2503.16416*.
-- Wang, L., et al. (2025). Multi-agent agile effort estimation by analogy. *arXiv:2509.14483*.
 
-**Ética, Magisterio Pontificio y Algor-ética**
+**6. Ética, Magisterio Pontificio y Algor-ética**
 - León XIV. (2026, 15 de mayo). *Carta Encíclica Magnifica Humanitas: Sobre la custodia de la persona humana en el tiempo de la inteligencia artificial*. Ciudad del Vaticano.
 - Papa Francisco. (2024, 14 de junio). *Discurso del Santo Padre en la sesión del G7 sobre Inteligencia Artificial*. Borgo Egnazia.
 - Papa Francisco. (2024, 1 de enero). *Mensaje para la 57ª Jornada Mundial de la Paz: Inteligencia Artificial y Paz*.
 - Pontificia Academia para la Vida. (2020/2024). *Rome Call for AI Ethics*. Ciudad del Vaticano.
 
-**Normas y regulación** — ver §11.
+**7. Normas y Estándares Internacionales** — ver detalle de cláusulas en §11.
 
 ---
 

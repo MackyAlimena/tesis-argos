@@ -86,14 +86,29 @@ Configurar en **Google Scholar** avisos para nuevos artículos que citen a los s
 | *Ironies of automation* | Bainbridge, L. | 1983 | Fundamento teórico de la degradación HITL |
 | *Design science in information systems research* | Hevner et al. | 2004 | Marco metodológico DSR |
 
-### 3.2. Alertas por Palabras Clave Compuestas
+### 3.2. Literatura de Vanguardia (2025–2026) — Núcleo de Estado del Arte
+Papers y reportes recientes incorporados al estado del arte de ARGOS:
+
+| Paper / Reporte | Autores / Venue | Año | Aporte directo a ARGOS |
+|---|---|:---:|---|
+| *Autonomous Agent Frameworks for SE: A Systematic Survey & Taxonomy* | Otoum et al. (*IEEE Access*) | 2026 | Taxonomía de frameworks y arquitecturas de memoria/orquestación. |
+| *Multi-Agent Collaboration in Software Development* | He et al. (*ACM TOSEM*) | 2025/2026 | Evidencia empírica sobre especialización de agentes vs. monolitos. |
+| *CooperBench: Benchmarking Multi-Agent Collaboration* | Benchmark (*arXiv:2601.09123*) | 2026 | Medición cuantitativa de pérdida de contexto (*context drift*) en pases de mano inter-agente (**base de A0**). |
+| *Does AI Code Review Lead to Code Changes?* | Empirical Study (*EMSE*) | 2026 | Tasa de adopción y fatiga de revisión humana en PRs generados por IA (**evidencia para el claim**). |
+| *Evaluating LLMs for Code Review: False Positives & Reliance* | Empirical Study (*ACM TOSEM*) | 2025 | Falsos positivos en análisis semántico y justificación de compuertas determinísticas (**A3 / ADR-005**). |
+| *A Survey on Evaluation of LLM-based Autonomous Agents* | Zhang et al. (*arXiv:2503.16416*) | 2025 | Métricas y protocolos de evaluación y calibración de agentes (**ADR-005**). |
+| *Catálogo de Agentes de IA para Ingeniería y Gestión* | M. Giagnorio (*Univ. Austral*) | 2026 | Catálogo de referencia taxonómica (14 categorías, 3 dominios). |
+| *State of AI-assisted Software Development Report* | DORA / Google Cloud | 2025 | Impacto de IA en métricas DORA: mayor CFR si no hay gobernanza. |
+| *Carta Encíclica Magnifica Humanitas* | Papa León XIV (*Ciudad del Vaticano*) | 2026 | Custodia humana y distinción entre elección algorítmica y decisión moral (**Informe Ético**). |
+
+### 3.3. Alertas por Palabras Clave Compuestas
 * `"agentic software engineering" OR "multi-agent software development"`
 * `"LLM code review" AND ("human oversight" OR "automation bias")`
 * `"AI governance" AND ("software lifecycle" OR "ISO 42001")`
 * `"proportional evidence" OR "verifiable human-in-the-loop"`
 * `"slopsquatting" OR "package hallucination" OR "AI supply chain security"`
 
-### 3.3. Monitoreo por Grafos de Citación
+### 3.4. Monitoreo por Grafos de Citación
 * **Herramientas:** ResearchRabbit / Connected Papers / Semantic Scholar.
 * Crear una colección semilla con los 15 papers clave de la tesis para recibir recomendaciones semanales de co-citación.
 
