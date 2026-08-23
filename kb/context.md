@@ -488,7 +488,4 @@ Todo lo demás son detalles de implementación.
 13. **Carga horaria y calendarización de línea de base (Acuerdo 22/08/2026):**
     - Se formaliza una carga de **8 horas semanales durante 40 semanas (total 320 horas)**, acorde a un proyecto individual de ingeniería (Gestión).
     - La recolección de datos y línea de base histórica se calendariza como actividad metodológica regular de la Fase 1 (Septiembre–Octubre 2026), desacoplando presiones o bloqueos inmediatos de extracción en agosto.
-dinámicamente dichos gates según la autonomía del agente (A0–A4) y emite evidencia auditable ex post.
-11. **Calibración y Testbench del Orquestador (ADR-005):** Se formaliza que la evaluación no solo mide el código final, sino la gobernabilidad del proceso de orquestación (fidelidad de pases de mano, contención de fugas de contexto, curva de falsos positivos en gates, reconciliación 1:1 de telemetría y pruebas de inyección de fallos).
-12. **Adopción del Catálogo de Agentes de Marcos Giagnorio (2026):** Se adopta el catálogo de 14 categorías en 3 dominios (Gestión, Ingeniería y Meta-Gobernanza) como universo de referencia taxonómico para ARGOS. Se asume el principio rector: la industria converge en agentes verificadores/revisores con HITL; la responsabilidad nunca se delega (PMBOK 8 / modelo asignar vs. delegar de Linear), alineando el Dominio C (Meta-agentes: 14.1 Auditor, 14.2 Evaluador, 14.3 Curador) con los artefactos A0, A2 y A3.
 

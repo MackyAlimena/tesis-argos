@@ -12,13 +12,13 @@
 ```text
   [ HOY: 22 Ago 2026 ]
          │
-         ├── ⚡ 22–25 Ago ── Captura de Línea de Base Histórica (data/raw/)
-         │
          ├── 🔴 01 Sep 2026 ── HITO 1: Entrega Plan de Trabajo de Grado (10 días)
          │
          ├── 🔴 15 Sep 2026 ── HITO 2: Entrega Informe Ético y Social (24 días)
          │
-         ├── ⚙️ Oct–Dic 2026 ── Diagnóstico, Taxonomía (A1) y Topologías (A0)
+         ├── ⚙️ Sep–Oct 2026 ── Diagnóstico, Recolección de Datos y Taxonomía (A1)
+         │
+         ├── ⚙️ Nov–Dic 2026 ── Criterios de Topologías (A0)
          │
          ├── ⚙️ Ene–Feb 2027 ── Matriz (A2), Conformance Engine (A3) y Calibración
          │
@@ -42,9 +42,9 @@
 
 | Período | Tareas Específicas | Estado |
 |---|---|:---:|
-| **22 – 24 Ago** | **⚡ Tarea Crítica: Extracción de Línea de Base.**<br>• Solicitar y extraer export histórico de PRs (últimos 6–12 meses) de la PyME tecnológica.<br>• Campos: timestamps, autor (humano/agente), tamaño de diff, tiempo de revisión, comentarios, fallas escapadas.<br>• Guardar en `data/raw/` anonimizado. | ⏳ En curso |
+| **22 – 24 Ago** | **Estructuración y Acuerdos de Plan de Trabajo:**<br>• Definición de carga horaria: 8 hs/semana × 40 semanas = **320 horas totales**.<br>• Calendarización metodológica de recolección de datos para Sep–Oct.<br>• Alineación con template oficial. | ⏳ En curso |
 | **25 – 26 Ago** | **Redacción del Núcleo del Plan de Trabajo:**<br>• *Motivación & Gap:* La IA en la fábrica de software vs. en el producto.<br>• *Objetivos & Claim:* La supervisión humana solo es real si es verificable.<br>• *Capacidades (Funcionalidades):* Clasificación A0–A4, compuertas dinámicas, telemetría y dashboard.<br>• *Arquitectura de Gobernanza en Capas:* Política $\to$ Topología $\to$ Control $\to$ Evidencia $\to$ Tablero. | 📝 Pendiente |
-| **27 – 28 Ago** | **Metodología, Cronograma y Bibliografía:**<br>• Formalizar el marco DSR (Peffers) + Investigación-Acción en Caso Único (Yin).<br>• Integrar banco de pruebas y calibración del orquestador (ADR-005).<br>• Cronograma de 480 horas declaradas (~12 h/sem × 40 semanas).<br>• Referencias bibliográficas en formato APA riguroso. | 📝 Pendiente |
+| **27 – 28 Ago** | **Metodología, Cronograma y Bibliografía:**<br>• Formalizar el marco DSR (Peffers) + Investigación-Acción en Caso Único (Yin).<br>• Integrar banco de pruebas y calibración del orquestador (ADR-005).<br>• Cronograma de 320 horas declaradas (8 h/sem × 40 semanas).<br>• Referencias bibliográficas en formato APA riguroso. | 📝 Pendiente |
 | **29 – 30 Ago** | **Revisión con Tutor Académico:**<br>• Envío de borrador a Marcos Giagnorio.<br>• Incorporación de feedback y ajustes finales. | 📝 Pendiente |
 | **31 Ago – 01 Sep** | **🔴 ENTREGA FORMAL DEL PLAN DE TRABAJO (01/09/2026):**<br>• Generación de versión final y presentación formal a la Facultad. | 🎯 Hito 1 |
 
@@ -71,10 +71,9 @@
 
 | Período | Foco de Trabajo y Entregables Intermedios | Artefactos |
 |---|---|:---:|
-| **Octubre 2026** | • Procesamiento y análisis estadístico de la línea de base (`data/processed/`).<br>• Primer borrador de **A1 (Taxonomía de Riesgos del Desarrollo Agentizado)**. | **A1** |
-| **Noviembre 2026** | • Formalización de **A0 (Criterios de Gobernabilidad de Topologías)**.<br>• Análisis de pases de mano inter-agente y costuras de inspección humana. | **A0** |
-| **Diciembre 2026** | • Construcción de **A2 (Matriz Autonomía × Control A0–A4)** mapeada a ISO 42001 e ISO 27001.<br>• Definición de compuertas y evidencias obligatorias por nivel. | **A2** |
-| **Enero 2027** | • Implementación del prototipo técnico **A3 (Collector + Conformance Engine + Tablero)**.<br>• Ejecución del banco de pruebas y calibración del orquestador ([`ADR-005`](file:///home/macky/Projects/tesis/kb/adrs/ADR-005-calibracion-y-verificacion-del-orquestador.md)).<br>• **Convocatoria del Panel Delphi:** Envío de invitaciones formales a 6–10 expertos. | **A3** + Testbench |
+| **Septiembre – Octubre 2026** | • Recolección, anonimización y análisis preliminar de datos históricos (`data/raw/`).<br>• Primer borrador de **A1 (Taxonomía de Riesgos del Desarrollo Agentizado)**. | **A1** |
+| **Noviembre – Diciembre 2026** | • Formalización de **A0 (Criterios de Gobernabilidad de Topologías)**.<br>• Análisis de pases de mano inter-agente y costuras de inspección humana. | **A0** |
+| **Enero 2027** | • Construcción de **A2 (Matriz Autonomía × Control A0–A4)**.<br>• Implementación del prototipo técnico **A3 (Collector + Conformance Engine + Tablero)**.<br>• Ejecución del banco de pruebas y calibración del orquestador ([`ADR-005`](file:///home/macky/Projects/tesis/kb/adrs/ADR-005-calibracion-y-verificacion-del-orquestador.md)).<br>• **Convocatoria del Panel Delphi:** Envío de invitaciones a 6–10 expertos. | **A2**, **A3** + Testbench |
 
 ---
 
@@ -108,6 +107,6 @@
 
 | Riesgo | Impacto | Fecha Límite | Mitigación Operativa |
 |---|:---:|:---:|---|
-| **Pérdida de la línea de base histórica** | 🔴 Crítico | 25/08/2026 | Extraer el dataset de Git/PRs de la PyME ahora mismo; si se espera, el "antes" se contamina. |
+| **Demora en acceso a datos históricos** | 🟡 Medio | 31/10/2026 | Extracción calendarizada en Fase 1 (Sep-Oct). Fallback: priorizar validación cualitativa por panel Delphi. |
 | **Desvío hacia desarrollo de producto generalista** | 🟡 Medio | Permanente | Mantener el enfoque de gestión/DSR: el código es solo el recolector y evaluador de políticas (ADR-004). |
 | **Demora en convocatoria del panel Delphi** | 🟡 Medio | 31/01/2027 | Invitar a los expertos en enero para sesionar en marzo; no esperar a último momento. |
