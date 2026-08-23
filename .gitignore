@@ -1,0 +1,17 @@
+# Ambientes virtuales y dependencias
+.venv/
+env/
+node_modules/
+__pycache__/
+*.pyc
+
+# Datos confidenciales o no procesados
+data/raw/*.csv
+data/raw/*.json
+!data/raw/README.md
+!data/raw/.gitkeep
+
+# Archivos de sistema y logs
+.DS_Store
+*.log
+.system_generated/
