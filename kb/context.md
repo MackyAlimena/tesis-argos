@@ -458,6 +458,13 @@ Todo lo demás son detalles de implementación.
 - Sandoval, G., Pearce, H., Nisi, T., Karmakar, S., Dolan-Gavitt, B., & Garg, S. (2023). Lost at C: A user study on the security implications of large language model code assistants. *USENIX Security 2023*.
 - Vaithilingam, P., Zhang, T., & Glassman, E. L. (2022). Expectation vs. experience: Evaluating the usability of code generation tools powered by large language models. *CHI EA*.
 - Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The science of lean software and DevOps*. IT Revolution Press.
+- DORA. (2025). *State of AI-assisted Software Development Report 2025*. DORA / Google Cloud. https://dora.dev/dora-report-2025/
+- Project Management Institute (PMI). (2025). *AI in PM Global Report 2025 / PMBOK Guide (8th ed.)*. PMI.
+- Thoughtworks. (2025/2026). *Technology Radar (Vol. 33)*. Thoughtworks.
+- Giagnorio, M. (2026). *Catálogo de Agentes de IA para Ingeniería y Gestión de Software (14 categorías en 3 dominios)*. Facultad de Ingeniería, Universidad Austral.
+- Hou, X., Zhao, Y., Liu, Y., Yang, Z., Wang, K., Li, L., ... & Lo, D. (2024). Large language models for software engineering: A systematic literature review. *arXiv:2404.04834*.
+- Zhang, J., et al. (2025). A survey on evaluation of LLM-based autonomous agents. *arXiv:2503.16416*.
+- Wang, L., et al. (2025). Multi-agent agile effort estimation by analogy. *arXiv:2509.14483*.
 
 **Ética, Magisterio Pontificio y Algor-ética**
 - León XIV. (2026, 15 de mayo). *Carta Encíclica Magnifica Humanitas: Sobre la custodia de la persona humana en el tiempo de la inteligencia artificial*. Ciudad del Vaticano.
@@ -484,4 +491,5 @@ Todo lo demás son detalles de implementación.
 9. **Desactivación de la trampa del "Agente Auditor":** Se descarta crear un bot generalista que audite políticas empresariales (desvío a producto). Se integra en **A3** como un **Motor Evaluador de Conformidad en CI/CD**, que audita automáticamente si las trazas del agente de desarrollo cumplen con la matriz A2.
 10. **Quality Gates vs. Gobernanza de Autonomía:** Aclaración de que el *Quality Gate* es el punto de inyección técnico en CI/CD, mientras que la tesis aporta el marco de gobernanza que parametriza dinámicamente dichos gates según la autonomía del agente (A0–A4) y emite evidencia auditable ex post.
 11. **Calibración y Testbench del Orquestador (ADR-005):** Se formaliza que la evaluación no solo mide el código final, sino la gobernabilidad del proceso de orquestación (fidelidad de pases de mano, contención de fugas de contexto, curva de falsos positivos en gates, reconciliación 1:1 de telemetría y pruebas de inyección de fallos).
+12. **Adopción del Catálogo de Agentes de Marcos Giagnorio (2026):** Se adopta el catálogo de 14 categorías en 3 dominios (Gestión, Ingeniería y Meta-Gobernanza) como universo de referencia taxonómico para ARGOS. Se asume el principio rector: la industria converge en agentes verificadores/revisores con HITL; la responsabilidad nunca se delega (PMBOK 8 / modelo asignar vs. delegar de Linear), alineando el Dominio C (Meta-agentes: 14.1 Auditor, 14.2 Evaluador, 14.3 Curador) con los artefactos A0, A2 y A3.
 
