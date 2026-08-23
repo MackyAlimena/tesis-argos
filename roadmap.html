@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARGOS — Roadmap de Tesis | Universidad Austral</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --card-hover: #1c2641;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --primary: #6366f1;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #a855f7;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .badge-project {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .meta-item strong {
+      color: var(--accent);
+    }
+
+    /* Top Metric / Countdown Cards */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .stat-card.urgent {
+      border-left: 4px solid var(--danger);
+    }
+
+    .stat-card.secondary-urgent {
+      border-left: 4px solid var(--warning);
+    }
+
+    .stat-card.pitch {
+      border-left: 4px solid var(--primary);
+    }
+
+    .stat-card.defense {
+      border-left: 4px solid var(--success);
+    }
+
+    .card-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-date {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-countdown {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .countdown-urgent {
+      color: #f87171;
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .countdown-warning {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+    }
+
+    .countdown-primary {
+      color: #a5b4fc;
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    /* Section Titles */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .section-icon {
+      font-size: 1.5rem;
+    }
+
+    /* Sprints / Phases Container */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--danger), var(--warning), var(--primary), var(--success));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 1.25rem;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 4px solid var(--accent);
+      z-index: 2;
+    }
+
+    .timeline-dot.danger { border-color: var(--danger); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+    .timeline-dot.warning { border-color: var(--warning); box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+    .timeline-dot.primary { border-color: var(--primary); box-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
+    .timeline-dot.success { border-color: var(--success); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+
+    .phase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .phase-title-group h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .phase-dates {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-badge.in-progress {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .status-badge.upcoming {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .status-badge.milestone {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .task-table th, .task-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .task-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .task-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .task-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .task-checkbox {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+      margin-right: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+    }
+
+    .tag.critical {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+
+    /* Pitch Breakdown Grid */
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pitch-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .pitch-card h4 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .pitch-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.1rem; }
+      .meta-bar { flex-direction: column; gap: 0.5rem; }
+      .task-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge-project">Trabajo de Grado — Ingeniería en Informática (Orientación Gestión)</div>
+    <h1>ARGOS: Roadmap de Ejecución</h1>
+    <p class="subtitle">Gobernanza de agentes de IA en el desarrollo de software: autonomía graduada y evidencia proporcional.</p>
+    <div class="meta-bar">
+      <div class="meta-item">Alumna: <strong>Macarena Alimena</strong></div>
+      <div class="meta-item">Universidad: <strong>Universidad Austral</strong></div>
+      <div class="meta-item">Tutor Académico: <strong>Marcos Giagnorio</strong></div>
+      <div class="meta-item">Fecha Hoy: <strong>22 de Agosto de 2026</strong></div>
+    </div>
+  </header>
+
+  <!-- Top Stat / Countdown Cards -->
+  <div class="grid-cards">
+    <div class="stat-card urgent">
+      <div class="card-label">Hito 1 · Entrega Formal</div>
+      <div class="card-title">Plan de Trabajo</div>
+      <div class="card-date">01 / Sep / 2026</div>
+      <div class="card-countdown countdown-urgent">⏳ Faltan 10 días</div>
+    </div>
+
+    <div class="stat-card secondary-urgent">
+      <div class="card-label">Hito 2 · Entrega Formal</div>
+      <div class="card-title">Informe Ético y Social</div>
+      <div class="card-date">15 / Sep / 2026</div>
+      <div class="card-countdown countdown-warning">⏳ Faltan 24 días</div>
+    </div>
+
+    <div class="stat-card pitch">
+      <div class="card-label">Hito 3 · Defensa Intermedia</div>
+      <div class="card-title">Pitch de Tesis</div>
+      <div class="card-date">23 / Feb / 2027</div>
+      <div class="card-countdown countdown-primary">🎯 ~6 meses</div>
+    </div>
+
+    <div class="stat-card defense">
+      <div class="card-label">Hito 4 · Cierre de Carrera</div>
+      <div class="card-title">Defensa Final</div>
+      <div class="card-date">Jun – Jul / 2027</div>
+      <div class="card-countdown">🏁 Meta Final</div>
+    </div>
+  </div>
+
+  <!-- Main Timeline -->
+  <div class="section-header">
+    <span class="section-icon">🚀</span>
+    <h2>Cronograma de Sprints y Fases de Trabajo</h2>
+  </div>
+
+  <div class="timeline">
+
+    <!-- SPRINT 1: PLAN DE TRABAJO -->
+    <div class="timeline-item">
+      <div class="timeline-dot danger"></div>
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-title-group">
+            <h3>Sprint 1 — Plan de Trabajo de Grado</h3>
+            <div class="phase-dates">22 de Agosto al 01 de Septiembre de 2026 (10 días)</div>
+          </div>
+          <span class="status-badge milestone">🔴 Hito Inminente</span>
+        </div>
+        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
+          Completar la plantilla oficial de la Facultad (<code>docs/templates/Plan-de-trabajo-template.md</code>) estructurando el claim, objetivos, arquitectura en capas, metodología DSR y el cronograma formal de 480 horas.
+        </p>
+
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th style="width: 130px;">Fechas</th>
+              <th>Actividad / Entregable</th>
+              <th style="width: 140px;">Prioridad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>22 – 24 Ago</strong></td>
+              <td><strong>⚡ Captura de Línea de Base (Crítico):</strong> Solicitar y extraer export histórico de PRs de la PyME (timestamps, revisores, comentarios, diffs, humanos vs. agentes) en <code>data/raw/</code>.</td>
+              <td><span class="tag critical">Bloqueante</span></td>
+            </tr>
+            <tr>
+              <td><strong>25 – 26 Ago</strong></td>
+              <td><strong>Redacción del Núcleo:</strong> Motivación (gap en la fábrica), Objetivos, Capacidades del marco (A0–A4), Tecnologías y Arquitectura en capas.</td>
+              <td><span class="tag">Alta</span></td>
+            </tr>
+            <tr>
+              <td><strong>27 – 28 Ago</strong></td>
+              <td><strong>Metodología, Cronograma y Bibliografía:</strong> DSR + Caso único + Delphi + ADR-005 (Calibración del Orquestador) + Normas APA.</td>
+              <td><span class="tag">Alta</span></td>
+            </tr>
+            <tr>
+              <td><strong>29 – 30 Ago</strong></td>
+              <td><strong>Revisión con Tutor:</strong> Envío de borrador a Marcos Giagnorio y ajustes finales.</td>
+              <td><span class="tag">Media</span></td>
+            </tr>
+            <tr>
+              <td><strong>01 Sep 2026</strong></td>
+              <td><strong>🔴 ENTREGA FORMAL PLAN DE TRABAJO</strong></td>
+              <td><span class="tag critical">Hito 1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SPRINT 2: INFORME ETICO -->
+    <div class="timeline-item">
+      <div class="timeline-dot warning"></div>
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-title-group">
+            <h3>Sprint 2 — Informe Ético y Social</h3>
+            <div class="phase-dates">02 de Septiembre al 15 de Septiembre de 2026 (14 días)</div>
+          </div>
+          <span class="status-badge milestone" style="color: #fbbf24; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.15);">🟡 Hito 2</span>
+        </div>
+        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
+          Responder a las 5 preguntas oficiales de la Facultad anclando en la primacía de la persona humana, la Encíclica <em>Magnifica Humanitas</em> (León XIV, 2026) y la gobernanza contra la vigilancia laboral (Riesgo E9).
+        </p>
+
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th style="width: 130px;">Fechas</th>
+              <th>Actividad / Entregable</th>
+              <th style="width: 140px;">Enfoque</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>02 – 05 Sep</strong></td>
+              <td><strong>Preguntas 1 y 2 (Objeto, Fin y Stakeholders):</strong> Custodia de la persona humana, evitar la <em>moral crumple zone</em> en juniors y protección de clientes.</td>
+              <td><span class="tag">Ética y Personas</span></td>
+            </tr>
+            <tr>
+              <td><strong>06 – 09 Sep</strong></td>
+              <td><strong>Preguntas 3 y 4 (Mitigación y DDHH):</strong> Mitigación de riesgos (fuga de IP, alucinaciones) y <strong>E9 (Vigilancia Laboral)</strong>: prohibición de uso de telemetría para evaluación de desempeño.</td>
+              <td><span class="tag">Gobernanza / DDHH</span></td>
+            </tr>
+            <tr>
+              <td><strong>10 – 12 Sep</strong></td>
+              <td><strong>Pregunta 5 y Fundamentación Pontificia:</strong> Declaración formal de uso de IA en la tesis + <em>Magnifica Humanitas</em> (elección algorítmica vs. decisión moral humana).</td>
+              <td><span class="tag">Integridad</span></td>
+            </tr>
+            <tr>
+              <td><strong>13 – 14 Sep</strong></td>
+              <td><strong>Revisión Cruzada y Visto Bueno del Tutor:</strong> Verificación de consistencia integral con el Plan de Trabajo.</td>
+              <td><span class="tag">Revisión</span></td>
+            </tr>
+            <tr>
+              <td><strong>15 Sep 2026</strong></td>
+              <td><strong>🔴 ENTREGA FORMAL INFORME ÉTICO Y SOCIAL</strong></td>
+              <td><span class="tag critical">Hito 2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FASE 3: DIAGNOSTICO Y MODELADO -->
+    <div class="timeline-item">
+      <div class="timeline-dot primary"></div>
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-title-group">
+            <h3>Fase 3 — Diagnóstico, Modelado y Calibración Técnica</h3>
+            <div class="phase-dates">Octubre 2026 a Enero 2027</div>
+          </div>
+          <span class="status-badge in-progress">⚙️ En Desarrollo</span>
+        </div>
+        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
+          Construcción formal de los artefactos del marco ARGOS y el motor evaluador de conformidad.
+        </p>
+
+        <div class="pitch-grid">
+          <div class="pitch-card">
+            <h4>Octubre 2026</h4>
+            <p><strong>Artefacto A1:</strong> Taxonomía de riesgos del desarrollo agentizado + Análisis inicial del dataset histórico (línea de base pre-intervención).</p>
+          </div>
+          <div class="pitch-card">
+            <h4>Noviembre 2026</h4>
+            <p><strong>Artefacto A0:</strong> Criterios de gobernabilidad de topologías agénticas (diseño de enjambres y costuras de inspección).</p>
+          </div>
+          <div class="pitch-card">
+            <h4>Diciembre 2026</h4>
+            <p><strong>Artefacto A2:</strong> Matriz Autonomía × Control (Niveles A0–A4) mapeada formalmente a controles ISO 42001 / ISO 27001.</p>
+          </div>
+          <div class="pitch-card">
+            <h4>Enero 2027</h4>
+            <p><strong>Artefacto A3 + ADR-005:</strong> Prototipo del Conformance Engine en CI/CD, banco de pruebas de calibración del hive y <strong>convocatoria del Panel Delphi</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4: PITCH -->
+    <div class="timeline-item">
+      <div class="timeline-dot primary"></div>
+      <div class="phase-card" style="border-color: rgba(99, 102, 241, 0.4);">
+        <div class="phase-header">
+          <div class="phase-title-group">
+            <h3>Fase 4 — Pitch de Tesis (Defensa Intermedia)</h3>
+            <div class="phase-dates">23 de Febrero de 2027</div>
+          </div>
+          <span class="status-badge milestone" style="color: #a5b4fc; background: rgba(99,102,241,0.2); border-color: #6366f1;">🎤 Hito 3 · Pitch</span>
+        </div>
+        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
+          Presentación ejecutiva y metodológica ante el tribunal académico defendiendo los 4 artefactos y los datos preliminares de la línea de base.
+        </p>
+
+        <div class="pitch-grid">
+          <div class="pitch-card">
+            <h4>1. El Claim Central</h4>
+            <p>"La supervisión humana solo es real si es verificable; evidencia proporcional según la autonomía."</p>
+          </div>
+          <div class="pitch-card">
+            <h4>2. Datos de Línea de Base</h4>
+            <p>Gráficos reales demostrando la ficción de cumplimiento en PRs generados por IA antes de ARGOS.</p>
+          </div>
+          <div class="pitch-card">
+            <h4>3. Demostración de Artefactos</h4>
+            <p>Arquitectura A0–A3 y ejecución en vivo del Motor Evaluador de Conformidad en CI/CD.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 5: VALIDACION Y DEFENSA FINAL -->
+    <div class="timeline-item">
+      <div class="timeline-dot success"></div>
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-title-group">
+            <h3>Fase 5 — Validación Empírica, Delphi y Defensa Final</h3>
+            <div class="phase-dates">Marzo a Julio de 2027</div>
+          </div>
+          <span class="status-badge upcoming" style="color: #34d399; border-color: rgba(16,185,129,0.3);">🏁 Cierre de Tesis</span>
+        </div>
+        
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Meses</th>
+              <th>Actividad y Entregable</th>
+              <th style="width: 140px;">Método</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mar – Abr 2027</strong></td>
+              <td><strong>Panel de Expertos Delphi:</strong> Evaluación cualitativa con 6–10 auditores ISO y tech leads $\to$ Informe de validación externa.</td>
+              <td><span class="tag">Cualitativo</span></td>
+            </tr>
+            <tr>
+              <td><strong>Abr – May 2027</strong></td>
+              <td><strong>Reconstruction Tests & Análisis Pre/Post:</strong> Auditoría ciega sobre PRs en la PyME y cálculo de métricas DORA extendidas.</td>
+              <td><span class="tag">Cuantitativo (DSR)</span></td>
+            </tr>
+            <tr>
+              <td><strong>May – Jun 2027</strong></td>
+              <td><strong>Redacción Integral de la Memoria:</strong> Consolidación del documento maestro final, anexos y bitácora.</td>
+              <td><span class="tag">Memoria</span></td>
+            </tr>
+            <tr>
+              <td><strong>Jun – Jul 2027</strong></td>
+              <td><strong>🏁 DEFENSA ORAL ANTE EL TRIBUNAL ACADÉMICO</strong></td>
+              <td><span class="tag" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">Graduación</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>ARGOS</strong> — Tesis de Grado en Ingeniería en Informática (Orientación Gestión) · Macarena Alimena · Universidad Austral</p>
+    <p style="margin-top: 0.25rem; font-size: 0.8rem; color: #64748b;">Actualizado al 22 de Agosto de 2026 · Repositorio sincronizado con ADR-001 a ADR-005</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

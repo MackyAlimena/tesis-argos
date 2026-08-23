@@ -361,22 +361,23 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 
 ---
 
-## 14. Cronograma
+## 14. Cronograma Oficial y Hitos de Entrega
 
-| Período | Hito | Entregable |
+| Período / Fecha | Hito | Entregable / Foco Principal |
 |---|---|---|
-| **Ago 2026** | 14/08 — Definición de tema | Título + pregunta + gap + delimitación + plan B |
-| **Ago–Sep** | ⚡ **Captura de línea de base (empezar YA)** | Dataset histórico de cambios agente/humano |
-| **Sep–Oct** | Estado del arte + marco teórico | **Informe Ético** (usar la matriz §10) |
-| **Oct** | Arranca ISO 42001 en la empresa → lograr que el uso agéntico quede escrito en el alcance del SGIA | **Plan de Trabajo** formal |
-| **Nov–Dic** | Diagnóstico + taxonomía de riesgos v1 (A1) + criterios de topología (A0) | Informe de diagnóstico |
-| **Ene–Mar 2027** | Diseño del artefacto: matriz autonomía×control (A2), modelo de evidencia y tablero (A3) | Framework v1 |
-| **Mar–Abr** | Panel de expertos → framework v2 | Informe de validación cualitativa |
-| **Abr–May** | Instanciación piloto + auditoría simulada + métricas pre/post | Resultados cuantitativos |
-| **May–Jun** | Análisis, discusión, redacción final | Borrador completo |
-| **Jun–Jul** | Revisión con tutores + defensa | **Tesis** |
+| **14/08/2026** | Definición de tema | Título + pregunta + gap + delimitación + plan B *(Completado)* |
+| **Ago–Sep 2026** | ⚡ **Captura de línea de base (Crítico)** | Extracción y congelamiento del dataset histórico de PRs pre-intervención |
+| **01/09/2026** | 🔴 **Entrega Hito 1** | **Plan de Trabajo de Grado** (formal, según template de Facultad) |
+| **15/09/2026** | 🔴 **Entrega Hito 2** | **Informe Ético y Social** (anclado en las 5 preguntas y *Magnifica Humanitas*) |
+| **Oct–Dic 2026** | Diagnóstico + A1 + A0 | Taxonomía de riesgos v1 (A1) + Criterios de gobernabilidad de topologías (A0) |
+| **Ene–Feb 2027** | Diseño de artefactos (A2, A3) | Matriz Autonomía×Control (A2) + Motor de Conformidad & Tablero (A3) + Calibración |
+| **23/02/2027** | 🔴 **Entrega Hito 3** | **Pitch de Tesis** (defensa intermedia de avance metodológico y artefactos) |
+| **Mar–Abr 2027** | Validación cualitativa | Panel de Expertos tipo Delphi (auditores 27001/42001, tech leads) |
+| **Abr–May 2027** | Validación cuantitativa | *Reconstruction tests* sobre PRs reales + métricas pre/post intervención |
+| **May–Jun 2027** | Consolidación y redacción | Borrador integral de la memoria de tesis |
+| **Jun–Jul 2027** | 🏁 **Defensa Final** | **Tesis de Grado final y defensa oral ante el tribunal** |
 
-**Dependencias críticas:** (a) panel agendado en enero, no en marzo; (b) línea de base existente antes de diciembre; (c) alcance del SGIA incluye el caso de uso.
+**Dependencias críticas:** (a) captura de línea de base antes de septiembre; (b) panel Delphi agendado en enero; (c) entrega puntual de Plan de Trabajo (01/09) e Informe Ético (15/09).
 
 ---
 
