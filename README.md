@@ -24,6 +24,21 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 
 ## Por dónde empezar
 
+### Onboarding asistido (recomendado)
+
+Si acabás de clonar el repo y usás un agente de IA (Claude Code, Antigravity, Cursor, Codex), no hace falta que
+leas todo a mano: hay dos onboardings guiados que te llevan por el argumento, las decisiones ya tomadas y lo que
+está abierto, en ~15 minutos.
+
+| Si sos… | En Claude Code | En cualquier otro agente | A mano |
+|---|---|---|---|
+| **Tutor académico / director** | `/onboarding-tutor` | *"seguí `docs/onboarding/tutor.md`"* | [`docs/onboarding/tutor.md`](docs/onboarding/tutor.md) |
+| **Colaborador externo, revisor o auditor** | `/onboarding-externo` | *"seguí `docs/onboarding/externo.md`"* | [`docs/onboarding/externo.md`](docs/onboarding/externo.md) |
+
+Las reglas del repo que cualquier agente debe respetar están en [`AGENTS.md`](AGENTS.md).
+
+### A mano
+
 Si es tu primera vez en este repo, leé en este orden. Todo lo demás cuelga de estos cuatro documentos.
 
 | # | Documento | Qué vas a encontrar |
@@ -84,8 +99,10 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 ├── README.md                      # Este documento (visión general, pitch y navegación)
 ├── ROADMAP.md                     # Cronograma operativo S01–S40, parámetros congelados y criterios C1–C5
 ├── roadmap.html                   # Misma información, versión navegable en el browser
+├── AGENTS.md                      # Reglas del repo para agentes de IA (Claude, Antigravity, Cursor, Codex)
 │
 ├── docs/                          # Entregables formales de la Universidad Austral
+│   ├── onboarding/                # Onboardings guiados: tutor.md y externo.md
 │   ├── templates/                 # Plantillas oficiales (Plan de Trabajo, Informe Ético)
 │   ├── 01-definicion-tema/        # Definición formal de tema (nombre, director, participantes)
 │   ├── 02-informe-etico/          # Informe Ético y Social (anclado en Magnifica Humanitas)
