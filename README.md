@@ -112,6 +112,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 │
 ├── kb/                            # Base de Conocimiento y Gobernanza (Working Docs)
 │   ├── context.md                 # Contexto maestro consolidado y decisiones
+│   ├── diario/                    # Diario de investigación semanal (anexo de la memoria)
 │   ├── literature/                # Fichas de lectura de literatura científica (2023–2026)
 │   ├── standards/                 # Mapeo a normas (ISO 42001, ISO 27001, NIST AI)
 │   └── adrs/                      # Architectural & Governance Decision Records

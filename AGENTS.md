@@ -25,6 +25,21 @@ Si no sabés cuál corresponde, **preguntá** antes de arrancar.
 
 ---
 
+## Rituales de trabajo (solo la autora)
+
+Estas herramientas son para el trabajo semanal de la tesis, no para el onboarding de visitantes:
+
+| | Qué | Cuándo |
+|---|---|---|
+| `/semana` | Abre la semana: ubica S01–S40 por fecha en `ROADMAP.md`, arma el plan de las horas presupuestadas y avisa triggers. | Lunes |
+| `/cierre-semana` | Verifica la Definición de HECHO **contra el repo**, registra horas y escribe la entrada del diario en `kb/diario/`. | Viernes |
+| `verificador-bibliografico` *(subagente)* | Verifica referencias contra la fuente original. Devuelve VERIFICADA / NO LOCALIZADA; nunca reformula. | Antes de incorporar cualquier cita |
+
+El **diario de investigación** (`kb/diario/`) es anexo de la memoria y mitigación declarada del sesgo de doble
+rol. Se asiste, no se delega: las secciones de rol se llenan entrevistando a la autora, nunca inventando.
+
+---
+
 ## Reglas del repo (valen siempre, con o sin onboarding)
 
 1. **Nada entra a la bibliografía sin verificar contra la fuente.** Ni una cita, ni un DOI, ni un año, ni una
