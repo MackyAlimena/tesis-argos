@@ -22,6 +22,49 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 
 ---
 
+## 🧭 Por dónde empezar (lectura de 30 minutos)
+
+Si es tu primera vez en este repo, leé en este orden. Todo lo demás cuelga de estos cuatro documentos.
+
+| # | Documento | Qué vas a encontrar | Tiempo |
+|---|---|---|---|
+| 1 | **Este README** | El gap, el claim y los cuatro artefactos. La versión corta del argumento. | 5 min |
+| 2 | [`kb/context.md`](kb/context.md) | **El documento maestro.** Título, problema, objetivos, alcance, metodología, riesgos y bibliografía preliminar. Es un *working doc*: se actualiza, no se archiva. | 20 min |
+| 3 | [`ROADMAP.md`](ROADMAP.md) | Cronograma operativo semana por semana (S01→S40), parámetros congelados, criterios de éxito pre-registrados (C1–C5) y checkpoints con tutor. Versión navegable: [`roadmap.html`](roadmap.html). | 10 min |
+| 4 | [`kb/adrs/`](kb/adrs/) | Las seis decisiones estructurales ya tomadas y **por qué**. Si algo del diseño te resulta raro, la explicación está acá antes de que preguntes. | 10 min |
+
+**Entregables formales, si querés ver el estado real:**
+- [`docs/01-definicion-tema/`](docs/01-definicion-tema/) — Definición de tema (nombre, director, participantes).
+- [`docs/03-plan-de-trabajo/Plan-de-Trabajo-Alimena.md`](docs/03-plan-de-trabajo/Plan-de-Trabajo-Alimena.md) — Plan de Trabajo formal. **Entrega 01/09/2026.**
+
+---
+
+## 🔎 Qué necesito de vos (research abierto)
+
+Cuatro frentes donde el aporte externo mueve la aguja. Ordenados por urgencia.
+
+| Prioridad | Frente | Qué hace falta | Dónde |
+|---|---|---|---|
+| 🔴 **Bloqueante** | **Verificación bibliográfica** | 10 referencias (B1–B10) entraron a la bibliografía preliminar sin verificar contra la fuente. Hay que confirmar autoría, año, sede y DOI — o **eliminarlas**, no reformularlas. B3, B6 y B7 son las más frágiles (falta autoría por completo). | [`docs/03-plan-de-trabajo/BIBLIOGRAFIA-pendiente-de-verificacion.md`](docs/03-plan-de-trabajo/BIBLIOGRAFIA-pendiente-de-verificacion.md) |
+| 🟠 **Alta** | **Estado del arte / vigilancia** | Cubrir los venues del mapa (ICSE, FSE, ASE, MSR, CHI, FAccT, USENIX) buscando trabajo previo que ya resuelva el claim — o que lo contradiga. Toda ficha nueva usa la plantilla. | [`kb/literature/estrategia-bibliografica-y-vigilancia.md`](kb/literature/estrategia-bibliografica-y-vigilancia.md) · [`TEMPLATE-ficha-lectura.md`](kb/literature/TEMPLATE-ficha-lectura.md) |
+| 🟠 **Alta** | **Mapeo normativo** | `kb/standards/` está vacío. Falta el mapeo de la taxonomía A1 y la matriz A2 contra ISO/IEC 42001 Anexo A, ISO/IEC 27002 y NIST SP 800-218A. Es lo que convierte a ARGOS en un perfil de implementación y no en un marco inventado. | [`kb/standards/`](kb/standards/) |
+| 🟡 **Media** | **Cobertura del Catálogo Giagnorio (2026)** | Cruzar las 14 categorías del catálogo contra lo que ARGOS efectivamente gobierna: qué está cubierto, qué no, y qué se implementó sin decisión explícita. Insumo directo del capítulo 4. | [`kb/literature/catalogo-agentes-ia-giagnorio-2026.md`](kb/literature/catalogo-agentes-ia-giagnorio-2026.md) |
+
+### Dónde el diseño es más atacable
+Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
+- **Sesgo de doble rol.** La autora diseña el marco, lo implementa en su propia empresa y mide el resultado. Las mitigaciones están declaradas (parámetros congelados antes de medir, auditor externo y ciego, panel Delphi). ¿Alcanzan?
+- **Caso único (n=1).** Una PyME. Los límites de generalización están en [`ADR-001`](kb/adrs/ADR-001-metodologia-dsr-y-caso-unico.md).
+- **C1 como apuesta binaria.** El claim entero se sostiene o se cae contra un solo umbral: Δ ≥ 40 puntos de TRD. Ver [`ROADMAP.md`](ROADMAP.md) §0.1.
+- **C2 con tolerancia cero.** Exigir 0 % de discrepancia entre `trace.json` y los eventos reales de Git/CI puede ser inalcanzable en la práctica.
+
+### Cómo trabajamos el repo
+- **Working docs** (`kb/`) se actualizan en su lugar; no se archivan versiones.
+- **Toda decisión estructural va a un ADR** en `kb/adrs/`, numerado y con contexto, decisión y consecuencias.
+- **Nada entra a la bibliografía sin verificar.** La tesis argumenta sobre evidencia verificable: una cita falsa acá no es un error de estilo, es una contradicción con el propio claim.
+- **Checkpoints con tutor** al cierre de cada fase: S09, S13, S17, S22, S29, S34, S37 y S40. Ver [`ROADMAP.md`](ROADMAP.md) §7.
+
+---
+
 ## 🏛️ Los Cuatro Artefactos de ARGOS
 
 | # | Artefacto | Propósito |
@@ -39,13 +82,16 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 ```text
 .
 ├── README.md                      # Este documento (visión general, pitch y navegación)
+├── ROADMAP.md                     # Cronograma operativo S01–S40, parámetros congelados y criterios C1–C5
+├── roadmap.html                   # Misma información, versión navegable en el browser
 │
 ├── docs/                          # Entregables formales de la Universidad Austral
 │   ├── templates/                 # Plantillas oficiales (Plan de Trabajo, Informe Ético)
-│   ├── 01-definicion-tema/        # Definición formal de tema (Hito 14/08/2026)
+│   ├── 01-definicion-tema/        # Definición formal de tema (nombre, director, participantes)
 │   ├── 02-informe-etico/          # Informe Ético y Social (anclado en Magnifica Humanitas)
-│   ├── 03-plan-de-trabajo/        # Plan de Trabajo formal de tesis
-│   └── 04-tesis-final/            # Capítulos de la memoria de tesis (2027)
+│   ├── 03-plan-de-trabajo/        # Plan de Trabajo formal + bibliografía pendiente de verificación
+│   ├── 04-pitch-tesis/            # Pitch de Tesis — Hito 3 (23/02/2027): deck, demo, feedback
+│   └── 05-tesis-final/            # Capítulos de la memoria de tesis (2027)
 │
 ├── kb/                            # Base de Conocimiento y Gobernanza (Working Docs)
 │   ├── context.md                 # Contexto maestro consolidado y decisiones
