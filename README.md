@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 El Problema y la Apuesta (Claim)
+## El Problema y la Apuesta (Claim)
 
 ### El Gap
 Los marcos vigentes de gobernanza de IA (*ISO/IEC 42001, NIST AI RMF, EU AI Act*) fueron diseñados para gobernar la IA **como producto**. Cuando la IA agéntica entra al **proceso de desarrollo de software**, se desplaza el objeto gobernado y el riesgo se propaga a todo el software entregado por la organización, incluso a sistemas que no contienen IA.
@@ -22,16 +22,16 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 
 ---
 
-## 🧭 Por dónde empezar (lectura de 30 minutos)
+## Por dónde empezar
 
 Si es tu primera vez en este repo, leé en este orden. Todo lo demás cuelga de estos cuatro documentos.
 
-| # | Documento | Qué vas a encontrar | Tiempo |
-|---|---|---|---|
-| 1 | **Este README** | El gap, el claim y los cuatro artefactos. La versión corta del argumento. | 5 min |
-| 2 | [`kb/context.md`](kb/context.md) | **El documento maestro.** Título, problema, objetivos, alcance, metodología, riesgos y bibliografía preliminar. Es un *working doc*: se actualiza, no se archiva. | 20 min |
-| 3 | [`ROADMAP.md`](ROADMAP.md) | Cronograma operativo semana por semana (S01→S40), parámetros congelados, criterios de éxito pre-registrados (C1–C5) y checkpoints con tutor. Versión navegable: [`roadmap.html`](roadmap.html). | 10 min |
-| 4 | [`kb/adrs/`](kb/adrs/) | Las seis decisiones estructurales ya tomadas y **por qué**. Si algo del diseño te resulta raro, la explicación está acá antes de que preguntes. | 10 min |
+| # | Documento | Qué vas a encontrar |
+|---|---|---|
+| 1 | **Este README** | El gap, el claim y los cuatro artefactos. La versión corta del argumento. |
+| 2 | [`kb/context.md`](kb/context.md) | **El documento maestro.** Título, problema, objetivos, alcance, metodología, riesgos y bibliografía preliminar. Es un *working doc*: se actualiza, no se archiva. |
+| 3 | [`ROADMAP.md`](ROADMAP.md) | Cronograma operativo semana por semana (S01→S40), parámetros congelados, criterios de éxito pre-registrados (C1–C5) y checkpoints con tutor. Versión navegable: [`roadmap.html`](roadmap.html). |
+| 4 | [`kb/adrs/`](kb/adrs/) | Las seis decisiones estructurales ya tomadas y **por qué**. Si algo del diseño te resulta raro, la explicación está acá antes de que preguntes. |
 
 **Entregables formales, si querés ver el estado real:**
 - [`docs/01-definicion-tema/`](docs/01-definicion-tema/) — Definición de tema (nombre, director, participantes).
@@ -39,7 +39,7 @@ Si es tu primera vez en este repo, leé en este orden. Todo lo demás cuelga de 
 
 ---
 
-## 🔎 Qué necesito de vos (research abierto)
+## Research abierto: PENDIENTE DEFINICIÓN
 
 Cuatro frentes donde el aporte externo mueve la aguja. Ordenados por urgencia.
 
@@ -65,7 +65,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 
 ---
 
-## 🏛️ Los Cuatro Artefactos de ARGOS
+## Los Cuatro Artefactos de ARGOS
 
 | # | Artefacto | Propósito |
 |---|---|---|
@@ -73,7 +73,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 | **A1** | **Taxonomía de Riesgos del Desarrollo Agentizado** | Clasificación sistemática de amenazas específicas (alucinaciones de paquetes *slopsquatting*, fuga de contexto, degradación de revisión). |
 | **A2** | **Matriz Autonomía × Control (Niveles A0–A4)** | Parametrización de compuertas y controles obligatorios según la libertad delegada al agente. |
 | **A3** | **Modelo de Telemetría + Motor Evaluador de Conformidad + Tablero** | Recolector de trazas en CI/CD, *Governance Gatekeeper* automatizado y tablero de visualización de KRIs para la dirección. |
-| **V** | **Validación Empírica (Pre/Post) + Panel Delphi** | Medición sobre caso de estudio real en PyME (*reconstruction tests* de PRs) y validación cualitativa externa. |
+| **V** | **Validación Empírica (Pre/Post) + Panel Delphi** | Medición sobre caso de estudio real en PyME (*reconstruction tests* de PRs) y validación cualitativa externa. Nota: Me gustaría también armar un método de validación a nivel código (ej: mutación de código para ver si se detectan cada X tiempo) |
 
 ---
 
@@ -117,7 +117,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 
 ---
 
-## 🧭 Marco Metodológico y Normativo
+## Marco Metodológico y Normativo
 
 - **Método Científico:** Design Science Research (DSR — Peffers et al., Hevner et al.) + Investigación-Acción en Caso Único (Yin, Runeson & Höst).
 - **Normas de Referencia:** ISO/IEC 42001:2023, ISO/IEC 27001:2022, NIST SP 800-218A (SSDF for GenAI), NIST AI 600-1.
@@ -125,9 +125,9 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 
 ---
 
-## 🚀 Próximos Pasos Inmediatos
+## Próximos Pasos Inmediatos
 
-- [ ] Pedido formal del export histórico de PRs (S04, 21–27/09/2026; recepción comprometida al 09/10). Ver [ROADMAP.md](ROADMAP.md) D1.
-- [ ] Presentación formal del Plan de Trabajo (**01/09/2026**) — ver [ROADMAP.md](ROADMAP.md) S01.
-- [ ] Redacción del Informe Ético y Social alineado a las 5 preguntas de la Facultad.
+- [ ] Mail de aceptación de Director de Trabajo de Grado de parte de Marcos
+- [ ] Presentación formal del Plan de Trabajo (**01/09/2026**) — ver [ROADMAP.md](ROADMAP.md) S01. Nota: ya cuento con un Borrador del Plan, el entregable debe ser leído y Firmado por Marcos.
+- [ ] Redacción del Informe Ético y Social alineado a las 5 preguntas de la Facultad (entrega el 15/09/2026).
 - [ ] Formalización de los Criterios de Gobernabilidad de Topologías (A0).
