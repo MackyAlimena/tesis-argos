@@ -1,680 +1,808 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARGOS — Roadmap de Tesis | Universidad Austral</title>
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --card-bg: #131b2e;
-      --card-border: #1e293b;
-      --card-hover: #1c2641;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.25);
-      --primary: #6366f1;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --purple: #a855f7;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+<title>ARGOS · Plan de Ejecución</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+  :root {
+    --paper:      #f2f4f3;
+    --surface:    #ffffff;
+    --surface-2:  #e8ecea;
+    --rule:       #d2d9d7;
+    --rule-soft:  #e2e7e5;
+    --ink:        #101a1c;
+    --ink-2:      #3c4b4d;
+    --ink-3:      #6b7a7b;
+    --petrol:     #0e6a71;
+    --petrol-2:   #4a969b;
+    --petrol-bg:  #e0ecec;
+    --ochre:      #96650a;
+    --ochre-bg:   #f6ecd8;
+    --clay:       #9c3122;
+    --clay-bg:    #f7e3df;
+    --shadow:     0 1px 2px rgba(16,26,28,.06), 0 8px 24px -12px rgba(16,26,28,.16);
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --f-mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --measure: 68ch;
+    --pad: clamp(1rem, 4vw, 2.75rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0d1416;
+      --surface:    #131d1f;
+      --surface-2:  #1a2628;
+      --rule:       #2a3a3c;
+      --rule-soft:  #1f2d2f;
+      --ink:        #e8efee;
+      --ink-2:      #b3c2c1;
+      --ink-3:      #7e8f8f;
+      --petrol:     #5cbdc4;
+      --petrol-2:   #2f7f86;
+      --petrol-bg:  #14312f;
+      --ochre:      #dda63b;
+      --ochre-bg:   #33280f;
+      --clay:       #e8806e;
+      --clay-bg:    #38201c;
+      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
     }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #0d1416;
+    --surface:    #131d1f;
+    --surface-2:  #1a2628;
+    --rule:       #2a3a3c;
+    --rule-soft:  #1f2d2f;
+    --ink:        #e8efee;
+    --ink-2:      #b3c2c1;
+    --ink-3:      #7e8f8f;
+    --petrol:     #5cbdc4;
+    --petrol-2:   #2f7f86;
+    --petrol-bg:  #14312f;
+    --ochre:      #dda63b;
+    --ochre-bg:   #33280f;
+    --clay:       #e8806e;
+    --clay-bg:    #38201c;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  *, *::before, *::after { box-sizing: border-box; }
 
-    body {
-      font-family: var(--font);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 2rem 1rem;
-    }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: var(--pad); }
 
-    /* Header */
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-    }
+  /* ---------- typography ---------- */
+  h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; font-weight: 600; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -.015em; }
+  h2 { font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.2; }
+  h3 { font-size: 1.06rem; line-height: 1.3; }
+  p  { margin: 0; max-width: var(--measure); }
 
-    .badge-project {
-      display: inline-block;
-      background: rgba(99, 102, 241, 0.15);
-      color: #818cf8;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      padding: 0.35rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
+  .eyebrow {
+    font-family: var(--f-mono); font-size: .69rem; font-weight: 500;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .lede { font-family: var(--f-display); font-size: 1.12rem; font-style: italic; color: var(--ink-2); }
+  .note { font-size: .875rem; color: var(--ink-2); }
+  .mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  code {
+    font-family: var(--f-mono); font-size: .86em;
+    background: var(--surface-2); padding: .08em .34em; border-radius: 2px;
+  }
 
-    h1 {
-      font-size: 2.75rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
+  /* ---------- header ---------- */
+  header.masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .masthead .idline {
+    display: flex; flex-wrap: wrap; gap: .4rem 1.5rem;
+    font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3);
+  }
+  .masthead .idline b { color: var(--ink-2); font-weight: 500; }
 
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-    }
+  /* ---------- milestone strip ---------- */
+  .milestones {
+    display: grid; gap: 1px; background: var(--rule);
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    border: 1px solid var(--rule); margin-top: 1.75rem;
+  }
+  .ms { background: var(--surface); padding: .95rem 1.05rem; display: flex; flex-direction: column; gap: .3rem; }
+  .ms .k { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .ms .n { font-family: var(--f-display); font-size: 1.12rem; font-weight: 600; line-height: 1.2; }
+  .ms .d { font-family: var(--f-mono); font-size: .82rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .ms .away { font-family: var(--f-mono); font-size: .72rem; }
+  .ms.urgent { background: var(--clay-bg); }
+  .ms.urgent .n, .ms.urgent .away { color: var(--clay); }
+  .ms.soon .away { color: var(--ochre); }
 
-    .meta-bar {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-      color: #cbd5e1;
-    }
+  /* ---------- 40-week spine ---------- */
+  .spine { margin-top: 2.5rem; }
+  .spine-bar {
+    display: grid; grid-template-columns: repeat(42, 1fr);
+    gap: 2px; height: 46px; margin-top: .7rem;
+  }
+  .spine-bar a {
+    display: block; border-radius: 1px; background: var(--petrol-2);
+    text-decoration: none; position: relative; transition: transform .12s ease, filter .12s ease;
+  }
+  .spine-bar a:hover, .spine-bar a:focus-visible { transform: scaleY(1.14); filter: brightness(1.18); outline: none; }
+  .spine-bar a:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--petrol); }
+  .spine-bar a.alt   { background: var(--petrol); }
+  .spine-bar a.hito  { background: var(--ochre); }
+  .spine-bar a.rest  { background: var(--rule); }
+  .spine-legend {
+    display: flex; flex-wrap: wrap; gap: .35rem 1.15rem; margin-top: .7rem;
+    font-family: var(--f-mono); font-size: .7rem; color: var(--ink-3);
+  }
+  .spine-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+  .swatch { width: 11px; height: 11px; border-radius: 1px; display: inline-block; }
 
-    .meta-item strong {
-      color: var(--accent);
-    }
+  /* ---------- sections ---------- */
+  section { margin-top: 3.75rem; scroll-margin-top: 4.5rem; }
+  .sec-head { display: flex; flex-direction: column; gap: .45rem; margin-bottom: 1.5rem; }
+  .sec-head .bar { width: 34px; height: 3px; background: var(--petrol); }
 
-    /* Top Metric / Countdown Cards */
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
+  /* ---------- generic table ---------- */
+  .tw { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; min-width: 620px; }
+  thead th {
+    text-align: left; font-family: var(--f-mono); font-weight: 500; font-size: .68rem;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3);
+    padding: .75rem .9rem; border-bottom: 1px solid var(--rule); white-space: nowrap;
+    background: var(--surface-2);
+  }
+  tbody td { padding: .78rem .9rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-2); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td:first-child { color: var(--ink); }
+  td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  td.key { font-family: var(--f-mono); font-weight: 500; color: var(--ink); white-space: nowrap; }
 
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s, border-color 0.2s;
-    }
+  /* ---------- chips ---------- */
+  .chip {
+    display: inline-block; font-family: var(--f-mono); font-size: .66rem; font-weight: 500;
+    letter-spacing: .07em; text-transform: uppercase; padding: .16rem .45rem;
+    border-radius: 2px; white-space: nowrap;
+  }
+  .chip.hito { background: var(--ochre-bg); color: var(--ochre); }
+  .chip.block { background: var(--clay-bg); color: var(--clay); }
+  .chip.gate { background: var(--petrol-bg); color: var(--petrol); }
 
-    .stat-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent);
-    }
+  /* ---------- hours bar ---------- */
+  .hbar { display: flex; height: 34px; border: 1px solid var(--rule); overflow: hidden; margin-bottom: 1.25rem; }
+  .hbar div { position: relative; }
+  .hbar .s { background: var(--petrol-2); }
+  .hbar .s.alt { background: var(--petrol); }
+  .hbar .s.res { background: var(--rule); }
+  .hbar .s.hit { background: var(--ochre); }
 
-    .stat-card.urgent {
-      border-left: 4px solid var(--danger);
-    }
+  /* ---------- criteria cards ---------- */
+  .crit { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+  .crit > div { background: var(--surface); padding: 1.1rem; display: flex; flex-direction: column; gap: .5rem; }
+  .crit .id { font-family: var(--f-mono); font-size: .78rem; font-weight: 600; color: var(--petrol); letter-spacing: .06em; }
+  .crit .th { font-family: var(--f-mono); font-size: .92rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .crit .desc { font-size: .82rem; color: var(--ink-2); }
+  .crit .why { font-size: .78rem; font-style: italic; color: var(--ink-3); border-top: 1px solid var(--rule-soft); padding-top: .5rem; margin-top: auto; }
 
-    .stat-card.secondary-urgent {
-      border-left: 4px solid var(--warning);
-    }
+  /* ---------- phase blocks ---------- */
+  .phase { margin-top: 2rem; border: 1px solid var(--rule); background: var(--surface); box-shadow: var(--shadow); scroll-margin-top: 1.5rem; }
+  .phase > header {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.1rem;
+    padding: .95rem 1.1rem; border-bottom: 1px solid var(--rule); background: var(--surface-2);
+  }
+  .phase > header .pid {
+    font-family: var(--f-mono); font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+    color: var(--petrol);
+  }
+  .phase > header .pname { font-family: var(--f-display); font-size: 1.14rem; font-weight: 600; }
+  .phase > header .pmeta { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .phase .pnote { padding: .85rem 1.1rem; border-bottom: 1px solid var(--rule-soft); font-size: .84rem; color: var(--ink-2); background: var(--petrol-bg); }
+  .phase table { min-width: 780px; }
+  .phase .tw { border: none; box-shadow: none; }
 
-    .stat-card.pitch {
-      border-left: 4px solid var(--primary);
-    }
+  td.wk { font-family: var(--f-mono); font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.dt { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.hr { font-family: var(--f-mono); text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  td.dod { font-size: .82rem; color: var(--ink-3); border-left: 1px solid var(--rule-soft); }
+  tr.mark td { background: var(--ochre-bg); }
+  tr.mark td.wk { color: var(--ochre); }
+  tr.crit-row td { background: var(--clay-bg); }
+  tr.crit-row td.wk { color: var(--clay); }
+  tr.rest td { background: var(--surface-2); color: var(--ink-3); font-style: italic; }
 
-    .stat-card.defense {
-      border-left: 4px solid var(--success);
-    }
+  /* ---------- callout ---------- */
+  .callout {
+    border-left: 3px solid var(--petrol); background: var(--surface);
+    padding: 1rem 1.15rem; font-size: .875rem; color: var(--ink-2);
+    box-shadow: var(--shadow); margin-top: 1.25rem;
+  }
+  .callout.warn { border-left-color: var(--clay); }
 
-    .card-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
+  /* ---------- nav ---------- */
+  nav.jump {
+    position: sticky; top: 0; z-index: 5; background: var(--paper);
+    border-bottom: 1px solid var(--rule); margin: 2.5rem 0 0;
+    display: flex; gap: 1.1rem; overflow-x: auto; padding: .6rem 0;
+    font-family: var(--f-mono); font-size: .72rem; letter-spacing: .06em;
+  }
+  nav.jump a { color: var(--ink-3); text-decoration: none; white-space: nowrap; padding-bottom: .15rem; border-bottom: 2px solid transparent; }
+  nav.jump a:hover, nav.jump a:focus-visible { color: var(--petrol); border-bottom-color: var(--petrol); outline: none; }
 
-    .card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+  footer { margin-top: 4.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; }
 
-    .card-date {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  @media (max-width: 640px) { body { font-size: 14.5px; } .spine-bar { height: 34px; } }
+</style>
 
-    .card-countdown {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-    }
+<div class="wrap">
 
-    .countdown-urgent {
-      color: #f87171;
-      background: rgba(239, 68, 68, 0.15);
-    }
+<header class="masthead">
+  <div class="eyebrow">Trabajo de Grado · Ingeniería en Informática (Orientación Gestión)</div>
+  <h1>ARGOS — Plan de Ejecución</h1>
+  <p class="lede">Gobernanza de agentes de IA en el desarrollo de software: autonomía graduada y evidencia proporcional.</p>
+  <div class="idline">
+    <span><b>Alumna</b> Macarena Alimena</span>
+    <span><b>Tutor</b> Marcos Giagnorio</span>
+    <span><b>Universidad</b> Austral · Facultad de Ingeniería</span>
+    <span><b>Presupuesto</b> 320 h · 40 semanas</span>
+    <span><b>Actualizado</b> 28/08/2026</span>
+  </div>
+</header>
 
-    .countdown-warning {
-      color: #fbbf24;
-      background: rgba(245, 158, 11, 0.15);
-    }
+<div class="milestones">
+  <div class="ms urgent">
+    <span class="k">Hito 1 · Entrega formal</span>
+    <span class="n">Plan de Trabajo</span>
+    <span class="d">01/09/2026</span>
+    <span class="away">faltan 4 días</span>
+  </div>
+  <div class="ms soon">
+    <span class="k">Hito 2 · Entrega formal</span>
+    <span class="n">Informe Ético y Social</span>
+    <span class="d">15/09/2026</span>
+    <span class="away">faltan 18 días</span>
+  </div>
+  <div class="ms">
+    <span class="k">Hito 3 · Defensa intermedia</span>
+    <span class="n">Pitch de Tesis</span>
+    <span class="d">23/02/2027</span>
+    <span class="away">semana 26</span>
+  </div>
+  <div class="ms">
+    <span class="k">Hito 4 · Cierre</span>
+    <span class="n">Defensa Final</span>
+    <span class="d">jun–jul 2027</span>
+    <span class="away">tras la semana 40</span>
+  </div>
+</div>
 
-    .countdown-primary {
-      color: #a5b4fc;
-      background: rgba(99, 102, 241, 0.15);
-    }
+<div class="spine">
+  <div class="eyebrow">Las 40 semanas · 31/08/2026 → 06/06/2027</div>
+  <div class="spine-bar" id="spinebar"></div>
+  <div class="spine-legend">
+    <span><i class="swatch" style="background:var(--petrol)"></i> fase de trabajo</span>
+    <span><i class="swatch" style="background:var(--ochre)"></i> hito o punto de corte declarado</span>
+    <span><i class="swatch" style="background:var(--rule)"></i> receso declarado (0 h)</span>
+  </div>
+</div>
 
-    /* Section Titles */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--card-border);
-      padding-bottom: 0.75rem;
-    }
+<nav class="jump">
+  <a href="#parametros">Parámetros congelados</a>
+  <a href="#criterios">Criterios de éxito</a>
+  <a href="#horas">Presupuesto de horas</a>
+  <a href="#capitulos">Artefacto → capítulo</a>
+  <a href="#semanas">Cronograma semanal</a>
+  <a href="#dependencias">Dependencias</a>
+  <a href="#riesgos">Riesgos y plan B</a>
+</nav>
 
-    .section-header h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-    }
+<!-- ============ PARÁMETROS ============ -->
+<section id="parametros">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Parámetros congelados</h2>
+    <p class="note">Se fijan acá y <strong>no se modifican después de medir</strong>. Congelarlos antes del experimento es la mitigación #1 del sesgo de doble rol <em>practitioner-researcher</em>.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Parámetro</th><th>Valor</th><th>Fuente</th></tr></thead>
+      <tbody>
+        <tr><td class="key">Carga horaria total</td><td><strong>320 h</strong> — 8 h/semana × 40 semanas</td><td class="mono">ADR-006</td></tr>
+        <tr><td class="key">Ventana de ejecución</td><td>S01 (31/08/2026) → S40 (06/06/2027)</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">Reserva sin asignar</td><td>30 h (9,4 % del total)</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">Receso declarado</td><td>S18–S19 · 28/12/2026 – 10/01/2027 · 0 h</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">T0 · instrumentación silenciosa</td><td><strong>15/02/2027</strong> — telemetría pasiva, sin gates, sin cambio de política</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">T1 · intervención plena</td><td><strong>15/03/2027</strong> — matriz A2 activa, gates gobernados, evidencia obligatoria</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">Ventana PRE</td><td>01/03/2026 → 14/03/2027</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">Ventana POST</td><td>15/03/2027 → 16/05/2027 · 9 semanas</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">N mínimo PRs post</td><td>60 PRs · <em>trigger</em>: si al 25/04/2027 no se alcanza, se extiende la ventana consumiendo reserva</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">N reconstruction test</td><td>40 PRs (20 pre / 20 post), muestreo aleatorio, auditor <strong>externo y ciego</strong></td><td class="mono">este plan</td></tr>
+        <tr><td class="key">N panel Delphi</td><td>8 expertos (rango 6–10). Se invitan 12 para asegurar 8.</td><td class="mono">este plan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <strong>Sobre las 44 h del artefacto A3.</strong> No construyen una plataforma. Cubren la porción de investigación: diseño del esquema de evidencia, calibración, <em>testbench</em> de ADR-005 y documentación. La implementación operativa se absorbe en el trabajo profesional de la autora sobre el pipeline real — eso <em>es</em> investigación-acción (ADR-001), y se declara para que no se lea como una subestimación del esfuerzo.
+  </div>
+</section>
 
-    .section-icon {
-      font-size: 1.5rem;
-    }
-
-    /* Sprints / Phases Container */
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--danger), var(--warning), var(--primary), var(--success));
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2.5rem;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -2rem;
-      top: 1.25rem;
-      transform: translate(-50%, -50%);
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 4px solid var(--accent);
-      z-index: 2;
-    }
-
-    .timeline-dot.danger { border-color: var(--danger); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-    .timeline-dot.warning { border-color: var(--warning); box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-    .timeline-dot.primary { border-color: var(--primary); box-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
-    .timeline-dot.success { border-color: var(--success); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
-
-    .phase-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .phase-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .phase-title-group h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .phase-dates {
-      color: var(--accent);
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .status-badge.in-progress {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
-    .status-badge.upcoming {
-      background: rgba(148, 163, 184, 0.1);
-      color: var(--text-muted);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .status-badge.milestone {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .task-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .task-table th, .task-table td {
-      padding: 0.85rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .task-table th {
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-    }
-
-    .task-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .task-table tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .task-checkbox {
-      accent-color: var(--accent);
-      width: 16px;
-      height: 16px;
-      margin-right: 0.5rem;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.06);
-      color: #cbd5e1;
-    }
-
-    .tag.critical {
-      background: rgba(239, 68, 68, 0.2);
-      color: #fca5a5;
-    }
-
-    /* Pitch Breakdown Grid */
-    .pitch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .pitch-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-    }
-
-    .pitch-card h4 {
-      font-size: 1.05rem;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
-    .pitch-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      border-top: 1px solid var(--card-border);
-      padding-top: 2rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2.1rem; }
-      .meta-bar { flex-direction: column; gap: 0.5rem; }
-      .task-table { display: block; overflow-x: auto; }
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-
-  <!-- Header -->
-  <header>
-    <div class="badge-project">Trabajo de Grado — Ingeniería en Informática (Orientación Gestión)</div>
-    <h1>ARGOS: Roadmap de Ejecución</h1>
-    <p class="subtitle">Gobernanza de agentes de IA en el desarrollo de software: autonomía graduada y evidencia proporcional.</p>
-    <div class="meta-bar">
-      <div class="meta-item">Alumna: <strong>Macarena Alimena</strong></div>
-      <div class="meta-item">Universidad: <strong>Universidad Austral</strong></div>
-      <div class="meta-item">Tutor Académico: <strong>Marcos Giagnorio</strong></div>
-      <div class="meta-item">Fecha Hoy: <strong>22 de Agosto de 2026</strong></div>
+<!-- ============ CRITERIOS ============ -->
+<section id="criterios">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Criterios de éxito pre-registrados</h2>
+    <p class="note">Cada criterio tiene umbral numérico y veredicto binario. <strong>El claim de la tesis se sostiene o se cae contra C1.</strong></p>
+  </div>
+  <div class="crit">
+    <div>
+      <span class="id">C1 · Reconstrucción de decisiones</span>
+      <span class="th">Δ ≥ 40 puntos porcentuales</span>
+      <span class="desc">TRD = % de PRs donde un auditor ciego reconstruye las 4 dimensiones: origen del cambio, nivel de autonomía aplicable, controles ejecutados, y firma humana con su evidencia. Expectativa: pre &lt; 25 %, post ≥ 80 %.</span>
+      <span class="why">Prueba el claim central.</span>
     </div>
-  </header>
-
-  <!-- Top Stat / Countdown Cards -->
-  <div class="grid-cards">
-    <div class="stat-card urgent">
-      <div class="card-label">Hito 1 · Entrega Formal</div>
-      <div class="card-title">Plan de Trabajo</div>
-      <div class="card-date">01 / Sep / 2026</div>
-      <div class="card-countdown countdown-urgent">⏳ Faltan 10 días</div>
+    <div>
+      <span class="id">C2 · Fidelidad de la traza</span>
+      <span class="th">GDR = 0 %</span>
+      <span class="desc">Discrepancia entre el <code>trace.json</code> del orquestador y los eventos reales de Git y CI/CD. Tolerancia cero.</span>
+      <span class="why">Que la evidencia no sea, a su vez, una ficción.</span>
     </div>
-
-    <div class="stat-card secondary-urgent">
-      <div class="card-label">Hito 2 · Entrega Formal</div>
-      <div class="card-title">Informe Ético y Social</div>
-      <div class="card-date">15 / Sep / 2026</div>
-      <div class="card-countdown countdown-warning">⏳ Faltan 24 días</div>
+    <div>
+      <span class="id">C3 · Profundidad de revisión</span>
+      <span class="th">Reducción ≥ 30 %</span>
+      <span class="desc">Proporción de PRs de origen agéntico aprobados sin comentario <em>y</em> con menos de 60 s de revisión por cada 100 líneas de diff.</span>
+      <span class="why">Que el sello de goma retroceda.</span>
     </div>
-
-    <div class="stat-card pitch">
-      <div class="card-label">Hito 3 · Defensa Intermedia</div>
-      <div class="card-title">Pitch de Tesis</div>
-      <div class="card-date">23 / Feb / 2027</div>
-      <div class="card-countdown countdown-primary">🎯 ~6 meses</div>
+    <div>
+      <span class="id">C4 · No degradación <span class="chip gate">guardrail</span></span>
+      <span class="th">Deterioro ≤ 15 %</span>
+      <span class="desc">DORA <em>lead time for changes</em> y <em>deployment frequency</em> respecto de la línea de base.</span>
+      <span class="why">Que la gobernanza no mate la productividad que motivó usar agentes.</span>
     </div>
-
-    <div class="stat-card defense">
-      <div class="card-label">Hito 4 · Cierre de Carrera</div>
-      <div class="card-title">Defensa Final</div>
-      <div class="card-date">Jun – Jul / 2027</div>
-      <div class="card-countdown">🏁 Meta Final</div>
+    <div>
+      <span class="id">C5 · Validación externa</span>
+      <span class="th">≥ 75 % con consenso</span>
+      <span class="desc">Consenso Delphi (IQR ≤ 1 en escala 1–5) sobre relevancia, completitud y aplicabilidad de A0, A1, A2 y A3, alcanzado en ronda 2.</span>
+      <span class="why">Que la autora no sea jueza de su propio diseño.</span>
     </div>
   </div>
+  <div class="callout">
+    <strong>C4 es deliberadamente un guardrail, no un objetivo.</strong> Un marco de gobernanza que mejora C1 destruyendo el <em>lead time</em> no resuelve el problema: lo cambia de lugar. Declararlo antes de medir es parte de la honestidad del diseño.
+  </div>
+</section>
 
-  <!-- Main Timeline -->
-  <div class="section-header">
-    <span class="section-icon">🚀</span>
-    <h2>Cronograma de Sprints y Fases de Trabajo</h2>
+<!-- ============ HORAS ============ -->
+<section id="horas">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Presupuesto de horas</h2>
+    <p class="note">320 horas asignadas tarea por tarea. Una hora declarada y no asignada es una hora que no existe.</p>
+  </div>
+  <div class="hbar" id="hbar"></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Fase</th><th>Semanas</th><th style="text-align:right">Horas</th><th style="text-align:right">%</th></tr></thead>
+      <tbody>
+        <tr><td class="key">F0 · Entregas formales de cátedra</td><td class="mono">S01–S03</td><td class="num">24</td><td class="num">7,5</td></tr>
+        <tr><td class="key">F1 · Diagnóstico y doble línea de base</td><td class="mono">S04–S09</td><td class="num">32</td><td class="num">10,0</td></tr>
+        <tr><td class="key">F2 · A1 — Taxonomía de riesgos</td><td class="mono">S10–S13</td><td class="num">28</td><td class="num">8,8</td></tr>
+        <tr><td class="key">F3 · A0 — Criterios de topologías</td><td class="mono">S14–S17</td><td class="num">28</td><td class="num">8,8</td></tr>
+        <tr class="rest"><td class="key">Receso declarado</td><td class="mono">S18–S19</td><td class="num">0</td><td class="num">—</td></tr>
+        <tr><td class="key">F4 · A2 — Matriz Autonomía × Control</td><td class="mono">S20–S22</td><td class="num">24</td><td class="num">7,5</td></tr>
+        <tr><td class="key">F5 · A3 — Telemetría, motor y tablero</td><td class="mono">S23–S25, S27–S29</td><td class="num">44</td><td class="num">13,8</td></tr>
+        <tr class="mark"><td class="key">Hito 3 · Pitch de Tesis</td><td class="mono">S26</td><td class="num">4</td><td class="num">1,3</td></tr>
+        <tr><td class="key">F6 · Panel Delphi + reconstruction PRE</td><td class="mono">S30–S33</td><td class="num">32</td><td class="num">10,0</td></tr>
+        <tr><td class="key">F7 · Medición post y análisis</td><td class="mono">S34–S37</td><td class="num">28</td><td class="num">8,8</td></tr>
+        <tr><td class="key">F8 · Consolidación de la memoria</td><td class="mono">S38–S40</td><td class="num">46</td><td class="num">14,4</td></tr>
+        <tr><td class="key">Reserva sin asignar</td><td class="mono">—</td><td class="num">30</td><td class="num">9,4</td></tr>
+        <tr><td class="key"><strong>Total</strong></td><td class="mono"><strong>40 semanas</strong></td><td class="num"><strong>320</strong></td><td class="num"><strong>100</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <strong>Regla de la reserva.</strong> Se consume solo ante un <em>trigger</em> declarado: retraso de datos, N post insuficiente, o feedback estructural del tutor. Lo que no se consuma va a F8. Nunca se usa para agregar alcance.
+  </div>
+</section>
+
+<!-- ============ CAPÍTULOS ============ -->
+<section id="capitulos">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Redacción incremental: artefacto → capítulo</h2>
+    <p class="note">La memoria <strong>no se escribe en mayo</strong>. Cada fase cierra con el borrador del capítulo que le corresponde. F8 consolida; no crea.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Capítulo</th><th>Contenido</th><th>Se redacta en</th></tr></thead>
+      <tbody>
+        <tr><td class="key">1–3</td><td>Introducción, estado del arte, metodología</td><td class="mono">Plan de Trabajo (S01) + vigilancia continua</td></tr>
+        <tr><td class="key">4</td><td>Diagnóstico del caso: estado de facto y línea de base</td><td class="mono">S09 · F1</td></tr>
+        <tr><td class="key">5</td><td>A1 — Taxonomía de riesgos del desarrollo agentizado</td><td class="mono">S13 · F2</td></tr>
+        <tr><td class="key">6</td><td>A0 — Criterios de gobernabilidad de topologías</td><td class="mono">S17 · F3</td></tr>
+        <tr><td class="key">7</td><td>A2 — Matriz Autonomía × Control</td><td class="mono">S22 · F4</td></tr>
+        <tr><td class="key">8</td><td>A3 — Modelo de evidencia, motor y tablero + calibración</td><td class="mono">S29 · F5</td></tr>
+        <tr><td class="key">9</td><td>Resultados: validación pre/post y Delphi</td><td class="mono">S37 · F7</td></tr>
+        <tr><td class="key">10</td><td>Discusión, limitaciones, trabajo futuro</td><td class="mono">S38–S39 · F8</td></tr>
+        <tr><td class="key">Anexos</td><td>Diario de investigación, ADRs, protocolos, código</td><td class="mono">continuo</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ SEMANAS ============ -->
+<section id="semanas">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Cronograma semanal</h2>
+    <p class="note">Cuarenta semanas, cada una con horas asignadas, foco y criterio de <em>hecho</em>. Una tarea sin criterio de hecho es una intención.</p>
   </div>
 
-  <div class="timeline">
-
-    <!-- SPRINT 1: PLAN DE TRABAJO -->
-    <div class="timeline-item">
-      <div class="timeline-dot danger"></div>
-      <div class="phase-card">
-        <div class="phase-header">
-          <div class="phase-title-group">
-            <h3>Sprint 1 — Plan de Trabajo de Grado</h3>
-            <div class="phase-dates">22 de Agosto al 01 de Septiembre de 2026 (10 días)</div>
-          </div>
-          <span class="status-badge milestone">🔴 Hito Inminente</span>
-        </div>
-        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
-          Completar la plantilla oficial de la Facultad (<code>docs/templates/Plan-de-trabajo-template.md</code>) estructurando el claim, objetivos, arquitectura en capas, metodología DSR y el cronograma formal de 480 horas.
-        </p>
-
-        <table class="task-table">
-          <thead>
-            <tr>
-              <th style="width: 130px;">Fechas</th>
-              <th>Actividad / Entregable</th>
-              <th style="width: 140px;">Prioridad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>22 – 24 Ago</strong></td>
-              <td><strong>⚡ Captura de Línea de Base (Crítico):</strong> Solicitar y extraer export histórico de PRs de la PyME (timestamps, revisores, comentarios, diffs, humanos vs. agentes) en <code>data/raw/</code>.</td>
-              <td><span class="tag critical">Bloqueante</span></td>
-            </tr>
-            <tr>
-              <td><strong>25 – 26 Ago</strong></td>
-              <td><strong>Redacción del Núcleo:</strong> Motivación (gap en la fábrica), Objetivos, Capacidades del marco (A0–A4), Tecnologías y Arquitectura en capas.</td>
-              <td><span class="tag">Alta</span></td>
-            </tr>
-            <tr>
-              <td><strong>27 – 28 Ago</strong></td>
-              <td><strong>Metodología, Cronograma y Bibliografía:</strong> DSR + Caso único + Delphi + ADR-005 (Calibración del Orquestador) + Normas APA.</td>
-              <td><span class="tag">Alta</span></td>
-            </tr>
-            <tr>
-              <td><strong>29 – 30 Ago</strong></td>
-              <td><strong>Revisión con Tutor:</strong> Envío de borrador a Marcos Giagnorio y ajustes finales.</td>
-              <td><span class="tag">Media</span></td>
-            </tr>
-            <tr>
-              <td><strong>01 Sep 2026</strong></td>
-              <td><strong>🔴 ENTREGA FORMAL PLAN DE TRABAJO</strong></td>
-              <td><span class="tag critical">Hito 1</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- SPRINT 2: INFORME ETICO -->
-    <div class="timeline-item">
-      <div class="timeline-dot warning"></div>
-      <div class="phase-card">
-        <div class="phase-header">
-          <div class="phase-title-group">
-            <h3>Sprint 2 — Informe Ético y Social</h3>
-            <div class="phase-dates">02 de Septiembre al 15 de Septiembre de 2026 (14 días)</div>
-          </div>
-          <span class="status-badge milestone" style="color: #fbbf24; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.15);">🟡 Hito 2</span>
-        </div>
-        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
-          Responder a las 5 preguntas oficiales de la Facultad anclando en la primacía de la persona humana, la Encíclica <em>Magnifica Humanitas</em> (León XIV, 2026) y la gobernanza contra la vigilancia laboral (Riesgo E9).
-        </p>
-
-        <table class="task-table">
-          <thead>
-            <tr>
-              <th style="width: 130px;">Fechas</th>
-              <th>Actividad / Entregable</th>
-              <th style="width: 140px;">Enfoque</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>02 – 05 Sep</strong></td>
-              <td><strong>Preguntas 1 y 2 (Objeto, Fin y Stakeholders):</strong> Custodia de la persona humana, evitar la <em>moral crumple zone</em> en juniors y protección de clientes.</td>
-              <td><span class="tag">Ética y Personas</span></td>
-            </tr>
-            <tr>
-              <td><strong>06 – 09 Sep</strong></td>
-              <td><strong>Preguntas 3 y 4 (Mitigación y DDHH):</strong> Mitigación de riesgos (fuga de IP, alucinaciones) y <strong>E9 (Vigilancia Laboral)</strong>: prohibición de uso de telemetría para evaluación de desempeño.</td>
-              <td><span class="tag">Gobernanza / DDHH</span></td>
-            </tr>
-            <tr>
-              <td><strong>10 – 12 Sep</strong></td>
-              <td><strong>Pregunta 5 y Fundamentación Pontificia:</strong> Declaración formal de uso de IA en la tesis + <em>Magnifica Humanitas</em> (elección algorítmica vs. decisión moral humana).</td>
-              <td><span class="tag">Integridad</span></td>
-            </tr>
-            <tr>
-              <td><strong>13 – 14 Sep</strong></td>
-              <td><strong>Revisión Cruzada y Visto Bueno del Tutor:</strong> Verificación de consistencia integral con el Plan de Trabajo.</td>
-              <td><span class="tag">Revisión</span></td>
-            </tr>
-            <tr>
-              <td><strong>15 Sep 2026</strong></td>
-              <td><strong>🔴 ENTREGA FORMAL INFORME ÉTICO Y SOCIAL</strong></td>
-              <td><span class="tag critical">Hito 2</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- FASE 3: DIAGNOSTICO Y MODELADO -->
-    <div class="timeline-item">
-      <div class="timeline-dot primary"></div>
-      <div class="phase-card">
-        <div class="phase-header">
-          <div class="phase-title-group">
-            <h3>Fase 3 — Diagnóstico, Modelado y Calibración Técnica</h3>
-            <div class="phase-dates">Octubre 2026 a Enero 2027</div>
-          </div>
-          <span class="status-badge in-progress">⚙️ En Desarrollo</span>
-        </div>
-        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
-          Construcción formal de los artefactos del marco ARGOS y el motor evaluador de conformidad.
-        </p>
-
-        <div class="pitch-grid">
-          <div class="pitch-card">
-            <h4>Octubre 2026</h4>
-            <p><strong>Artefacto A1:</strong> Taxonomía de riesgos del desarrollo agentizado + Análisis inicial del dataset histórico (línea de base pre-intervención).</p>
-          </div>
-          <div class="pitch-card">
-            <h4>Noviembre 2026</h4>
-            <p><strong>Artefacto A0:</strong> Criterios de gobernabilidad de topologías agénticas (diseño de enjambres y costuras de inspección).</p>
-          </div>
-          <div class="pitch-card">
-            <h4>Diciembre 2026</h4>
-            <p><strong>Artefacto A2:</strong> Matriz Autonomía × Control (Niveles A0–A4) mapeada formalmente a controles ISO 42001 / ISO 27001.</p>
-          </div>
-          <div class="pitch-card">
-            <h4>Enero 2027</h4>
-            <p><strong>Artefacto A3 + ADR-005:</strong> Prototipo del Conformance Engine en CI/CD, banco de pruebas de calibración del hive y <strong>convocatoria del Panel Delphi</strong>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FASE 4: PITCH -->
-    <div class="timeline-item">
-      <div class="timeline-dot primary"></div>
-      <div class="phase-card" style="border-color: rgba(99, 102, 241, 0.4);">
-        <div class="phase-header">
-          <div class="phase-title-group">
-            <h3>Fase 4 — Pitch de Tesis (Defensa Intermedia)</h3>
-            <div class="phase-dates">23 de Febrero de 2027</div>
-          </div>
-          <span class="status-badge milestone" style="color: #a5b4fc; background: rgba(99,102,241,0.2); border-color: #6366f1;">🎤 Hito 3 · Pitch</span>
-        </div>
-        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
-          Presentación ejecutiva y metodológica ante el tribunal académico defendiendo los 4 artefactos y los datos preliminares de la línea de base.
-        </p>
-
-        <div class="pitch-grid">
-          <div class="pitch-card">
-            <h4>1. El Claim Central</h4>
-            <p>"La supervisión humana solo es real si es verificable; evidencia proporcional según la autonomía."</p>
-          </div>
-          <div class="pitch-card">
-            <h4>2. Datos de Línea de Base</h4>
-            <p>Gráficos reales demostrando la ficción de cumplimiento en PRs generados por IA antes de ARGOS.</p>
-          </div>
-          <div class="pitch-card">
-            <h4>3. Demostración de Artefactos</h4>
-            <p>Arquitectura A0–A3 y ejecución en vivo del Motor Evaluador de Conformidad en CI/CD.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FASE 5: VALIDACION Y DEFENSA FINAL -->
-    <div class="timeline-item">
-      <div class="timeline-dot success"></div>
-      <div class="phase-card">
-        <div class="phase-header">
-          <div class="phase-title-group">
-            <h3>Fase 5 — Validación Empírica, Delphi y Defensa Final</h3>
-            <div class="phase-dates">Marzo a Julio de 2027</div>
-          </div>
-          <span class="status-badge upcoming" style="color: #34d399; border-color: rgba(16,185,129,0.3);">🏁 Cierre de Tesis</span>
-        </div>
-        
-        <table class="task-table">
-          <thead>
-            <tr>
-              <th style="width: 140px;">Meses</th>
-              <th>Actividad y Entregable</th>
-              <th style="width: 140px;">Método</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Mar – Abr 2027</strong></td>
-              <td><strong>Panel de Expertos Delphi:</strong> Evaluación cualitativa con 6–10 auditores ISO y tech leads $\to$ Informe de validación externa.</td>
-              <td><span class="tag">Cualitativo</span></td>
-            </tr>
-            <tr>
-              <td><strong>Abr – May 2027</strong></td>
-              <td><strong>Reconstruction Tests & Análisis Pre/Post:</strong> Auditoría ciega sobre PRs en la PyME y cálculo de métricas DORA extendidas.</td>
-              <td><span class="tag">Cuantitativo (DSR)</span></td>
-            </tr>
-            <tr>
-              <td><strong>May – Jun 2027</strong></td>
-              <td><strong>Redacción Integral de la Memoria:</strong> Consolidación del documento maestro final, anexos y bitácora.</td>
-              <td><span class="tag">Memoria</span></td>
-            </tr>
-            <tr>
-              <td><strong>Jun – Jul 2027</strong></td>
-              <td><strong>🏁 DEFENSA ORAL ANTE EL TRIBUNAL ACADÉMICO</strong></td>
-              <td><span class="tag" style="background: rgba(16,185,129,0.2); color: #6ee7b7;">Graduación</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
+  <!-- F0 -->
+  <div class="phase" id="f0">
+    <header><span class="pid">F0</span><span class="pname">Entregas formales de cátedra</span><span class="pmeta">S01–S03 · 24 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr class="crit-row">
+          <td class="wk">S01</td><td class="dt">28/08–06/09</td><td class="hr">12</td>
+          <td><strong>Plan de Trabajo de Grado.</strong> Instanciar la plantilla oficial: motivación (el gap fábrica vs. producto) · objetivo, pregunta y SP1–SP5 · funcionalidades reinterpretadas como capacidades del marco · tecnologías (collector, trazas, tablero, corpus normativo) · arquitectura de gobernanza en capas, un diagrama · metodología DSR + caso único + Delphi · los parámetros congelados y los criterios C1–C5 · bibliografía APA. <span class="chip hito">entrega 01/09</span></td>
+          <td class="dod">PDF entregado a la Facultad y fuente en <code>docs/03-plan-de-trabajo/</code>. Los cinco criterios pre-registrados figuran con número.</td>
+        </tr>
+        <tr>
+          <td class="wk">S02</td><td class="dt">07/09–13/09</td><td class="hr">8</td>
+          <td><strong>Informe Ético y Social.</strong> Las 5 preguntas contra la matriz E1–E10. Preguntas 1–2 (objeto, fin, stakeholders, <em>moral crumple zone</em>). Preguntas 3–4 (mitigación en tres horizontes; <strong>E9 vigilancia laboral</strong>: prohibición declarada de usar la telemetría para evaluación individual). Pregunta 5 (integridad + declaración de uso de IA en la propia tesis). Fundamentación <em>Magnifica Humanitas</em>.</td>
+          <td class="dod">Borrador completo enviado a Marcos el 11/09 — deja cuatro días de margen.</td>
+        </tr>
+        <tr class="mark">
+          <td class="wk">S03</td><td class="dt">14/09–20/09</td><td class="hr">4</td>
+          <td>Incorporación del feedback y <strong>entrega del Informe Ético</strong>. Apertura de F1. <span class="chip hito">entrega 15/09</span></td>
+          <td class="dod">Entregado. Consistencia cruzada verificada contra el Plan de Trabajo.</td>
+        </tr>
+      </tbody>
+    </table></div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p><strong>ARGOS</strong> — Tesis de Grado en Ingeniería en Informática (Orientación Gestión) · Macarena Alimena · Universidad Austral</p>
-    <p style="margin-top: 0.25rem; font-size: 0.8rem; color: #64748b;">Actualizado al 22 de Agosto de 2026 · Repositorio sincronizado con ADR-001 a ADR-005</p>
-  </footer>
+  <!-- F1 -->
+  <div class="phase" id="f1">
+    <header><span class="pid">F1</span><span class="pname">Diagnóstico y doble línea de base</span><span class="pmeta">S04–S09 · 32 h</span></header>
+    <div class="pnote"><strong>Esta fase produce dos líneas de base, no una.</strong> La cuantitativa (BL-01, datos de PRs) y la <strong>estructural</strong> (IS-01, inventario de la superficie agéntica de facto). IS-01 no depende de terceros y es en sí mismo un hallazgo: documenta que la autonomía de los agentes hoy no fue decidida, sino heredada del modo en que se armó el pipeline.</div>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr class="crit-row">
+          <td class="wk">S04</td><td class="dt">21–27/09</td><td class="hr">6</td>
+          <td><span class="chip block">bloqueante</span> <strong>Pedido formal del export de PRs.</strong> Enviar por escrito la especificación de <code>data/raw/README.md</code>. Acordar anonimización, retención y confidencialidad con la empresa. Declarar la ventana PRE.</td>
+          <td class="dod">Pedido enviado por escrito <strong>con fecha de compromiso de entrega</strong>, y acuerdo de datos por correo o firmado. <strong>Trigger: si al 09/10 no hay datos, se activa el Plan B.</strong></td>
+        </tr>
+        <tr>
+          <td class="wk">S05</td><td class="dt">28/09–04/10</td><td class="hr">6</td>
+          <td><strong>IS-01 — Inventario de la superficie agéntica de facto.</strong> Relevar todo agente, <em>hook</em> y verificación que hoy corre en el pipeline: quién lo puso, cuándo, qué archivos toca, si exige revisión humana (formal frente a de hecho) y qué evidencia deja.</td>
+          <td class="dod">Tabla IS-01 con al menos una fila por agente o verificación y las seis columnas completas. Sin celdas vacías: «desconocido» es un dato válido y significativo.</td>
+        </tr>
+        <tr>
+          <td class="wk">S06</td><td class="dt">05–11/10</td><td class="hr">6</td>
+          <td>Cierre de IS-01 y <strong>mapeo contra el Catálogo Giagnorio (2026)</strong>: qué categorías de las catorce están cubiertas, cuáles no, y cuáles se implementaron sin decisión explícita. Redacción de la sección «estado de facto».</td>
+          <td class="dod">IS-01 v1.0 en <code>kb/</code>. Sección redactada — insumo directo del capítulo 4.</td>
+        </tr>
+        <tr>
+          <td class="wk">S07</td><td class="dt">12–18/10</td><td class="hr">6</td>
+          <td>Ingesta y anonimización del export. Script de carga reproducible hacia <code>data/processed/</code>.</td>
+          <td class="dod">Dataset cargado, N de PRs declarado, script versionado y re-ejecutable.</td>
+        </tr>
+        <tr>
+          <td class="wk">S08</td><td class="dt">19–25/10</td><td class="hr">4</td>
+          <td>Análisis exploratorio: tiempo de aprobación contra tamaño del diff · % aprobado sin comentarios · humano contra agente · defectos escapados por origen.</td>
+          <td class="dod">Cuatro gráficos y tabla de estadísticos descriptivos en <code>evaluation/pre-post-analysis/</code>.</td>
+        </tr>
+        <tr>
+          <td class="wk">S09</td><td class="dt">26/10–01/11</td><td class="hr">4</td>
+          <td><strong>BL-01 — Nota de línea de base.</strong> Consolidar hallazgos. <strong>Capítulo 4 (borrador).</strong> Envío a Marcos. <span class="chip gate">checkpoint</span></td>
+          <td class="dod">BL-01 escrito, con el número que va al pitch: «diffs de N líneas de origen agéntico aprobados en T segundos, sin comentarios, en el X % de los casos».</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F2 -->
+  <div class="phase" id="f2">
+    <header><span class="pid">F2</span><span class="pname">A1 · Taxonomía de riesgos del desarrollo agentizado</span><span class="pmeta">S10–S13 · 28 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S10</td><td class="dt">02–08/11</td><td class="hr">8</td>
+          <td>Barrido sistemático del corpus: OWASP Top 10 LLM y guías agénticas · NIST AI 600-1 y SP 800-218A · ISO/IEC 23894 · papers 2023–2026 según la estrategia de vigilancia. Fichado con la plantilla existente.</td>
+          <td class="dod">Al menos 25 riesgos candidatos fichados, con fuente verificada.</td></tr>
+        <tr><td class="wk">S11</td><td class="dt">09–15/11</td><td class="hr">8</td>
+          <td>Estructura de la taxonomía sobre tres ejes: fase del SDLC × mecanismo × actor afectado. Depuración de solapamientos y duplicados.</td>
+          <td class="dod">Estructura de dos niveles cerrada y justificada. Cada riesgo tiene exactamente un lugar.</td></tr>
+        <tr><td class="wk">S12</td><td class="dt">16–22/11</td><td class="hr">6</td>
+          <td><strong>El aporte (SP1): riesgos propios</strong> derivados de IS-01 y BL-01 que las taxonomías vigentes no cubren. Candidatos: degradación silenciosa de la revisión por volumen; falsa independencia entre agentes homogéneos; pérdida de contexto de seguridad en los pases de mano; evidencia emitida pero no reconciliable.</td>
+          <td class="dod">Al menos 4 riesgos marcados como «no cubiertos», cada uno con justificación de por qué no está en OWASP, NIST o ISO.</td></tr>
+        <tr><td class="wk">S13</td><td class="dt">23–29/11</td><td class="hr">6</td>
+          <td>Mapeo de A1 a controles de ISO/IEC 42001 Anexo A y 27002. <strong>Capítulo 5 (borrador).</strong> <span class="chip gate">checkpoint</span></td>
+          <td class="dod">A1 v1.0 congelado y capítulo 5 en borrador.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F3 -->
+  <div class="phase" id="f3">
+    <header><span class="pid">F3</span><span class="pname">A0 · Criterios de gobernabilidad de topologías</span><span class="pmeta">S14–S17 · 28 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S14</td><td class="dt">30/11–06/12</td><td class="hr">8</td>
+          <td>Modelado de topologías de referencia: monolítica · cadena secuencial · supervisor-worker · revisión cruzada entre pares. Ubicación de las <strong>costuras</strong>: los puntos donde un humano puede insertarse y donde la evidencia tiene frontera natural.</td>
+          <td class="dod">Cuatro topologías diagramadas, con costuras marcadas y contadas en cada una.</td></tr>
+        <tr><td class="wk">S15</td><td class="dt">07–13/12</td><td class="hr">8</td>
+          <td><strong>Derivación de los criterios</strong> — criterios, no ranking: observabilidad de la costura · independencia real del revisor · granularidad del pase de mano · reversibilidad · atribuibilidad del cambio.</td>
+          <td class="dod">Al menos 5 criterios, cada uno con enunciado, pregunta de test aplicable y un ejemplo concreto de topología que lo viola.</td></tr>
+        <tr><td class="wk">S16</td><td class="dt">14–20/12</td><td class="hr">8</td>
+          <td><strong>Aplicación de A0 al pipeline real</strong>, sobre IS-01: diagnóstico de gobernabilidad de la topología que existe hoy.</td>
+          <td class="dod">Informe de aplicación que identifica al menos una costura que hoy no existe, y qué se perdió por no tenerla.</td></tr>
+        <tr><td class="wk">S17</td><td class="dt">21–27/12</td><td class="hr">4</td>
+          <td>Cierre de A0 v1.0 y <strong>capítulo 6 (borrador)</strong>. <span class="chip gate">checkpoint antes del receso</span></td>
+          <td class="dod">A0 v1.0 congelado.</td></tr>
+        <tr class="rest"><td class="wk">S18–S19</td><td class="dt">28/12–10/01</td><td class="hr">0</td>
+          <td><strong>Receso declarado.</strong> No es un hueco: es planificación. Un cronograma que asume 8 h por semana durante el receso de verano argentino no es un cronograma, es una declaración de intenciones.</td>
+          <td class="dod">—</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F4 -->
+  <div class="phase" id="f4">
+    <header><span class="pid">F4</span><span class="pname">A2 · Matriz Autonomía × Control</span><span class="pmeta">S20–S22 · 24 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S20</td><td class="dt">11–17/01</td><td class="hr">8</td>
+          <td><strong>Definición operacional de A0–A4</strong> (SP2): cuál es el observable que distingue un nivel del siguiente. Y <strong>convocatoria del Panel Delphi</strong>: invitaciones a auditores ISO 27001/42001, tech leads e investigadores.</td>
+          <td class="dod">Reglas de clasificación aplicables sin criterio subjetivo. Al menos 12 invitaciones enviadas para asegurar 8 confirmaciones.</td></tr>
+        <tr><td class="wk">S21</td><td class="dt">18–24/01</td><td class="hr">8</td>
+          <td>Controles obligatorios y <strong>evidencia mínima por nivel</strong> (SP3). Mapeo de cada celda a un control de ISO 42001 Anexo A o 27002.</td>
+          <td class="dod">Matriz completa: 5 niveles × control humano, controles automáticos, evidencia obligatoria y firma indelegable.</td></tr>
+        <tr><td class="wk">S22</td><td class="dt">25–31/01</td><td class="hr">8</td>
+          <td><strong>Clasificación de los agentes de IS-01 en la matriz: la brecha entre lo declarado y lo real.</strong> Este es el número que hace visible el problema. <strong>Capítulo 7 (borrador).</strong> <span class="chip gate">checkpoint</span></td>
+          <td class="dod">A2 v1.0. Cada agente de IS-01 con nivel asignado, controles exigidos y brecha calculada contra los controles que realmente tiene.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F5 -->
+  <div class="phase" id="f5">
+    <header><span class="pid">F5</span><span class="pname">A3 · Telemetría, motor de conformidad y tablero</span><span class="pmeta">S23–S29 · 44 h + pitch</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S23</td><td class="dt">01–07/02</td><td class="hr">8</td>
+          <td><strong>Esquema de evidencia</strong> (<em>trace schema</em>): campos mínimos por nivel A0–A4 — agente, versión de modelo, prompt de sistema, diffs intermedios, nivel asignado, controles ejecutados, firma, retención.</td>
+          <td class="dod">Schema versionado en <code>src/collector/</code>. Cada campo justificado contra una celda de A2.</td></tr>
+        <tr><td class="wk">S24</td><td class="dt">08–14/02</td><td class="hr">8</td>
+          <td><strong>Collector:</strong> emisión de trazas desde CI/CD y reconciliación determinística contra Git.</td>
+          <td class="dod"><code>trace.json</code> emitido en al menos 10 ejecuciones reales. GDR (C2) medido por primera vez.</td></tr>
+        <tr class="mark"><td class="wk">S25</td><td class="dt">15–21/02</td><td class="hr">6</td>
+          <td><strong>T0 — instrumentación silenciosa activa (15/02).</strong> Telemetría pasiva, sin gates y sin cambio de política: no contamina la ventana PRE. Y preparación del pitch. <span class="chip hito">T0</span></td>
+          <td class="dod">T0 corriendo. Deck de 12 slides y demo ensayada, cronometrada.</td></tr>
+        <tr class="mark"><td class="wk">S26</td><td class="dt">22–28/02</td><td class="hr">4</td>
+          <td><strong>Pitch de Tesis — 23/02/2027.</strong> Problema → claim → BL-01 en gráficos → los cuatro artefactos → calibración ADR-005 → plan de validación y cronograma a defensa. <span class="chip hito">hito 3</span></td>
+          <td class="dod">Pitch defendido. Feedback del tribunal registrado en <code>kb/</code> como insumo de F6 y F7.</td></tr>
+        <tr><td class="wk">S27</td><td class="dt">01–07/03</td><td class="hr">8</td>
+          <td><strong>Conformance Engine:</strong> evalúa la traza contra la política A2 y bloquea o marca según el nivel.</td>
+          <td class="dod">Motor corriendo en el pipeline. Cinco casos de prueba pasan o fallan exactamente como se predijo.</td></tr>
+        <tr><td class="wk">S28</td><td class="dt">08–14/03</td><td class="hr">8</td>
+          <td><strong>Tablero de KRIs</strong> (HIR, CRS, ACI, GDR) y <strong>calibración de gates</strong>: curva de falsos positivos contra falsos negativos sobre <em>golden dataset</em>, para evitar <em>bypass fatigue</em>.</td>
+          <td class="dod">Tablero operativo. Umbrales de gates congelados y documentados junto con su curva.</td></tr>
+        <tr class="mark"><td class="wk">S29</td><td class="dt">15–21/03</td><td class="hr">6</td>
+          <td><strong>T1 — INTERVENCIÓN PLENA (15/03). Abre la ventana POST.</strong> Y <strong>testbench ADR-005</strong>: adherencia a fronteras de rol, deriva de contexto, reconciliación de traza, inyección de fallos. <strong>Capítulo 8 (borrador).</strong> <span class="chip hito">T1</span></td>
+          <td class="dod">A2 activa, gates gobernados y evidencia obligatoria. Los cuatro ejes de ADR-005 con resultado medido.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F6 -->
+  <div class="phase" id="f6">
+    <header><span class="pid">F6</span><span class="pname">Validación externa y reconstruction test PRE</span><span class="pmeta">S30–S33 · 32 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S30</td><td class="dt">22–28/03</td><td class="hr">8</td>
+          <td><strong>Diseño del instrumento Delphi</strong>, ronda 1: relevancia, completitud y aplicabilidad de A0, A1, A2 y A3 en escala 1–5, más campos abiertos. Envío.</td>
+          <td class="dod">Instrumento revisado por el tutor. Ronda 1 enviada a 8 expertos, con fecha de corte el 11/04.</td></tr>
+        <tr><td class="wk">S31</td><td class="dt">29/03–04/04</td><td class="hr">6</td>
+          <td>Seguimiento de la ronda 1 y <strong>protocolo RT-01 del reconstruction test</strong>: muestreo aleatorio, cegado, rúbrica de las cuatro dimensiones de C1, y reclutamiento del auditor externo.</td>
+          <td class="dod">RT-01 escrito y congelado. <strong>Auditor externo confirmado</strong> — no la autora, mitigación #2 del doble rol.</td></tr>
+        <tr><td class="wk">S32</td><td class="dt">05–11/04</td><td class="hr">8</td>
+          <td>Análisis de la ronda 1 y construcción de la ronda 2 con feedback controlado.</td>
+          <td class="dod">Ronda 2 enviada, con corte el 25/04.</td></tr>
+        <tr><td class="wk">S33</td><td class="dt">12–18/04</td><td class="hr">10</td>
+          <td><strong>Reconstruction test PRE:</strong> 20 PRs aleatorios de la ventana pre, auditoría ciega con la rúbrica RT-01.</td>
+          <td class="dod">TRD<sub>pre</sub> medido, con intervalo de confianza y desacuerdos documentados.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F7 -->
+  <div class="phase" id="f7">
+    <header><span class="pid">F7</span><span class="pname">Medición post y análisis pre/post</span><span class="pmeta">S34–S37 · 28 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr class="crit-row"><td class="wk">S34</td><td class="dt">19–25/04</td><td class="hr">8</td>
+          <td>Cierre de la ronda 2 Delphi y análisis de consenso (IQR ≤ 1). <strong>25/04 — checkpoint del N post:</strong> verificar que la ventana alcanzó 60 PRs; si no, extender consumiendo reserva. <span class="chip block">trigger</span></td>
+          <td class="dod">Informe Delphi v1 con el % de ítems en consenso — veredicto de C5. Decisión sobre el N documentada.</td></tr>
+        <tr><td class="wk">S35</td><td class="dt">26/04–02/05</td><td class="hr">8</td>
+          <td><strong>Reconstruction test POST:</strong> 20 PRs de la ventana post, con el mismo auditor, la misma rúbrica y el mismo cegado.</td>
+          <td class="dod">TRD<sub>post</sub> medido. <strong>Acá se resuelve C1: el claim se sostiene o se cae.</strong></td></tr>
+        <tr><td class="wk">S36</td><td class="dt">03–09/05</td><td class="hr">6</td>
+          <td>Análisis pre/post completo — C1 (TRD), C2 (GDR), C3 (profundidad de revisión), C4 (guardrail DORA) — con pruebas estadísticas y tamaño del efecto.</td>
+          <td class="dod">Tabla de resultados contra los umbrales pre-registrados, con veredicto explícito por criterio, incluido el negativo si lo hay.</td></tr>
+        <tr><td class="wk">S37</td><td class="dt">10–16/05</td><td class="hr">6</td>
+          <td><strong>Capítulo 9 (resultados)</strong> e incorporación del feedback Delphi a los artefactos: A0–A3 v2. <span class="chip gate">checkpoint</span></td>
+          <td class="dod">Capítulo 9 en borrador y artefactos v2 con changelog de qué cambió por el panel.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- F8 -->
+  <div class="phase" id="f8">
+    <header><span class="pid">F8</span><span class="pname">Consolidación de la memoria</span><span class="pmeta">S38–S40 · 46 h</span></header>
+    <div class="tw"><table>
+      <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">S38</td><td class="dt">17–23/05</td><td class="hr">14</td>
+          <td>Consolidación de los capítulos 1–3 desde el Plan de Trabajo y la vigilancia bibliográfica acumulada. <strong>Capítulo 10</strong>: discusión, limitaciones y trabajo futuro.</td>
+          <td class="dod">Capítulos 1–3 y 10 en versión integrada. Limitaciones incluye explícitamente el caso único y el doble rol.</td></tr>
+        <tr><td class="wk">S39</td><td class="dt">24–30/05</td><td class="hr">16</td>
+          <td>Integración total: coherencia entre capítulos, unificación terminológica y verificación de <strong>cada referencia contra la fuente original</strong> en APA. Anexos: diario de investigación, ADRs, protocolos RT-01 y Delphi, código.</td>
+          <td class="dod">Documento único compilable. Cero referencias sin verificar.</td></tr>
+        <tr class="mark"><td class="wk">S40</td><td class="dt">31/05–06/06</td><td class="hr">16</td>
+          <td>Revisión final, corrección de estilo, envío a Marcos con margen. Preparación de la defensa.</td>
+          <td class="dod"><strong>Borrador completo de la memoria entregado al tutor.</strong></td></tr>
+        <tr class="mark"><td class="wk">S41+</td><td class="dt">jun–jul 2027</td><td class="hr">res.</td>
+          <td>Incorporación de correcciones, deck de defensa, ensayos, y <strong>defensa final ante el tribunal</strong>. <span class="chip hito">hito 4</span></td>
+          <td class="dod">Tesis defendida.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ============ DEPENDENCIAS ============ -->
+<section id="dependencias">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Dependencias críticas</h2>
+    <p class="note">Cada una con fecha de vencimiento y consecuencia declarada. Una dependencia sin fecha no se gestiona: se sufre.</p>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Dependencia</th><th>Vence</th><th>Impacto si falla</th></tr></thead>
+    <tbody>
+      <tr><td class="key">D1</td><td>Export histórico de PRs pedido y recibido</td><td class="mono">pedido 27/09 · recibido 09/10</td><td>Sin BL-01 no hay ventana pre: se caen C1 y C3. Activa el Plan B.</td></tr>
+      <tr><td class="key">D2</td><td>IS-01 completo</td><td class="mono">11/10/2026</td><td>Sin inventario no hay A2 aplicable ni brecha declarado-vs-real. <strong>No depende de terceros.</strong></td></tr>
+      <tr><td class="key">D3</td><td>Invitaciones Delphi enviadas</td><td class="mono">17/01/2027</td><td>Enviar en marzo es tarde: los expertos no responden con dos semanas de aviso.</td></tr>
+      <tr><td class="key">D4</td><td>Collector emitiendo trazas</td><td class="mono">14/02/2027</td><td>Sin collector no hay T0 ni T1, y por lo tanto no hay ventana post.</td></tr>
+      <tr><td class="key">D5</td><td>Intervención T1 activa</td><td class="mono">15/03/2027</td><td>Cada semana de retraso acorta la ventana post uno a uno. Piso absoluto: 29/03, que deja siete semanas.</td></tr>
+      <tr><td class="key">D6</td><td>Auditor externo confirmado</td><td class="mono">04/04/2027</td><td>Sin auditor externo el reconstruction test lo hace la autora: se cae la mitigación del doble rol.</td></tr>
+      <tr><td class="key">D7</td><td>N post ≥ 60 PRs</td><td class="mono">25/04/2027</td><td>Bajo poder estadístico. Trigger declarado de extensión de ventana.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ RIESGOS ============ -->
+<section id="riesgos">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Riesgos y plan B</h2>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Riesgo</th><th>Impacto</th><th>Trigger</th><th>Mitigación operativa</th></tr></thead>
+    <tbody>
+      <tr><td class="key">No llegan los datos históricos de PRs</td><td><span class="chip block">alto</span></td><td class="mono">09/10/2026</td><td><strong>Plan B:</strong> el eje empírico pasa a IS-01 más reconstruction test solo sobre la ventana post, con mayor peso del Delphi. C1 se reformula como TRD absoluto post, auditando los PRs pre reconstruibles desde Git crudo.</td></tr>
+      <tr><td class="key">La intervención T1 se corre</td><td><span class="chip block">alto</span></td><td class="mono">29/03/2027</td><td>La autora controla el despliegue. T1 mínimo viable: matriz A2 y evidencia obligatoria, aunque el tablero quede incompleto. El tablero no es condición de la medición.</td></tr>
+      <tr><td class="key">N post insuficiente</td><td><span class="chip hito">medio</span></td><td class="mono">25/04/2027</td><td>Extender la ventana hasta el 09/05 consumiendo reserva y comprimir S36–S37.</td></tr>
+      <tr><td class="key">Panel Delphi con respuesta baja</td><td><span class="chip hito">medio</span></td><td class="mono">11/04/2027</td><td>Se invitan 12 para asegurar 8. Fallback: ronda única más entrevistas semiestructuradas individuales.</td></tr>
+      <tr><td class="key">Cuestionamiento por doble rol</td><td><span class="chip hito">medio</span></td><td class="mono">permanente</td><td>Las cuatro mitigaciones, cada una con fecha: criterios pre-registrados (S01) · auditor externo (S31) · triangulación IS-01 + PRs + entrevistas · diario de investigación continuo, como anexo.</td></tr>
+      <tr><td class="key">Deriva hacia desarrollo de producto</td><td><span class="chip hito">medio</span></td><td class="mono">permanente</td><td>ADR-004 y techo duro de 44 h en A3. Si A3 excede presupuesto se recorta funcionalidad del tablero, nunca la calibración.</td></tr>
+      <tr><td class="key">Deriva hacia benchmark de herramientas</td><td><span class="chip gate">bajo</span></td><td class="mono">permanente</td><td>Regla escrita: criterios, no rankings. Un ranking vence en seis meses; la defensa es en 2027.</td></tr>
+      <tr><td class="key">Redacción comprimida al final</td><td><span class="chip block">alto</span></td><td class="mono">cualquier capítulo sin borrador en su semana</td><td>Mapeo artefacto → capítulo. Un capítulo sin borrador en su fase es una alarma, no un atraso menor.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ CADENCIA ============ -->
+<section id="cadencia">
+  <div class="sec-head">
+    <div class="bar"></div>
+    <h2>Cadencia de seguimiento</h2>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Ritual</th><th>Frecuencia</th><th>Salida</th></tr></thead>
+    <tbody>
+      <tr><td class="key">Checkpoint con el tutor</td><td class="mono">fin de cada fase — S09, S13, S17, S22, S29, S34, S37, S40</td><td>Artefacto vN más una página de estado</td></tr>
+      <tr><td class="key">Diario de investigación</td><td class="mono">semanal</td><td>Entrada fechada separando rol de ingeniera y rol de investigadora — anexo de la memoria</td></tr>
+      <tr><td class="key">Vigilancia bibliográfica</td><td class="mono">mensual · 1 h de la reserva</td><td>Fichas nuevas en <code>kb/literature/</code></td></tr>
+      <tr><td class="key">Revisión del presupuesto de horas</td><td class="mono">fin de cada fase</td><td>Horas reales contra planificadas; consumo de reserva declarado</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>
+  <span>ARGOS · Autonomous Risk &amp; Governance Oversight for Software</span>
+  <span>Macarena Alimena · Universidad Austral</span>
+  <span>Sincronizado con ADR-001 a ADR-006</span>
+  <span>28/08/2026</span>
+</footer>
 
 </div>
 
-</body>
-</html>
+<script>
+  // 40-week spine: 40 weeks + 2 trailing cells for the defence period
+  var PHASES = [
+    {id:'f0', from:1,  to:3 },
+    {id:'f1', from:4,  to:9 },
+    {id:'f2', from:10, to:13},
+    {id:'f3', from:14, to:17},
+    {id:'f3', from:18, to:19, rest:true},
+    {id:'f4', from:20, to:22},
+    {id:'f5', from:23, to:29},
+    {id:'f6', from:30, to:33},
+    {id:'f7', from:34, to:37},
+    {id:'f8', from:38, to:40}
+  ];
+  var HITOS = {1:'Hito 1 · Plan de Trabajo (01/09)', 3:'Hito 2 · Informe Ético (15/09)', 25:'T0 · instrumentación silenciosa (15/02)', 26:'Hito 3 · Pitch (23/02)', 29:'T1 · intervención plena (15/03)', 40:'Memoria al tutor (06/06)'};
+  var bar = document.getElementById('spinebar');
+  var alt = false, lastPhase = null;
+  for (var w = 1; w <= 40; w++) {
+    var ph = null;
+    for (var i = 0; i < PHASES.length; i++) {
+      if (w >= PHASES[i].from && w <= PHASES[i].to) { ph = PHASES[i]; break; }
+    }
+    if (ph !== lastPhase) { alt = !alt; lastPhase = ph; }
+    var a = document.createElement('a');
+    a.href = '#' + (ph ? ph.id : 'semanas');
+    var cls = alt ? 'alt' : '';
+    if (ph && ph.rest) cls = 'rest';
+    if (HITOS[w]) cls = 'hito';
+    a.className = cls;
+    a.setAttribute('aria-label', 'Semana ' + w + (HITOS[w] ? ' — ' + HITOS[w] : ''));
+    a.title = 'S' + (w < 10 ? '0' + w : w) + (HITOS[w] ? ' — ' + HITOS[w] : '');
+    bar.appendChild(a);
+  }
+  var defence = document.createElement('a');
+  defence.href = '#f8'; defence.className = 'hito';
+  defence.title = 'jun–jul 2027 — Defensa final';
+  defence.setAttribute('aria-label', 'Junio a julio 2027, defensa final');
+  defence.style.opacity = '.45';
+  bar.appendChild(defence);
+  var defence2 = defence.cloneNode(true);
+  bar.appendChild(defence2);
+
+  // hours bar
+  var HOURS = [
+    {h:24, c:'s'},   {h:32, c:'s alt'}, {h:28, c:'s'},   {h:28, c:'s alt'},
+    {h:24, c:'s'},   {h:44, c:'s alt'}, {h:4,  c:'s hit'},
+    {h:32, c:'s'},   {h:28, c:'s alt'}, {h:46, c:'s'},   {h:30, c:'s res'}
+  ];
+  var LABELS = ['F0 · 24 h','F1 · 32 h','F2 · 28 h','F3 · 28 h','F4 · 24 h','F5 · 44 h','Pitch · 4 h','F6 · 32 h','F7 · 28 h','F8 · 46 h','Reserva · 30 h'];
+  var hb = document.getElementById('hbar');
+  for (var j = 0; j < HOURS.length; j++) {
+    var d = document.createElement('div');
+    d.className = HOURS[j].c;
+    d.style.flex = HOURS[j].h + ' 0 0';
+    d.title = LABELS[j];
+    hb.appendChild(d);
+  }
+</script>

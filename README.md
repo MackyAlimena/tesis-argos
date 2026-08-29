@@ -81,7 +81,7 @@ Hoy, la supervisión humana (*Human-in-the-Loop*) en los pipelines de desarrollo
 
 ## 🚀 Próximos Pasos Inmediatos
 
-- [ ] Captura del dataset histórico de PRs en PyME (*Línea de base antes de perder el "antes"*).
-- [ ] Presentación formal del Plan de Trabajo (Octubre 2026).
+- [ ] Pedido formal del export histórico de PRs (S04, 21–27/09/2026; recepción comprometida al 09/10). Ver [ROADMAP.md](ROADMAP.md) D1.
+- [ ] Presentación formal del Plan de Trabajo (**01/09/2026**) — ver [ROADMAP.md](ROADMAP.md) S01.
 - [ ] Redacción del Informe Ético y Social alineado a las 5 preguntas de la Facultad.
 - [ ] Formalización de los Criterios de Gobernabilidad de Topologías (A0).

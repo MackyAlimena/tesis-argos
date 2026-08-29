@@ -1,6 +1,6 @@
 # Dataset Histórico de Pull Requests (Línea de Base)
 
-> ⚠️ **Riesgo crítico del proyecto:** Este dataset debe capturarse antes de septiembre 2026 para congelar la línea de base "pre-intervención" (el estado del desarrollo antes de aplicar el marco ARGOS).
+> ⚠️ **Dependencia crítica D1 del plan de ejecución.** Pedido formal en S04 (21–27/09/2026), recepción comprometida al **09/10/2026**. Congela la ventana PRE (01/03/2026 → 14/03/2027), es decir el estado del desarrollo antes de T1. Si al 09/10 no hay datos, se activa el Plan B (ver [ROADMAP.md](../../ROADMAP.md) §6).
 
 ## Especificación del Export Requerido
 
