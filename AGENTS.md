@@ -33,10 +33,15 @@ Estas herramientas son para el trabajo semanal de la tesis, no para el onboardin
 |---|---|---|
 | `/semana` | Abre la semana: ubica S01–S40 por fecha en `ROADMAP.md`, arma el plan de las horas presupuestadas y avisa triggers. | Lunes |
 | `/cierre-semana` | Verifica la Definición de HECHO **contra el repo**, registra horas y escribe la entrada del diario en `kb/diario/`. | Viernes |
+| `/estado` | Panel de situación: semana real vs. calendario, horas vs. 320, capítulos sin borrador, triggers vencidos. Solo lectura. | Cuando haga falta la foto |
+| `/entrega` | Revisa una entrega formal contra su plantilla oficial, verifica consistencia cruzada de números y fechas, y simula al tribunal. | Antes de mandar cualquier entregable |
 | `verificador-bibliografico` *(subagente)* | Verifica referencias contra la fuente original. Devuelve VERIFICADA / NO LOCALIZADA; nunca reformula. | Antes de incorporar cualquier cita |
 
 El **diario de investigación** (`kb/diario/`) es anexo de la memoria y mitigación declarada del sesgo de doble
 rol. Se asiste, no se delega: las secciones de rol se llenan entrevistando a la autora, nunca inventando.
+
+**Regla común a todas:** se puede reescribir lo que ya existe; no se puede escribir lo que falta. Un hueco se
+marca como hueco. Es la misma autonomía graduada que propone la tesis, aplicada al trabajo que la produce.
 
 ---
 
