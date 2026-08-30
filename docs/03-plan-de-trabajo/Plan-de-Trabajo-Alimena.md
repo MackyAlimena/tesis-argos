@@ -226,7 +226,7 @@ Las fases de trabajo se estructuran en torno a los hitos académicos definidos:
   * Integración de los capítulos redactados de manera incremental al cierre de cada fase, discusión, limitaciones y anexos metodológicos.
   * *Hito académico: entrega del borrador completo de la memoria (6 de junio) y defensa final ante el tribunal (junio–julio 2027).*
 
-Las 30 horas restantes corresponden a la reserva sin asignar. El cronograma operativo desagregado semana a semana, con asignación horaria y criterio de finalización por tarea, se acompaña como anexo de este Plan.
+Las 30 horas restantes corresponden a la reserva sin asignar para contingencias y absorción de desvíos declarados.
 
 **Riesgos y contingencia.** El riesgo principal es la eventual indisponibilidad del conjunto de datos históricos, cuya recepción se compromete para el 9 de octubre de 2026. En ese supuesto se activa un plan alternativo previamente acordado: el eje empírico se traslada al inventario del estado de facto y a la prueba de reconstrucción sobre la ventana posterior, con mayor peso relativo del panel de expertos. El segundo riesgo es la demora de la intervención, mitigado por una configuración mínima viable que prescinde del tablero, dado que este no condiciona la medición. El tercero es un tamaño de muestra posterior insuficiente, con extensión de la ventana con cargo a la reserva horaria. Finalmente, el trabajo no depende de que la organización se certifique en norma alguna: la empresa es caso de estudio, no dependencia del diseño.
 
@@ -286,4 +286,14 @@ Yin, R. K. (2018). *Case study research and applications: Design and methods* (6
 
 ---
 
-Aprobación del Plan de trabajo de parte del director:
+### Conformidad de Dirección
+
+**Aprobación del Plan de Trabajo de parte del Director:**
+
+<br>
+<br>
+
+__________________________________  
+**Prof. Marcos Giagnorio**  
+Director Académico de Tesis  
+Universidad Austral

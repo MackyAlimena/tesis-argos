@@ -1,7 +1,7 @@
 # Trabajo de Grado — Contexto y definición del tema
 
 **Alumna:** Macarena Alimena · Ingeniería en Informática (Univ. Austral), orientación Gestión
-**Tutor académico propuesto:** Marcos Giagnorio (en proceso de confirmación administrativa; sinergia con su investigación doctoral)
+**Director académico:** Marcos Giagnorio (confirmado formalmente el 30/08/2026; sinergia con su investigación doctoral)
 **Entrega de definición de tema:** viernes 14/08/2026 · **Entrega final:** junio–julio 2027
 **Estado de este documento:** working doc. Consolida las decisiones tomadas y feedback de cátedra/tutor. Se actualiza, no se archiva.
 
