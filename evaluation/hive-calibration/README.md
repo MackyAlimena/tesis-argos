@@ -39,6 +39,11 @@ Un orquestador puede producir código funcional pero violar políticas de gobern
 ### 4. Pruebas de Estrés e Inyección de Fallos (*Fault Injection / Red Teaming*)
 * Inyección deliberada de requerimientos ambiguos, bibliotecas alucinadas y solicitudes de escalada de privilegios para medir la tasa de escalamiento efectivo al supervisor humano (*Human Escalation Rate*).
 
+### 5. Cadencia de Re-calibración Trimestral y Auditoría de Detección (Ciclo PDCA)
+* **Compuerta de Re-calibración Trimestral:** Ejecución programada del banco de pruebas (*golden dataset*) cada 3 meses o ante cambios de versión de LLMs o prompts de sistema.
+* **Auditoría de Sensibilidad de Detección:** Verificación experimental de que los agentes especializados no han degradado su tasa de detección de vulnerabilidades, dependencias maliciosas o fallos de conformidad (*prompt drift / model drift*).
+* **Informe de Salud y Re-certificación:** El tablero emite el reporte trimestral con el que la dirección técnica re-certifica o revierte los niveles de autonomía A0–A4 delegados.
+
 ---
 
 ## 📊 KRIs del Orquestador para el Tablero Directivo (A3)

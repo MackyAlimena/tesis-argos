@@ -237,6 +237,7 @@ En el marco de Design Science Research (DSR), la evaluación debe probar que los
    - *Calibración de Quality Gates Gobernados:* Ajustar la curva de falsos positivos vs. falsos negativos en analizadores de alucinaciones (*slopsquatting*), SCA y linters sobre un dataset de referencia (*golden dataset*) para evitar *bypass fatigue*.
    - *Verificación de la telemetría (Audit Trail Fidelity):* Reconciliación determinística entre los eventos declarados por el orquestador (`trace.json`) y las acciones reales en Git y CI/CD.
    - *Pruebas de estrés e inyección de fallos (Fault Injection / Red Teaming):* Evaluar la efectividad de los disyuntores automáticos (*circuit breakers / kill-switches*) y el escalamiento al humano ante bucles infinitos, fuga de presupuestos o directivas ambiguas.
+   - *Compuerta de Re-calibración Trimestral (Ciclo PDCA):* Ejecución periódica (cada 3 meses o ante cambios de versión de LLMs/prompts) sobre el *golden dataset* para auditar que los agentes mantengan su capacidad de detección de riesgos y emitir el reporte de re-certificación de niveles de autonomía para la dirección.
 
 ---
 

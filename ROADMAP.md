@@ -252,3 +252,4 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 | **Registro en el diario de investigación** | Semanal | Entrada fechada separando rol ingeniera / rol investigadora (anexo de la memoria) |
 | **Vigilancia bibliográfica** | Mensual, 1 h de la reserva | Fichas nuevas en `kb/literature/` |
 | **Revisión del presupuesto de horas** | Fin de cada fase | Horas reales vs. planificadas; consumo de reserva declarado |
+| **Compuerta de re-calibración trimestral (ADR-005)** | Trimestral / ante cambio de LLM | Auditoría de detección sobre *golden dataset* y reporte de re-certificación de autonomía |

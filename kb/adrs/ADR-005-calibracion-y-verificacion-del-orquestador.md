@@ -30,6 +30,11 @@ Se establece un protocolo de **Evaluación y Calibración del Hive/Orquestador**
    - *Inyección de Fallos (Fault Injection / Red Teaming):* Pruebas de estrés inyectando paquetes falsos y directivas ambiguas para evaluar la capacidad de contención y escalamiento al humano.
    - *KRIs del Orquestador:* Incorporación al tablero de indicadores de *Human Intervention Rate (HIR)*, *Context Retention Score* y *Agent Churn Index*.
 
+5. **Cadencia de Re-calibración Periódica y Auditoría de Detección (Ciclo PDCA):**
+   - *Compuerta de Re-calibración Trimestral:* Ejecución obligatoria y programada del banco de pruebas (*golden dataset*) cada tres meses o ante cualquier actualización mayor de modelos base o prompts de sistema.
+   - *Auditoría de Sensibilidad de Detección:* Medición recurrente de la tasa de acierto en detección de vulnerabilidades, licencias y alucinaciones por parte de los agentes especializados para certificar que no existe degradación silente de los guardarraíles (*model drift / prompt drift*).
+   - *Re-certificación de Autonomía:* La dirección técnica aprueba o retrotrae la asignación de niveles A0–A4 según el reporte trimestral de calibración emitido por el tablero.
+
 ## Consecuencias
-- El orquestador deja de ser una "caja negra" y pasa a ser un componente calibrado y auditable bajo el ciclo PDCA (ISO 9001 / ISO 42001).
-- Se formaliza el banco de pruebas de gobernanza en la carpeta `evaluation/hive-calibration/`.
+- El orquestador deja de ser una "caja negra" y pasa a ser un componente calibrado, monitoreado y auditable de forma continua bajo el ciclo PDCA (ISO 9001 / ISO 42001).
+- Se formaliza el banco de pruebas de gobernanza en la carpeta `evaluation/hive-calibration/`, integrando la re-calibración trimestral como compuerta de gestión.

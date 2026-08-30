@@ -83,16 +83,16 @@ Para alcanzar el objetivo general se definen los siguientes objetivos específic
 
 # Descripción y caracterización
 
-La propuesta consiste en el diseño y la validación empírica de un marco de gobernanza compuesto por cuatro artefactos articulados, aplicado sobre el proceso de desarrollo de una PyME tecnológica que atraviesa simultáneamente la agentización de su desarrollo y la implantación de un sistema de gestión de IA.
+La propuesta consiste en el diseño y la validación empírica de un marco de gobernanza compuesto por cuatro artefactos articulados, evaluado sobre la combinación de agentes de IA que cubren distintas etapas del ciclo de desarrollo seguro de software (diseño, codificación, pruebas y análisis de seguridad) en el entorno de una PyME tecnológica.
 
 | Artefacto | Contenido |
 |---|---|
-| **A0** | Criterios de gobernabilidad de topologías agénticas: qué configuraciones de agentes admiten inspección humana y captura de evidencia. |
+| **A0** | Criterios de gobernabilidad de topologías agénticas: qué configuraciones y combinaciones de agentes admiten inspección humana y captura de evidencia a lo largo del ciclo de vida. |
 | **A1** | Taxonomía de riesgos del desarrollo agentizado, mapeada a controles normativos. |
-| **A2** | Matriz Autonomía × Control: cinco niveles (A0–A4) con sus controles obligatorios y su evidencia mínima. |
-| **A3** | Modelo de evidencia (telemetría de gobernanza), motor evaluador de conformidad en el pipeline y tablero de indicadores. |
+| **A2** | Matriz Autonomía × Control: cinco niveles (A0–A4) con sus controles obligatorios y su evidencia mínima por fase. |
+| **A3** | Modelo de evidencia (telemetría de gobernanza), motor evaluador de conformidad en el pipeline y tablero de indicadores de decisión. |
 
-El trabajo cubre el ciclo de desarrollo completo **a nivel de marco conceptual**. La **validación empírica profunda** se concentra sobre un único punto de control: revisión, aprobación e integración de cambios hacia producción. Se eligió ese punto porque es donde autonomía y evidencia colisionan de manera más directa y porque los datos necesarios ya existen en los sistemas de la organización. La regla que ordena el alcance es: amplitud en el marco, profundidad en un punto.
+El trabajo cubre el ciclo de desarrollo completo **a nivel de marco conceptual**. La **validación empírica profunda** se concentra sobre el punto de control crítico de integración: revisión, aprobación y despliegue de cambios hacia producción, evaluando el comportamiento del pipeline con la combinación de agentes antes y después de la intervención gobernada mediante una batería de indicadores cuantitativos y cualitativos. La regla que ordena el alcance es: amplitud en el marco, profundidad en un punto.
 
 Para acotar el trabajo a los recursos disponibles, se establece explícitamente qué queda **fuera del alcance**:
 
@@ -117,12 +117,12 @@ Una objeción previsible sostiene que este mecanismo equivale a las *quality gat
 
 ## Tecnologías propuestas
 
-* **Recolector de telemetría de gobernanza (Python):** captura eventos del orquestador de agentes y del pipeline de integración continua mediante las API del sistema de control de versiones y de la plataforma de CI/CD, los normaliza al esquema de evidencia y reconcilia de manera determinística lo declarado por el orquestador contra lo efectivamente registrado en el repositorio.
-* **Motor evaluador de conformidad (Python):** evalúa cada traza contra la política derivada de la matriz de autonomía mediante un motor de reglas declarativo, y se integra como etapa del pipeline resolviendo permitir, marcar, bloquear o escalar.
-* **Tablero de gobernanza:** aplicación web ligera que presenta los indicadores de riesgo y la brecha entre autonomía declarada y real.
-* **Banco de pruebas de calibración:** conjunto de casos de referencia y arnés de pruebas automatizado para verificar adherencia a fronteras de rol, deriva de contexto entre agentes, fidelidad de la traza y comportamiento ante inyección de fallos.
-* **Herramientas de análisis:** scripts de procesamiento del conjunto de datos históricos de solicitudes de integración y cálculo de las métricas comparativas.
-* **Corpus normativo de referencia:** ISO/IEC 42001:2023 y su Anexo A; ISO/IEC 27001:2022 y 27002:2022; ISO/IEC 23894:2023; ISO/IEC 5338:2023; NIST AI RMF 1.0 y NIST AI 600-1; NIST SP 800-218A; Reglamento (UE) 2024/1689, con atención a su artículo 14; OWASP *Top 10 for LLM Applications*; y Ley 25.326.
+*   **Recolector de telemetría de gobernanza (Python):** captura eventos del orquestador de agentes y del pipeline de integración continua mediante las API del sistema de control de versiones y de la plataforma de CI/CD, los normaliza al esquema de evidencia y reconcilia de manera determinística lo declarado por el orquestador contra lo efectivamente registrado en el repositorio.
+*   **Motor evaluador de conformidad (Python):** evalúa cada traza contra la política derivada de la matriz de autonomía mediante un motor de reglas declarativo, y se integra como etapa del pipeline resolviendo permitir, marcar, bloquear o escalar.
+*   **Tablero de gobernanza:** aplicación web ligera que presenta los indicadores de riesgo, la salud de las compuertas y la brecha entre autonomía declarada y real.
+*   **Banco de pruebas de calibración y re-evaluación periódica:** conjunto de casos de referencia (*golden dataset* con código vulnerable, alucinaciones de dependencias y violaciones de política) y arnés de pruebas automatizado para verificar la efectividad de detección de los agentes, adherencia a fronteras de rol, deriva de contexto (*context drift*) y comportamiento ante inyección de fallos. Este banco se establece como una compuerta de recalibración periódica (trimestral o ante cambio de modelo/prompt) para certificar que los agentes mantienen su precisión de detección y no degradan los guardarraíles.
+*   **Herramientas de análisis:** scripts de procesamiento del conjunto de datos históricos de solicitudes de integración y cálculo de las métricas comparativas antes y después de la intervención.
+*   **Corpus normativo de referencia:** ISO/IEC 42001:2023 y su Anexo A; ISO/IEC 27001:2022 y 27002:2022; ISO/IEC 23894:2023; ISO/IEC 5338:2023; NIST AI RMF 1.0 y NIST AI 600-1; NIST SP 800-218A; Reglamento (UE) 2024/1689, con atención a su artículo 14; OWASP *Top 10 for LLM Applications*; y Ley 25.326.
 
 Se deja constancia del alcance del componente instrumental: **no se construye una plataforma de producto**. El esfuerzo de investigación cubre el diseño del esquema de evidencia, la calibración, el banco de pruebas y su documentación; la operación del instrumento sobre el pipeline real se realiza en el marco de la actividad profesional de la autora, lo cual constituye la modalidad de investigación-acción adoptada.
 
@@ -185,9 +185,13 @@ Se adopta **Design Science Research** (Hevner et al., 2004; Peffers et al., 2007
 
 C4 se declara como restricción y no como objetivo: un marco que mejorara la trazabilidad destruyendo el tiempo de entrega no resolvería el problema planteado, lo trasladaría.
 
-**Diseño de la validación.** Se emplean cuatro instrumentos complementarios: una prueba de reconstrucción de evidencia sobre 40 cambios ya integrados (20 anteriores y 20 posteriores a la intervención), auditados por una persona externa y ciega a la condición según rúbrica fijada de antemano; la medición cuantitativa previa y posterior sobre el conjunto histórico de solicitudes de integración; un panel Delphi de ocho expertos en dos rondas, para el cual se cursan doce invitaciones; y la calibración del orquestador mediante banco de pruebas, que verifica adherencia a fronteras de rol, deriva de contexto, fidelidad de la traza e inyección de fallos.
+**Diseño de la validación.** Se emplean cuatro instrumentos complementarios:
+1. Una prueba de reconstrucción de evidencia sobre 40 cambios ya integrados (20 anteriores y 20 posteriores a la intervención), auditados por una persona externa y ciega a la condición según rúbrica fijada de antemano.
+2. La medición cuantitativa y comparativa previa y posterior sobre el conjunto histórico y productivo de solicitudes de integración, contrastando los indicadores del ciclo de desarrollo antes y después de aplicar la combinación gobernada de agentes.
+3. Un panel Delphi de ocho expertos en dos rondas, para el cual se cursan doce invitaciones a especialistas en auditoría ISO 27001/42001, líderes técnicos e investigadores.
+4. El banco de pruebas de calibración y verificación del orquestador, que evalúa la fidelidad de la traza, adherencia a fronteras de rol, deriva de contexto (*context drift*) e inyección de fallos, instaurando una compuerta periódica (evaluación trimestral sobre *golden dataset*) para auditar que los agentes mantengan su capacidad de detección de riesgos y no degraden los controles con el tiempo.
 
-La intervención se despliega en dos momentos deliberadamente separados: **T0 (15/02/2027)**, instrumentación silenciosa con telemetría pasiva, sin compuertas ni cambio de política, que no contamina la ventana previa; y **T1 (15/03/2027)**, intervención plena. La ventana previa comprende del 01/03/2026 al 14/03/2027 y la posterior del 15/03/2027 al 16/05/2027, con un mínimo declarado de 60 casos.
+La intervención se despliega en dos momentos deliberadamente separados: **T0 (15/02/2027)**, instrumentación silenciosa con telemetría pasiva, sin compuertas ni cambio de política, que no contamina la ventana previa; y **T1 (15/03/2027)**, intervención plena con la combinación gobernada de agentes activa. La ventana previa comprende del 01/03/2026 al 14/03/2027 y la posterior del 15/03/2027 al 16/05/2027, con un mínimo declarado de 60 casos.
 
 **Mitigación del sesgo por doble rol.** La autora construye el marco, lo implementa y participa de su evaluación. Esa condición es a la vez el activo que hace posible el trabajo y su principal amenaza de validez. Se adoptan cuatro mitigaciones, todas con fecha comprometida: el pre-registro de los criterios de éxito en este Plan; la evaluación externa mediante auditor ciego y panel independiente; la triangulación de fuentes entre datos del pipeline, inventario documental y entrevistas al equipo; y un diario de investigación fechado que distingue las intervenciones realizadas en calidad de ingeniera de las realizadas en calidad de investigadora, que se incorpora como anexo de la memoria.
 
