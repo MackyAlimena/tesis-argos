@@ -34,6 +34,7 @@ Estas herramientas son para el trabajo semanal de la tesis, no para el onboardin
 | `/semana` | Abre la semana: ubica S01–S40 por fecha en `ROADMAP.md`, arma el plan de las horas presupuestadas y avisa triggers. | Lunes |
 | `/cierre-semana` | Verifica la Definición de HECHO **contra el repo**, registra horas y escribe la entrada del diario en `kb/diario/`. | Viernes |
 | `/estado` | Panel de situación: semana real vs. calendario, horas vs. 320, capítulos sin borrador, triggers vencidos. Solo lectura. | Cuando haga falta la foto |
+| `/tutoria` *(skill `tutor-sync`)* | Procesa notas de reunión con Marcos, redacta la minuta en `kb/tutorias/`, impacta cambios en documentos y actualiza acuerdos. | Tras reunirse con el director |
 | `/entrega` | Revisa una entrega formal contra su plantilla oficial, verifica consistencia cruzada de números y fechas, y simula al tribunal. | Antes de mandar cualquier entregable |
 | `verificador-bibliografico` *(subagente)* | Verifica referencias contra la fuente original. Devuelve VERIFICADA / NO LOCALIZADA; nunca reformula. | Antes de incorporar cualquier cita |
 
