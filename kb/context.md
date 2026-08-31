@@ -208,7 +208,7 @@ Llamarlo **gobernanza proporcional**. Convierte el contexto en aporte a un segme
 
 ## 8. Metodología
 
-**Design Science Research** (Hevner; Peffers) + **investigación-acción** sobre **caso único** (Yin; Runeson & Höst) + **panel de expertos tipo Delphi**.
+**Design Science Research** (Hevner; Peffers) + **investigación-acción** sobre **caso único** (Yin; Runeson & Höst) + **validación externa por auditoría de certificación ISO/IEC 27001 y entrevistas a especialistas** (ADR-007).
 
 DSR es el escudo metodológico: es el paradigma aceptado en ingeniería para "construí un artefacto y lo evalué". Convierte "hice un framework" en investigación rigurosa. **Citarlo explícitamente desarma la objeción "esto no tiene ingeniería".**
 
@@ -230,7 +230,7 @@ Pero el tribunal va a decir: *"vos diseñaste el marco, vos lo implementaste y v
 En el marco de Design Science Research (DSR), la evaluación debe probar que los artefactos no solo son conceptualmente válidos, sino operativamente eficaces y calibrados bajo el ciclo PDCA (ISO 9001 / ISO 42001):
 
 1. **Auditoría simulada / evidence reconstruction test:** tomar $N$ PRs reales ya mergeados e intentar reconstruir la cadena de evidencia. Medir **% de decisiones reconstruibles** antes y después de aplicar el marco.
-2. **Panel de expertos (Delphi ligero):** 6–10 profesionales (auditores ISO 27001/42001, tech leads, investigadores académicos). Agendarlo **en enero**, no en marzo.
+2. **Validación externa (ADR-007 — sustituye al panel Delphi):** dos patas independientes de la autora. (a) **Auditoría externa de certificación ISO/IEC 27001** sobre el proceso de desarrollo intervenido: tercero acreditado, criterios que la autora no controla, consecuencias reales para la organización. (b) **Entrevistas semiestructuradas a 4 especialistas externos** (rango 3–6; se contactan 8), ronda única, sin consenso estadístico. Agendarlo **en enero**, no en marzo. Nota declarada en ADR-007: la auditoría certifica conformidad con 27001, **no evalúa relevancia ni completitud de A0–A3** — esa dimensión la cubren las entrevistas.
 3. **Métricas pre/post:** DORA (lead time, change failure rate) + defect escape rate + tasa de intervención humana vs. aprobación automática + tasa de reversión.
 4. **Calibración y aseguramiento de calidad del Hive / Orquestador (Testbench de Gobernanza - ADR-005):**
    - *Calibración de Topología y Pases de Mano (A0):* Verificar fidelidad de fronteras de rol (*role boundary adherence*), medir la retención de contexto (*context drift/loss*) a lo largo de la delegación y bloquear la ficción de "independencia de revisión" entre agentes homogéneos sin supervisión humana.
@@ -252,7 +252,7 @@ Cada pilar se ancla en una materia cursada. Ese es el argumento de que es indisc
 | **P3** | Riesgo y control | Taxonomía + matriz autonomía×control + evaluación de impacto adaptada | GRC |
 | **P4** | Datos, medición y decisión | Telemetría de gobernanza, KPIs/KRIs, tablero directivo, DORA extendido | Decisiones Estratégicas Basadas en Datos |
 | **P5** | Factor humano, ética y cambio | Roles y RACI, competencias, HITL efectivo, gestión del cambio | Habilidades Blandas + Informe Ético |
-| **T** | *(transversal)* Método | DSR + caso único + Delphi | — |
+| **T** | *(transversal)* Método | DSR + caso único + validación externa (auditoría 27001 + entrevistas) | — |
 
 ---
 
@@ -325,6 +325,8 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 
 ## 12. Preguntas para el Director de Carrera
 
+> ⚠️ **Registro histórico.** Las preguntas de esta sección se formularon antes de [ADR-007](adrs/ADR-007-validacion-externa-auditoria-en-lugar-de-delphi.md) (30/08/2026), que descartó el panel Delphi por desproporcionado y adoptó auditoría externa ISO/IEC 27001 más entrevistas a especialistas. Se conservan sin editar porque documentan la deliberación, no la decisión vigente.
+
 **1. Criterio de suficiencia del aporte.**
 > "El template del Plan de Trabajo pide *Funcionalidades*, *Tecnologías propuestas* y *Arquitectura* — está pensado para una tesis de producto de software. Mi propuesta es un marco de gobernanza validado empíricamente, bajo Design Science Research. **¿Cómo espera que instancie esas tres secciones?** ¿Un artefacto documental + tablero + instrumentación de trazabilidad califica, o el tribunal espera un sistema funcionando?"
 
@@ -356,7 +358,7 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 | **Funcionalidades** | Reinterpretar como **capacidades del marco**: clasificar autonomía, seleccionar controles, emitir evidencia, calcular indicadores, disparar escalamiento. |
 | **Tecnologías propuestas** | El componente instrumental: recolector de telemetría sobre el pipeline real (CI/CD, control de versiones, orquestador de agentes), almacenamiento de trazas, tablero. Más el corpus normativo. |
 | **Arquitectura** | **Arquitectura de gobernanza en capas** superpuesta al ciclo de desarrollo: política → control (guardrails y gates) → evidencia (telemetría) → decisión (indicadores). Un solo diagrama y la sección está ganada. |
-| **Metodología** | DSR (Peffers, 6 etapas) + caso único (Yin) + Delphi. |
+| **Metodología** | DSR (Peffers, 6 etapas) + caso único (Yin) + validación externa: auditoría ISO/IEC 27001 + entrevistas a especialistas (ADR-007). |
 | **Carga horaria** | Cerrar con la respuesta a la pregunta 4. Referencia: 8 h/semana × 40 semanas = 320 hs. |
 
 ---
@@ -372,12 +374,12 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 | **Nov–Dic 2026** | Modelado de Topologías | Criterios de gobernabilidad de topologías (A0) |
 | **Ene–Feb 2027** | Diseño de artefactos (A2, A3) | Matriz Autonomía×Control (A2) + Motor de Conformidad & Tablero (A3) + Calibración |
 | **23/02/2027** | 🔴 **Entrega Hito 3** | **Pitch de Tesis** (defensa intermedia de avance metodológico y artefactos) |
-| **Mar–Abr 2027** | Validación cualitativa | Panel de Expertos tipo Delphi (auditores 27001/42001, tech leads) |
+| **Mar–Abr 2027** | Validación cualitativa | Auditoría externa ISO/IEC 27001 sobre el proceso intervenido + entrevistas a 4 especialistas externos (ADR-007) |
 | **Abr–May 2027** | Validación cuantitativa | *Reconstruction tests* sobre PRs reales + métricas pre/post intervención |
 | **May–Jun 2027** | Consolidación y redacción | Borrador integral de la memoria de tesis |
 | **Jun–Jul 2027** | 🏁 **Defensa Final** | **Tesis de Grado final y defensa oral ante el tribunal** |
 
-**Dependencias críticas:** (a) entrega puntual de Plan de Trabajo (01/09) e Informe Ético (15/09); (b) panel Delphi agendado en enero; (c) consolidación de memoria en mayo.
+**Dependencias críticas:** (a) entrega puntual de Plan de Trabajo (01/09) e Informe Ético (15/09); (b) fecha de auditoría ISO/IEC 27001 confirmada y entrevistas agendadas en enero; (c) consolidación de memoria en mayo.
 
 ---
 
@@ -410,7 +412,7 @@ Para el Informe Ético y Social de la Universidad Austral, el marco ancla formal
 > Los marcos de gobernanza de IA gobiernan la IA como producto; nadie gobierna la IA cuando está adentro del proceso que produce el software. Mi tesis sostiene que la supervisión humana solo es real si es verificable, y que por lo tanto cada nivel de autonomía delegado a un agente exige un nivel de evidencia proporcional. Construyo ese marco —taxonomía de riesgos, matriz autonomía×control, modelo de evidencia— y lo valido midiendo, sobre un caso real, cuánto sube la trazabilidad de las decisiones al aplicarlo.
 
 **Un párrafo (formal, para el documento):**
-> Los marcos de gobernanza de inteligencia artificial vigentes —ISO/IEC 42001, NIST AI RMF, EU AI Act— fueron concebidos para gobernar la IA en tanto producto entregado a usuarios. Sin embargo, la incorporación de agentes de IA al ciclo de vida del desarrollo de software desplaza el objeto gobernado: la IA deja de ser el producto y pasa a integrar el proceso que produce todo el software de la organización, propagando riesgo incluso hacia sistemas que no contienen IA. Para ese escenario no existe hoy ni un modelo de control ni un modelo de evidencia. Este trabajo sostiene que la supervisión humana solo es real cuando es verificable, y que por lo tanto cada nivel de autonomía delegado a un agente debe tener asociado un nivel de evidencia obligatoria que permita reconstruir ex post la cadena de decisión; en ausencia de esa evidencia proporcional, el human-in-the-loop opera como una ficción de cumplimiento. Se propone construir y validar un marco compuesto por criterios de gobernabilidad de topologías agénticas, una taxonomía de riesgos, una matriz de niveles de autonomía y controles asociados, y un modelo de telemetría de gobernanza con su tablero de decisión. La validación se realizará mediante investigación-acción sobre un caso único —una PyME tecnológica que atraviesa simultáneamente la agentización de su desarrollo y la implementación de un sistema de gestión de IA— combinando medición cuantitativa pre/post sobre el punto de control de revisión y despliegue con evaluación externa por panel de expertos.
+> Los marcos de gobernanza de inteligencia artificial vigentes —ISO/IEC 42001, NIST AI RMF, EU AI Act— fueron concebidos para gobernar la IA en tanto producto entregado a usuarios. Sin embargo, la incorporación de agentes de IA al ciclo de vida del desarrollo de software desplaza el objeto gobernado: la IA deja de ser el producto y pasa a integrar el proceso que produce todo el software de la organización, propagando riesgo incluso hacia sistemas que no contienen IA. Para ese escenario no existe hoy ni un modelo de control ni un modelo de evidencia. Este trabajo sostiene que la supervisión humana solo es real cuando es verificable, y que por lo tanto cada nivel de autonomía delegado a un agente debe tener asociado un nivel de evidencia obligatoria que permita reconstruir ex post la cadena de decisión; en ausencia de esa evidencia proporcional, el human-in-the-loop opera como una ficción de cumplimiento. Se propone construir y validar un marco compuesto por criterios de gobernabilidad de topologías agénticas, una taxonomía de riesgos, una matriz de niveles de autonomía y controles asociados, y un modelo de telemetría de gobernanza con su tablero de decisión. La validación se realizará mediante investigación-acción sobre un caso único —una PyME tecnológica que atraviesa simultáneamente la agentización de su desarrollo y la implementación de un sistema de gestión de IA— combinando medición cuantitativa pre/post sobre el punto de control de revisión y despliegue con validación externa por auditoría de certificación ISO/IEC 27001 y entrevistas a especialistas independientes.
 
 **El test del "¿y qué?":** si alguien pregunta *"¿y qué?"*, la respuesta no es "es un framework". Es:
 > **"Que hoy tu empresa firma que un humano supervisó, y no lo puede probar."**

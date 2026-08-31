@@ -57,10 +57,10 @@ documento y contrastalos contra la fuente canónica. Cualquier discrepancia es u
 | C2 | 0 % de discrepancia (tolerancia cero) |
 | C3 | Reducción ≥ 30 % · umbral < 60 s por cada 100 líneas |
 | C4 | Deterioro ≤ 15 % (guardrail DORA) |
-| C5 | IQR ≤ 1 en escala 1–5 · ≥ 75 % de ítems en ronda 2 |
+| C5 | Auditoría ISO/IEC 27001 sin no conformidades ni observaciones sobre el proceso intervenido · acuerdo ≥ 3 de cada 4 especialistas entrevistados (ADR-007) |
 | T0 / T1 | 15/02/2027 · 15/03/2027 (piso absoluto T1: 29/03) |
 | Ventanas | PRE 01/03/2026→14/03/2027 · POST 15/03/2027→16/05/2027 |
-| Muestras | N ≥ 60 PRs post · 40 PRs reconstruction (20 pre / 20 post) · 8 expertos Delphi (se invitan 12) |
+| Muestras | N ≥ 60 PRs post · 40 PRs reconstruction (20 pre / 20 post) · 4 especialistas entrevistados (se contactan 8) |
 | Entregas | 01/09/2026 · 15/09/2026 · 23/02/2027 · defensa jun–jul 2027 |
 
 Verificá también:

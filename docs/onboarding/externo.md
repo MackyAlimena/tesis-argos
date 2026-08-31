@@ -38,7 +38,7 @@ Contale a la persona, con tus palabras, después de leer `README.md` y `kb/conte
   Sin eso, el human-in-the-loop es una ficción de cumplimiento.
 - **Lo que produce:** cuatro artefactos (A0 topologías gobernables · A1 taxonomía de riesgos · A2 matriz
   autonomía × control · A3 telemetría + motor de conformidad + tablero) más una validación empírica pre/post en
-  una PyME real y un panel Delphi.
+  una PyME real, más validación externa por auditoría de certificación ISO/IEC 27001 y entrevistas a especialistas.
 
 ---
 
@@ -77,8 +77,8 @@ La versión viva está en `README.md` (sección *Research abierto*): verificá c
 son los flancos que la propia autora declara:
 
 1. **Sesgo de doble rol** — diseña el marco, lo implementa en su empresa y mide el resultado. Mitigaciones
-   declaradas: parámetros congelados antes de medir, auditor externo y ciego, panel Delphi, diario de
-   investigación. *¿Alcanzan?*
+   declaradas: parámetros congelados antes de medir, auditor externo y ciego, auditoría externa de certificación, diario
+   de investigación. *¿Alcanzan?*
 2. **Caso único (n=1)** — una PyME. Límites en [`ADR-001`](../../kb/adrs/ADR-001-metodologia-dsr-y-caso-unico.md).
 3. **C1 como apuesta binaria** — Δ ≥ 40 puntos de TRD, un solo umbral sostiene el claim entero.
 4. **C2 con tolerancia cero** — 0 % de discrepancia entre `trace.json` y Git/CI puede ser inalcanzable en la práctica.

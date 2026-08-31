@@ -9,7 +9,7 @@
 ## Por qué existe
 
 Es la cuarta mitigación del sesgo de doble rol (`kb/context.md` §8.1). Las otras tres son estructurales —
-parámetros congelados, auditor externo y ciego, panel Delphi—; esta es continua, y es la única que documenta
+parámetros congelados, auditor externo y ciego, auditoría externa de certificación—; esta es continua, y es la única que documenta
 **cuándo la autora estaba decidiendo como ingeniera de la empresa y cuándo como investigadora**.
 
 Por eso cada entrada separa los dos roles de forma explícita. Una decisión tomada con el sombrero de ingeniera

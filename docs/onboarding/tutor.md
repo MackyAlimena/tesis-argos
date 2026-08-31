@@ -50,7 +50,7 @@ de medir es la mitigación #1 del sesgo de doble rol. Una vez que se mide, ya no
 | **C2** | 0 % de discrepancia entre `trace.json` y Git/CI. Tolerancia cero. ¿Es alcanzable en un pipeline real? |
 | **C3** | Reducción ≥ 30 % del rubber stamping. ¿La operacionalización (< 60 s por cada 100 líneas) mide lo que dice medir? |
 | **C4** | Guardrail DORA, deterioro ≤ 15 %. Declarado como guardrail, no como objetivo. |
-| **C5** | Delphi, 8 expertos, IQR ≤ 1, ≥ 75 % de ítems en ronda 2. |
+| **C5** | Validación externa (ADR-007): auditoría ISO/IEC 27001 sin no conformidades sobre el proceso intervenido **+** acuerdo de ≥ 3 de cada 4 especialistas entrevistados. Sustituye al panel Delphi. **Es el criterio a revisar con más atención: cambió después del borrador inicial.** |
 
 Y marcá las **fechas duras**: T0 = 15/02/2027, T1 = 15/03/2027, piso absoluto de T1 = 29/03/2027.
 
@@ -99,7 +99,7 @@ El aporte más útil del tutor es acá. Presentale los cuatro flancos declarados
 (están en `README.md` y en `kb/context.md` §8.1):
 
 1. **Sesgo de doble rol** — diseña el marco, lo implementa en su empresa y mide el resultado. Mitigaciones:
-   parámetros congelados antes de medir, auditor externo y ciego, panel Delphi, diario de investigación.
+   parámetros congelados antes de medir, auditor externo y ciego, auditoría externa de certificación, diario de investigación.
    *La pregunta abierta: ¿alcanzan?*
 2. **Caso único (n=1)** — una PyME. Límites en ADR-001.
 3. **C1 como apuesta binaria** — un solo umbral sostiene el claim.

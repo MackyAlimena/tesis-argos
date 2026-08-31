@@ -331,7 +331,8 @@
         <tr><td class="key">Ventana POST</td><td>15/03/2027 → 16/05/2027 · 9 semanas</td><td class="mono">este plan</td></tr>
         <tr><td class="key">N mínimo PRs post</td><td>60 PRs · <em>trigger</em>: si al 25/04/2027 no se alcanza, se extiende la ventana consumiendo reserva</td><td class="mono">este plan</td></tr>
         <tr><td class="key">N reconstruction test</td><td>40 PRs (20 pre / 20 post), muestreo aleatorio, auditor <strong>externo y ciego</strong></td><td class="mono">este plan</td></tr>
-        <tr><td class="key">N panel Delphi</td><td>8 expertos (rango 6–10). Se invitan 12 para asegurar 8.</td><td class="mono">este plan</td></tr>
+        <tr><td class="key">N entrevistas de validación externa</td><td>4 especialistas (rango 3–6). Se contactan 8 para asegurar 4. Ronda única.</td><td class="mono">ADR-007</td></tr>
+        <tr><td class="key">Auditoría externa ISO/IEC 27001</td><td>Sobre el proceso de desarrollo intervenido. Fecha a confirmar con la organización (D3).</td><td class="mono">ADR-007</td></tr>
       </tbody>
     </table>
   </div>
@@ -375,7 +376,7 @@
     <div>
       <span class="id">C5 · Validación externa</span>
       <span class="th">≥ 75 % con consenso</span>
-      <span class="desc">Consenso Delphi (IQR ≤ 1 en escala 1–5) sobre relevancia, completitud y aplicabilidad de A0, A1, A2 y A3, alcanzado en ronda 2.</span>
+      <span class="desc">Verificación por instancias independientes de la autora: auditoría externa de certificación ISO/IEC 27001 sobre el proceso de desarrollo intervenido, sin no conformidades ni observaciones atribuibles a él, y acuerdo de al menos 3 de cada 4 especialistas entrevistados sobre la aplicabilidad de A0, A1, A2 y A3 (ADR-007).</span>
       <span class="why">Que la autora no sea jueza de su propio diseño.</span>
     </div>
   </div>
@@ -404,7 +405,7 @@
         <tr><td class="key">F4 · A2 — Matriz Autonomía × Control</td><td class="mono">S20–S22</td><td class="num">24</td><td class="num">7,5</td></tr>
         <tr><td class="key">F5 · A3 — Telemetría, motor y tablero</td><td class="mono">S23–S25, S27–S29</td><td class="num">44</td><td class="num">13,8</td></tr>
         <tr class="mark"><td class="key">Hito 3 · Pitch de Tesis</td><td class="mono">S26</td><td class="num">4</td><td class="num">1,3</td></tr>
-        <tr><td class="key">F6 · Panel Delphi + reconstruction PRE</td><td class="mono">S30–S33</td><td class="num">32</td><td class="num">10,0</td></tr>
+        <tr><td class="key">F6 · Validación externa + reconstruction PRE</td><td class="mono">S30–S33</td><td class="num">32</td><td class="num">10,0</td></tr>
         <tr><td class="key">F7 · Medición post y análisis</td><td class="mono">S34–S37</td><td class="num">28</td><td class="num">8,8</td></tr>
         <tr><td class="key">F8 · Consolidación de la memoria</td><td class="mono">S38–S40</td><td class="num">46</td><td class="num">14,4</td></tr>
         <tr><td class="key">Reserva sin asignar</td><td class="mono">—</td><td class="num">30</td><td class="num">9,4</td></tr>
@@ -434,7 +435,7 @@
         <tr><td class="key">6</td><td>A0 — Criterios de gobernabilidad de topologías</td><td class="mono">S17 · F3</td></tr>
         <tr><td class="key">7</td><td>A2 — Matriz Autonomía × Control</td><td class="mono">S22 · F4</td></tr>
         <tr><td class="key">8</td><td>A3 — Modelo de evidencia, motor y tablero + calibración</td><td class="mono">S29 · F5</td></tr>
-        <tr><td class="key">9</td><td>Resultados: validación pre/post y Delphi</td><td class="mono">S37 · F7</td></tr>
+        <tr><td class="key">9</td><td>Resultados: validación pre/post y validación externa</td><td class="mono">S37 · F7</td></tr>
         <tr><td class="key">10</td><td>Discusión, limitaciones, trabajo futuro</td><td class="mono">S38–S39 · F8</td></tr>
         <tr><td class="key">Anexos</td><td>Diario de investigación, ADRs, protocolos, código</td><td class="mono">continuo</td></tr>
       </tbody>
@@ -458,7 +459,7 @@
       <tbody>
         <tr class="crit-row">
           <td class="wk">S01</td><td class="dt">28/08–06/09</td><td class="hr">12</td>
-          <td><strong>Plan de Trabajo de Grado.</strong> Instanciar la plantilla oficial: motivación (el gap fábrica vs. producto) · objetivo, pregunta y SP1–SP5 · funcionalidades reinterpretadas como capacidades del marco · tecnologías (collector, trazas, tablero, corpus normativo) · arquitectura de gobernanza en capas, un diagrama · metodología DSR + caso único + Delphi · los parámetros congelados y los criterios C1–C5 · bibliografía APA. <span class="chip hito">entrega 01/09</span></td>
+          <td><strong>Plan de Trabajo de Grado.</strong> Instanciar la plantilla oficial: motivación (el gap fábrica vs. producto) · objetivo, pregunta y SP1–SP5 · funcionalidades reinterpretadas como capacidades del marco · tecnologías (collector, trazas, tablero, corpus normativo) · arquitectura de gobernanza en capas, un diagrama · metodología DSR + caso único + validación externa · los parámetros congelados y los criterios C1–C5 · bibliografía APA. <span class="chip hito">entrega 01/09</span></td>
           <td class="dod">PDF entregado a la Facultad y fuente en <code>docs/03-plan-de-trabajo/</code>. Los cinco criterios pre-registrados figuran con número.</td>
         </tr>
         <tr>
@@ -570,7 +571,7 @@
       <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
       <tbody>
         <tr><td class="wk">S20</td><td class="dt">11–17/01</td><td class="hr">8</td>
-          <td><strong>Definición operacional de A0–A4</strong> (SP2): cuál es el observable que distingue un nivel del siguiente. Y <strong>convocatoria del Panel Delphi</strong>: invitaciones a auditores ISO 27001/42001, tech leads e investigadores.</td>
+          <td><strong>Definición operacional de A0–A4</strong> (SP2): cuál es el observable que distingue un nivel del siguiente. Y <strong>agenda de la validación externa</strong> (ADR-007): contacto a 8 especialistas externos y confirmación con la organización de la fecha de la auditoría ISO/IEC 27001 y de su alcance. Invitaciones a auditores ISO 27001/42001, tech leads e investigadores.</td>
           <td class="dod">Reglas de clasificación aplicables sin criterio subjetivo. Al menos 12 invitaciones enviadas para asegurar 8 confirmaciones.</td></tr>
         <tr><td class="wk">S21</td><td class="dt">18–24/01</td><td class="hr">8</td>
           <td>Controles obligatorios y <strong>evidencia mínima por nivel</strong> (SP3). Mapeo de cada celda a un control de ISO 42001 Anexo A o 27002.</td>
@@ -620,8 +621,8 @@
       <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
       <tbody>
         <tr><td class="wk">S30</td><td class="dt">22–28/03</td><td class="hr">8</td>
-          <td><strong>Diseño del instrumento Delphi</strong>, ronda 1: relevancia, completitud y aplicabilidad de A0, A1, A2 y A3 en escala 1–5, más campos abiertos. Envío.</td>
-          <td class="dod">Instrumento revisado por el tutor. Ronda 1 enviada a 8 expertos, con fecha de corte el 11/04.</td></tr>
+          <td><strong>Diseño de la guía de entrevista semiestructurada</strong>: relevancia, completitud y aplicabilidad de A0, A1, A2 y A3, con preguntas abiertas por artefacto. Agenda de las entrevistas.</td>
+          <td class="dod">Guía revisada por el tutor. 4 entrevistas agendadas, con fecha de corte el 11/04.</td></tr>
         <tr><td class="wk">S31</td><td class="dt">29/03–04/04</td><td class="hr">6</td>
           <td>Seguimiento de la ronda 1 y <strong>protocolo RT-01 del reconstruction test</strong>: muestreo aleatorio, cegado, rúbrica de las cuatro dimensiones de C1, y reclutamiento del auditor externo.</td>
           <td class="dod">RT-01 escrito y congelado. <strong>Auditor externo confirmado</strong> — no la autora, mitigación #2 del doble rol.</td></tr>
@@ -642,8 +643,8 @@
       <thead><tr><th>Sem</th><th>Fechas</th><th style="text-align:right">h</th><th>Foco y tareas</th><th>Definición de hecho</th></tr></thead>
       <tbody>
         <tr class="crit-row"><td class="wk">S34</td><td class="dt">19–25/04</td><td class="hr">8</td>
-          <td>Cierre de la ronda 2 Delphi y análisis de consenso (IQR ≤ 1). <strong>25/04 — checkpoint del N post:</strong> verificar que la ventana alcanzó 60 PRs; si no, extender consumiendo reserva. <span class="chip block">trigger</span></td>
-          <td class="dod">Informe Delphi v1 con el % de ítems en consenso — veredicto de C5. Decisión sobre el N documentada.</td></tr>
+          <td>Cierre de las entrevistas y sistematización de observaciones por artefacto, más seguimiento del resultado de la auditoría ISO/IEC 27001. <strong>25/04 — checkpoint del N post:</strong> verificar que la ventana alcanzó 60 PRs; si no, extender consumiendo reserva. <span class="chip block">trigger</span></td>
+          <td class="dod">Informe de validación externa v1: acuerdo por artefacto y hallazgos de auditoría — veredicto de C5. Decisión sobre el N documentada.</td></tr>
         <tr><td class="wk">S35</td><td class="dt">26/04–02/05</td><td class="hr">8</td>
           <td><strong>Reconstruction test POST:</strong> 20 PRs de la ventana post, con el mismo auditor, la misma rúbrica y el mismo cegado.</td>
           <td class="dod">TRD<sub>post</sub> medido. <strong>Acá se resuelve C1: el claim se sostiene o se cae.</strong></td></tr>
@@ -651,7 +652,7 @@
           <td>Análisis pre/post completo — C1 (TRD), C2 (GDR), C3 (profundidad de revisión), C4 (guardrail DORA) — con pruebas estadísticas y tamaño del efecto.</td>
           <td class="dod">Tabla de resultados contra los umbrales pre-registrados, con veredicto explícito por criterio, incluido el negativo si lo hay.</td></tr>
         <tr><td class="wk">S37</td><td class="dt">10–16/05</td><td class="hr">6</td>
-          <td><strong>Capítulo 9 (resultados)</strong> e incorporación del feedback Delphi a los artefactos: A0–A3 v2. <span class="chip gate">checkpoint</span></td>
+          <td><strong>Capítulo 9 (resultados)</strong> e incorporación del feedback de la validación externa a los artefactos: A0–A3 v2. <span class="chip gate">checkpoint</span></td>
           <td class="dod">Capítulo 9 en borrador y artefactos v2 con changelog de qué cambió por el panel.</td></tr>
       </tbody>
     </table></div>
@@ -667,7 +668,7 @@
           <td>Consolidación de los capítulos 1–3 desde el Plan de Trabajo y la vigilancia bibliográfica acumulada. <strong>Capítulo 10</strong>: discusión, limitaciones y trabajo futuro.</td>
           <td class="dod">Capítulos 1–3 y 10 en versión integrada. Limitaciones incluye explícitamente el caso único y el doble rol.</td></tr>
         <tr><td class="wk">S39</td><td class="dt">24–30/05</td><td class="hr">16</td>
-          <td>Integración total: coherencia entre capítulos, unificación terminológica y verificación de <strong>cada referencia contra la fuente original</strong> en APA. Anexos: diario de investigación, ADRs, protocolos RT-01 y Delphi, código.</td>
+          <td>Integración total: coherencia entre capítulos, unificación terminológica y verificación de <strong>cada referencia contra la fuente original</strong> en APA. Anexos: diario de investigación, ADRs, protocolos RT-01 y de validación externa, código.</td>
           <td class="dod">Documento único compilable. Cero referencias sin verificar.</td></tr>
         <tr class="mark"><td class="wk">S40</td><td class="dt">31/05–06/06</td><td class="hr">16</td>
           <td>Revisión final, corrección de estilo, envío a Marcos con margen. Preparación de la defensa.</td>
@@ -692,7 +693,7 @@
     <tbody>
       <tr><td class="key">D1</td><td>Export histórico de PRs pedido y recibido</td><td class="mono">pedido 27/09 · recibido 09/10</td><td>Sin BL-01 no hay ventana pre: se caen C1 y C3. Activa el Plan B.</td></tr>
       <tr><td class="key">D2</td><td>IS-01 completo</td><td class="mono">11/10/2026</td><td>Sin inventario no hay A2 aplicable ni brecha declarado-vs-real. <strong>No depende de terceros.</strong></td></tr>
-      <tr><td class="key">D3</td><td>Invitaciones Delphi enviadas</td><td class="mono">17/01/2027</td><td>Enviar en marzo es tarde: los expertos no responden con dos semanas de aviso.</td></tr>
+      <tr><td class="key">D3</td><td>Fecha de auditoría ISO/IEC 27001 confirmada y 8 especialistas contactados</td><td class="mono">17/01/2027</td><td>Sin fecha de auditoría confirmada y sin entrevistas agendadas con antelación, C5 queda sin instrumento. Contactar en marzo es tarde.</td></tr>
       <tr><td class="key">D4</td><td>Collector emitiendo trazas</td><td class="mono">14/02/2027</td><td>Sin collector no hay T0 ni T1, y por lo tanto no hay ventana post.</td></tr>
       <tr><td class="key">D5</td><td>Intervención T1 activa</td><td class="mono">15/03/2027</td><td>Cada semana de retraso acorta la ventana post uno a uno. Piso absoluto: 29/03, que deja siete semanas.</td></tr>
       <tr><td class="key">D6</td><td>Auditor externo confirmado</td><td class="mono">04/04/2027</td><td>Sin auditor externo el reconstruction test lo hace la autora: se cae la mitigación del doble rol.</td></tr>
@@ -710,10 +711,10 @@
   <div class="tw"><table>
     <thead><tr><th>Riesgo</th><th>Impacto</th><th>Trigger</th><th>Mitigación operativa</th></tr></thead>
     <tbody>
-      <tr><td class="key">No llegan los datos históricos de PRs</td><td><span class="chip block">alto</span></td><td class="mono">09/10/2026</td><td><strong>Plan B:</strong> el eje empírico pasa a IS-01 más reconstruction test solo sobre la ventana post, con mayor peso del Delphi. C1 se reformula como TRD absoluto post, auditando los PRs pre reconstruibles desde Git crudo.</td></tr>
+      <tr><td class="key">No llegan los datos históricos de PRs</td><td><span class="chip block">alto</span></td><td class="mono">09/10/2026</td><td><strong>Plan B:</strong> el eje empírico pasa a IS-01 más reconstruction test solo sobre la ventana post, con mayor peso de la validación externa (auditoría y entrevistas). C1 se reformula como TRD absoluto post, auditando los PRs pre reconstruibles desde Git crudo.</td></tr>
       <tr><td class="key">La intervención T1 se corre</td><td><span class="chip block">alto</span></td><td class="mono">29/03/2027</td><td>La autora controla el despliegue. T1 mínimo viable: matriz A2 y evidencia obligatoria, aunque el tablero quede incompleto. El tablero no es condición de la medición.</td></tr>
       <tr><td class="key">N post insuficiente</td><td><span class="chip hito">medio</span></td><td class="mono">25/04/2027</td><td>Extender la ventana hasta el 09/05 consumiendo reserva y comprimir S36–S37.</td></tr>
-      <tr><td class="key">Panel Delphi con respuesta baja</td><td><span class="chip hito">medio</span></td><td class="mono">11/04/2027</td><td>Se invitan 12 para asegurar 8. Fallback: ronda única más entrevistas semiestructuradas individuales.</td></tr>
+      <tr><td class="key">La validación externa no se concreta (auditoría reprogramada o especialistas sin respuesta)</td><td><span class="chip hito">medio</span></td><td class="mono">11/04/2027</td><td>Se contactan 8 para asegurar 4. Fallback: ronda única más entrevistas semiestructuradas individuales.</td></tr>
       <tr><td class="key">Cuestionamiento por doble rol</td><td><span class="chip hito">medio</span></td><td class="mono">permanente</td><td>Las cuatro mitigaciones, cada una con fecha: criterios pre-registrados (S01) · auditor externo (S31) · triangulación IS-01 + PRs + entrevistas · diario de investigación continuo, como anexo.</td></tr>
       <tr><td class="key">Deriva hacia desarrollo de producto</td><td><span class="chip hito">medio</span></td><td class="mono">permanente</td><td>ADR-004 y techo duro de 44 h en A3. Si A3 excede presupuesto se recorta funcionalidad del tablero, nunca la calibración.</td></tr>
       <tr><td class="key">Deriva hacia benchmark de herramientas</td><td><span class="chip gate">bajo</span></td><td class="mono">permanente</td><td>Regla escrita: criterios, no rankings. Un ranking vence en seis meses; la defensa es en 2027.</td></tr>

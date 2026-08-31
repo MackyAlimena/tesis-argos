@@ -67,7 +67,7 @@ Cuatro frentes donde el aporte externo mueve la aguja. Ordenados por urgencia.
 
 ### Dónde el diseño es más atacable
 Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
-- **Sesgo de doble rol.** La autora diseña el marco, lo implementa en su propia empresa y mide el resultado. Las mitigaciones están declaradas (parámetros congelados antes de medir, auditor externo y ciego, panel Delphi). ¿Alcanzan?
+- **Sesgo de doble rol.** La autora diseña el marco, lo implementa en su propia empresa y mide el resultado. Las mitigaciones están declaradas (parámetros congelados antes de medir, auditor externo y ciego, auditoría externa de certificación). ¿Alcanzan?
 - **Caso único (n=1).** Una PyME. Los límites de generalización están en [`ADR-001`](kb/adrs/ADR-001-metodologia-dsr-y-caso-unico.md).
 - **C1 como apuesta binaria.** El claim entero se sostiene o se cae contra un solo umbral: Δ ≥ 40 puntos de TRD. Ver [`ROADMAP.md`](ROADMAP.md) §0.1.
 - **C2 con tolerancia cero.** Exigir 0 % de discrepancia entre `trace.json` y los eventos reales de Git/CI puede ser inalcanzable en la práctica.
@@ -88,7 +88,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 | **A1** | **Taxonomía de Riesgos del Desarrollo Agentizado** | Clasificación sistemática de amenazas específicas (alucinaciones de paquetes *slopsquatting*, fuga de contexto, degradación de revisión). |
 | **A2** | **Matriz Autonomía × Control (Niveles A0–A4)** | Parametrización de compuertas y controles obligatorios según la libertad delegada al agente. |
 | **A3** | **Modelo de Telemetría + Motor Evaluador de Conformidad + Tablero** | Recolector de trazas en CI/CD, *Governance Gatekeeper* automatizado y tablero de visualización de KRIs para la dirección. |
-| **V** | **Validación Empírica (Pre/Post) + Panel Delphi** | Medición sobre caso de estudio real en PyME (*reconstruction tests* de PRs) y validación cualitativa externa. Nota: Me gustaría también armar un método de validación a nivel código (ej: mutación de código para ver si se detectan cada X tiempo) |
+| **V** | **Validación Empírica (Pre/Post) + Validación Externa** | Medición sobre caso de estudio real en PyME (*reconstruction tests* de PRs) y validación cualitativa externa: auditoría de certificación ISO/IEC 27001 sobre el proceso intervenido + entrevistas a especialistas externos ([`ADR-007`](kb/adrs/ADR-007-validacion-externa-auditoria-en-lugar-de-delphi.md)). Nota: Me gustaría también armar un método de validación a nivel código (ej: mutación de código para ver si se detectan cada X tiempo) |
 
 ---
 
@@ -127,7 +127,7 @@ Si vas a romper algo, empezá por acá — es donde más sirve el golpe:
 │   └── dashboard/                 # Tablero de control de gobernanza y KRIs
 │
 └── evaluation/                    # Validación del Método (DSR)
-    ├── delphi/                    # Protocolo y resultados del Panel de Expertos
+    ├── validacion-externa/        # Guía de entrevistas, observaciones y hallazgos de auditoría
     ├── hive-calibration/          # Banco de pruebas y calibración del orquestador (ADR-005)
     ├── reconstruction-test/       # Pruebas de reconstrucción de decisiones sobre PRs
     └── pre-post-analysis/         # Scripts de análisis estadístico comparativo

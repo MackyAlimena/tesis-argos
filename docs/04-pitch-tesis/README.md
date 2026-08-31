@@ -24,7 +24,7 @@ que se produce, no la semana previa.
    A3 telemetría, motor y tablero.
 5. **Calibración del orquestador** — ADR-005: por qué el instrumento de medición es confiable.
 6. **Plan de validación y cronograma a defensa** — T0 (15/02/2027, instrumentación silenciosa),
-   T1 (15/03/2027, intervención plena), ventana POST de 9 semanas, panel Delphi, N ≥ 60 PRs.
+   T1 (15/03/2027, intervención plena), ventana POST de 9 semanas, validación externa (auditoría ISO/IEC 27001 + entrevistas), N ≥ 60 PRs.
 
 ## Demo
 
@@ -43,7 +43,7 @@ PRE, no un *mock*. Debe estar ensayada y cronometrada antes del 21/02.
 ## Regla de cierre
 
 El feedback del tribunal no queda acá: se registra en `kb/` como insumo directo de las fases
-F6 (panel Delphi + *reconstruction test* PRE) y F7 (*reconstruction test* POST + análisis
+F6 (validación externa + *reconstruction test* PRE) y F7 (*reconstruction test* POST + análisis
 pre/post). Esta carpeta guarda el original; `kb/` guarda la decisión que se tomó a partir de él.
 
 ## Dependencias aguas arriba

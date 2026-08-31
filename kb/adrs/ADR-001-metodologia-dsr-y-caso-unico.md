@@ -13,6 +13,6 @@ Se adopta **Design Science Research (DSR)** (Hevner et al., 2004; Peffers et al.
 
 ## Mitigación de Sesgo por Doble Rol (Practitioner-Researcher)
 1. Pre-registro de criterios de éxito en el Plan de Trabajo.
-2. Validación externa mediante Panel de Expertos tipo Delphi (auditores 27001/42001, tech leads).
+2. ~~Validación externa mediante Panel de Expertos tipo Delphi (auditores 27001/42001, tech leads).~~ **Superseded por [ADR-007](ADR-007-validacion-externa-auditoria-en-lugar-de-delphi.md) (2026-08-30):** la validación externa se practica mediante auditoría externa de certificación ISO/IEC 27001 sobre el proceso de desarrollo intervenido más entrevistas semiestructuradas a 4 especialistas externos. La función de la mitigación no cambia; cambia el instrumento.
 3. Triangulación de fuentes (métricas de repositorio + entrevistas + auditoría documental).
 4. Bitácora / diario de investigación separando intervenciones de ingeniería de las de investigación.

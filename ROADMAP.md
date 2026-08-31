@@ -23,7 +23,8 @@ Estos valores se fijan aquí y **no se modifican después de medir**. Congelarlo
 | **Ventana POST** | 15/03/2027 → 16/05/2027 (9 semanas) | Este documento |
 | **N mínimo PRs post** | 60 PRs. Trigger de contingencia: si al **25/04/2027** no se alcanza, se extiende la ventana consumiendo reserva. | Este documento |
 | **N reconstruction test** | 40 PRs (20 pre / 20 post), muestreo aleatorio, auditor **externo y ciego** | Este documento |
-| **N panel Delphi** | 8 expertos (rango aceptable 6–10). Se invitan 12 para asegurar 8. | Este documento |
+| **N entrevistas de validación externa** | 4 especialistas (rango aceptable 3–6). Se contactan 8 para asegurar 4. Ronda única. | ADR-007 |
+| **Auditoría externa ISO/IEC 27001** | Sobre el proceso de desarrollo intervenido. **Fecha a confirmar con la organización** (D3). | ADR-007 |
 
 ### 0.1. Criterios de éxito pre-registrados
 
@@ -35,7 +36,7 @@ Cada criterio tiene umbral numérico y veredicto binario. **El claim de la tesis
 | **C2** | **Fidelidad de la traza** | GDR = discrepancia entre `trace.json` del orquestador y los eventos reales de Git/CI | **0 %** (tolerancia cero) | Que la evidencia no sea a su vez una ficción |
 | **C3** | **Profundidad de revisión** | Proporción de PRs de origen agéntico aprobados sin comentario Y con < 60 s de revisión por cada 100 líneas de diff | **Reducción ≥ 30 %** post vs. pre | Que el sello de goma retroceda |
 | **C4** | **No degradación de entrega** *(guardrail)* | DORA lead time for changes + deployment frequency | **Deterioro ≤ 15 %** respecto de la línea de base | Que la gobernanza no mate la productividad que motivó usar agentes |
-| **C5** | **Validación externa** | Consenso Delphi (IQR ≤ 1 en escala 1–5) sobre relevancia, completitud y aplicabilidad de A0/A1/A2/A3 | **≥ 75 % de los ítems** alcanzan consenso en ronda 2 | Que la autora no sea jueza de su propio diseño |
+| **C5** | **Validación externa** | Verificación por instancias independientes de la autora: (a) auditoría externa de certificación **ISO/IEC 27001** sobre el proceso de desarrollo intervenido y (b) entrevistas semiestructuradas a 4 especialistas externos sobre aplicabilidad de A0/A1/A2/A3 | **Sin no conformidades ni observaciones** atribuibles al proceso de desarrollo gobernado **y** acuerdo de **≥ 3 de cada 4** especialistas por artefacto | Que la autora no sea jueza de su propio diseño |
 
 > **C4 es deliberadamente un guardrail, no un objetivo.** Un marco de gobernanza que mejora C1 destruyendo el lead time no resuelve el problema: lo cambia de lugar. Declararlo antes de medir es parte de la honestidad del diseño.
 
@@ -57,14 +58,14 @@ Las 44 h asignadas a A3 (collector + conformance engine + tablero) **no construy
          ├── 🗂️ Nov 2026 ───── F2: A1 · Taxonomía de riesgos
          ├── 🕸️ Dic 2026 ───── F3: A0 · Criterios de topologías
          ├── 🧊 28/12 – 10/01 ─ RECESO DECLARADO (0 h)
-         ├── 🎚️ Ene 2027 ───── F4: A2 · Matriz Autonomía × Control  + convocatoria Delphi
+         ├── 🎚️ Ene 2027 ───── F4: A2 · Matriz Autonomía × Control  + agenda valid. externa
          ├── ⚙️ Feb–Mar 2027 ─ F5: A3 · Telemetría, motor y tablero
          │        └── 📡 15/02/2027 · T0 — instrumentación silenciosa
          │
          ├── 🔴 23 Feb 2027 ── HITO 3: Pitch de Tesis
          │
          ├── 🚦 15/03/2027 ─── T1 — INTERVENCIÓN PLENA (abre ventana POST)
-         ├── 👥 Mar–Abr 2027 ─ F6: Panel Delphi + reconstruction test PRE
+         ├── 👥 Mar–Abr 2027 ─ F6: Validación externa + reconstruction test PRE
          ├── 📊 Abr–May 2027 ─ F7: Reconstruction test POST + análisis pre/post
          ├── ✍️ May–Jun 2027 ─ F8: Consolidación de la memoria
          │
@@ -85,7 +86,7 @@ Las 44 h asignadas a A3 (collector + conformance engine + tablero) **no construy
 | **F4** · A2 — Matriz Autonomía × Control | S20–S22 | 24 | 7,5 % |
 | **F5** · A3 — Telemetría, motor y tablero | S23–S25, S27–S29 | 44 | 13,8 % |
 | **H3** · Pitch de Tesis | S26 | 4 | 1,3 % |
-| **F6** · Panel Delphi + reconstruction PRE | S30–S33 | 32 | 10,0 % |
+| **F6** · Validación externa + reconstruction PRE | S30–S33 | 32 | 10,0 % |
 | **F7** · Medición post y análisis | S34–S37 | 28 | 8,8 % |
 | **F8** · Consolidación de la memoria | S38–S40 | 46 | 14,4 % |
 | **Reserva** (sin asignar) | — | 30 | 9,4 % |
@@ -107,7 +108,7 @@ La memoria **no se escribe en mayo**. Cada fase cierra con el borrador del capí
 | **6** | A0 — Criterios de gobernabilidad de topologías | **S17** (F3) |
 | **7** | A2 — Matriz Autonomía × Control | **S22** (F4) |
 | **8** | A3 — Modelo de evidencia, motor y tablero + calibración | **S29** (F5) |
-| **9** | Resultados: validación pre/post y Delphi | **S37** (F7) |
+| **9** | Resultados: validación pre/post y validación externa | **S37** (F7) |
 | 10 | Discusión, limitaciones, trabajo futuro | S38–S39 (F8) |
 | Anexos | Diario de investigación, ADRs, protocolos, código | Continuo |
 
@@ -121,7 +122,7 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 
 | Sem | Fechas | h | Foco y tareas | Definición de HECHO |
 |---|---|--:|---|---|
-| **S01** | 28/08–06/09 | 12 | **Plan de Trabajo de Grado.** Instanciar la plantilla oficial: Motivación (gap fábrica vs. producto) · Objetivo + pregunta + SP1–SP5 · Funcionalidades reinterpretadas como capacidades del marco · Tecnologías (collector, trazas, tablero, corpus normativo) · Arquitectura de gobernanza en capas (1 diagrama) · Metodología DSR + caso único + Delphi · **§0 de este documento embebido** (320 h, ventanas, criterios C1–C5) · Bibliografía APA. **Entrega 01/09.** | PDF entregado a la Facultad + fuente en `docs/03-plan-de-trabajo/`. Los 5 criterios pre-registrados figuran con número. |
+| **S01** | 28/08–06/09 | 12 | **Plan de Trabajo de Grado.** Instanciar la plantilla oficial: Motivación (gap fábrica vs. producto) · Objetivo + pregunta + SP1–SP5 · Funcionalidades reinterpretadas como capacidades del marco · Tecnologías (collector, trazas, tablero, corpus normativo) · Arquitectura de gobernanza en capas (1 diagrama) · Metodología DSR + caso único + validación externa · **§0 de este documento embebido** (320 h, ventanas, criterios C1–C5) · Bibliografía APA. **Entrega 01/09.** | PDF entregado a la Facultad + fuente en `docs/03-plan-de-trabajo/`. Los 5 criterios pre-registrados figuran con número. |
 | **S02** | 07/09–13/09 | 8 | **Informe Ético y Social.** Las 5 preguntas contra la matriz E1–E10. Preguntas 1–2 (objeto, fin, stakeholders, *moral crumple zone*). Preguntas 3–4 (mitigación en 3 horizontes; **E9 vigilancia laboral**: prohibición declarada de usar telemetría para evaluación individual). Pregunta 5 (integridad + **declaración de uso de IA en la propia tesis**). Fundamentación *Magnifica Humanitas*. | Borrador completo enviado a Marcos **el 11/09** (deja 4 días de margen). |
 | **S03** | 14/09–20/09 | 4 | Incorporación de feedback y **entrega Informe Ético (15/09)**. Apertura de F1. | 🎯 Entregado. Consistencia cruzada verificada contra el Plan de Trabajo. |
 
@@ -164,7 +165,7 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 
 | Sem | Fechas | h | Foco y tareas | Definición de HECHO |
 |---|---|--:|---|---|
-| **S20** | 11–17/01 | 8 | **Definición operacional de A0–A4:** cuál es el observable que distingue un nivel del siguiente (SP2). ➕ **Convocatoria del Panel Delphi:** invitaciones a auditores ISO 27001/42001, tech leads e investigadores. | Reglas de clasificación aplicables sin criterio subjetivo. **≥ 12 invitaciones enviadas** para asegurar 8 confirmaciones. |
+| **S20** | 11–17/01 | 8 | **Definición operacional de A0–A4:** cuál es el observable que distingue un nivel del siguiente (SP2). ➕ **Agenda de la validación externa (ADR-007):** contacto a 8 especialistas externos —auditores de sistemas de gestión y líderes técnicos— y **confirmación con la organización de la fecha de la auditoría ISO/IEC 27001** y de que el proceso de desarrollo queda en su alcance. | Reglas de clasificación aplicables sin criterio subjetivo. **≥ 8 especialistas contactados** para asegurar 4, y fecha de auditoría confirmada por escrito. |
 | **S21** | 18–24/01 | 8 | Controles obligatorios y **evidencia mínima por nivel** (SP3). Mapeo celda → control de ISO 42001 Anexo A / 27002. | Matriz completa: 5 niveles × (control humano, controles automáticos, evidencia obligatoria, firma indelegable). |
 | **S22** | 25–31/01 | 8 | **Clasificación de los agentes de IS-01 en la matriz → la brecha declarado vs. real.** Este es el número que hace visible el problema. **Capítulo 7 (borrador).** | A2 v1.0. Cada agente de IS-01 con nivel asignado, controles exigidos y **brecha calculada** contra los controles que realmente tiene. |
 
@@ -184,7 +185,7 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 
 | Sem | Fechas | h | Foco y tareas | Definición de HECHO |
 |---|---|--:|---|---|
-| **S30** | 22–28/03 | 8 | **Diseño del instrumento Delphi** (ronda 1): relevancia, completitud y aplicabilidad de A0/A1/A2/A3 en escala 1–5 + campos abiertos. Envío. | Instrumento revisado por el tutor. **Ronda 1 enviada a 8 expertos**, con fecha de corte **11/04**. |
+| **S30** | 22–28/03 | 8 | **Diseño de la guía de entrevista semiestructurada:** relevancia, completitud y aplicabilidad de A0/A1/A2/A3, con preguntas abiertas por artefacto. Agenda de las entrevistas. | Guía revisada por el tutor. **4 entrevistas agendadas**, con fecha de corte **11/04**. |
 | **S31** | 29/03–04/04 | 6 | Seguimiento de ronda 1 ➕ **Protocolo RT-01 del reconstruction test:** muestreo aleatorio, cegado, rúbrica de las 4 dimensiones de C1, **reclutamiento del auditor externo**. | RT-01 escrito y congelado. **Auditor externo confirmado** (no la autora — mitigación #2 del doble rol). |
 | **S32** | 05–11/04 | 8 | Análisis de ronda 1 + construcción de ronda 2 con feedback controlado. | Ronda 2 enviada, corte **25/04**. |
 | **S33** | 12–18/04 | 10 | **Reconstruction test PRE:** 20 PRs aleatorios de la ventana pre, auditoría ciega con rúbrica RT-01. | **TRD_pre medido**, con intervalo de confianza y desacuerdos documentados. |
@@ -193,17 +194,17 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 
 | Sem | Fechas | h | Foco y tareas | Definición de HECHO |
 |---|---|--:|---|---|
-| **S34** | 19–25/04 | 8 | Cierre de ronda 2 Delphi + análisis de consenso (IQR ≤ 1). ⚠️ **25/04 — Checkpoint del N post:** verificar que la ventana alcanzó **60 PRs**; si no, extender consumiendo reserva. | Informe Delphi v1: % de ítems con consenso → **veredicto de C5**. Decisión sobre el N documentada. |
+| **S34** | 19–25/04 | 8 | Cierre de las entrevistas y sistematización de observaciones por artefacto + seguimiento del resultado de la auditoría ISO/IEC 27001. ⚠️ **25/04 — Checkpoint del N post:** verificar que la ventana alcanzó **60 PRs**; si no, extender consumiendo reserva. | Informe de validación externa v1: acuerdo por artefacto + hallazgos de auditoría → **veredicto de C5**. Decisión sobre el N documentada. |
 | **S35** | 26/04–02/05 | 8 | **Reconstruction test POST:** 20 PRs de la ventana post, **mismo auditor, misma rúbrica, mismo cegado**. | **TRD_post medido.** Aquí se resuelve C1 — el claim se sostiene o se cae. |
 | **S36** | 03–09/05 | 6 | Análisis pre/post completo: C1 (TRD) · C2 (GDR) · C3 (profundidad de revisión) · C4 (guardrail DORA). Pruebas estadísticas y tamaño del efecto. | Tabla de resultados **contra los umbrales pre-registrados de §0.1**, con **veredicto explícito por criterio**, incluido el negativo si lo hay. |
-| **S37** | 10–16/05 | 6 | **Capítulo 9 (resultados)** + incorporación del feedback Delphi a los artefactos → **A0–A3 v2**. | Capítulo 9 borrador. Artefactos v2 con changelog de qué cambió por el panel. |
+| **S37** | 10–16/05 | 6 | **Capítulo 9 (resultados)** + incorporación del feedback de la validación externa a los artefactos → **A0–A3 v2**. | Capítulo 9 borrador. Artefactos v2 con changelog de qué cambió por las entrevistas y por la auditoría. |
 
 ### FASE 8 — Consolidación de la memoria · S38–S40 · 46 h
 
 | Sem | Fechas | h | Foco y tareas | Definición de HECHO |
 |---|---|--:|---|---|
 | **S38** | 17–23/05 | 14 | Consolidación de capítulos 1–3 (introducción, estado del arte, metodología) desde el Plan de Trabajo + vigilancia bibliográfica acumulada. **Capítulo 10** (discusión, limitaciones, trabajo futuro). | Capítulos 1–3 y 10 en versión integrada. Limitaciones incluye explícitamente el caso único y el doble rol. |
-| **S39** | 24–30/05 | 16 | Integración total del documento: coherencia entre capítulos, unificación terminológica, verificación de **cada referencia contra la fuente original** (APA). Anexos: diario de investigación, ADRs, protocolos RT-01 y Delphi, código. | Documento único compilable. **Cero referencias sin verificar.** |
+| **S39** | 24–30/05 | 16 | Integración total del documento: coherencia entre capítulos, unificación terminológica, verificación de **cada referencia contra la fuente original** (APA). Anexos: diario de investigación, ADRs, protocolos RT-01 y de validación externa, código. | Documento único compilable. **Cero referencias sin verificar.** |
 | **S40** | 31/05–06/06 | 16 | Revisión final, corrección de estilo, envío a Marcos con margen. Preparación de la defensa. | ✅ **Borrador completo de la memoria entregado al tutor.** |
 
 ### Junio–Julio 2027 — Defensa
@@ -221,7 +222,7 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 |---|---|---|---|
 | D1 | Export histórico de PRs pedido y recibido | Pedido S04 (27/09) · Recibido 09/10 | Sin BL-01 no hay ventana pre → se cae C1 y C3. Activa Plan B. |
 | D2 | IS-01 completo | S06 (11/10) | Sin inventario no hay A2 aplicable ni brecha declarado-vs-real. **No depende de terceros.** |
-| D3 | Invitaciones Delphi enviadas | S20 (17/01) | Enviar en marzo es tarde; los expertos no responden con 2 semanas de aviso. |
+| D3 | Fecha de auditoría ISO/IEC 27001 confirmada + 8 especialistas contactados | S20 (17/01) | Sin fecha de auditoría confirmada y sin entrevistas agendadas con antelación, C5 queda sin instrumento. Contactar en marzo es tarde. |
 | D4 | Collector emitiendo trazas | S24 (14/02) | Sin collector no hay T0 ni T1 → no hay ventana post. |
 | D5 | Intervención T1 activa | 15/03/2027 | Cada semana de retraso acorta la ventana post 1:1. Piso absoluto: **29/03** (deja 7 semanas). |
 | D6 | Auditor externo confirmado | S31 (04/04) | Sin auditor externo, el reconstruction test lo hace la autora → se cae la mitigación del doble rol. |
@@ -233,10 +234,10 @@ Leyenda de estado: ⏳ en curso · 📝 pendiente · 🎯 hito · 🧊 receso
 
 | Riesgo | Prob. | Impacto | Trigger | Mitigación operativa |
 |---|:---:|:---:|---|---|
-| **No llegan los datos históricos de PRs** | 🟡 Media | 🔴 Alto | 09/10/2026 sin export | **Plan B:** el eje empírico pasa a IS-01 + reconstruction test solo sobre la ventana post + peso mayor al Delphi. C1 se reformula como TRD absoluto post con auditoría de los PRs pre reconstruibles desde Git crudo. Ya previsto en §15 de `kb/context.md`. |
+| **No llegan los datos históricos de PRs** | 🟡 Media | 🔴 Alto | 09/10/2026 sin export | **Plan B:** el eje empírico pasa a IS-01 + reconstruction test solo sobre la ventana post + peso mayor a la validación externa (auditoría + entrevistas). C1 se reformula como TRD absoluto post con auditoría de los PRs pre reconstruibles desde Git crudo. Ya previsto en §15 de `kb/context.md`. |
 | **La intervención T1 se corre** | 🟡 Media | 🔴 Alto | 29/03/2027 sin T1 | La autora controla el despliegue (respuesta del 28/08). Mitigación: T1 mínimo viable = matriz A2 + evidencia obligatoria, aunque el tablero quede incompleto. El tablero no es condición de la medición. |
 | **N post insuficiente** | 🟡 Media | 🟠 Medio | 25/04/2027 < 60 PRs | Extender ventana hasta el 09/05 consumiendo reserva; comprimir S36–S37. |
-| **Panel Delphi con respuesta baja** | 🟡 Media | 🟠 Medio | 11/04 con < 6 respuestas | Se invitan 12 para asegurar 8. Fallback: ronda única + entrevistas semiestructuradas individuales. |
+| **La validación externa no se concreta** (auditoría reprogramada fuera de ventana o especialistas sin respuesta) | 🟡 Media | 🟠 Medio | 11/04 con < 3 entrevistas hechas, o auditoría corrida más allá de mayo | Se contactan 8 para asegurar 4. Fallback: C5 se sostiene sobre el auditor ciego del reconstruction test —independiente de ambos instrumentos— y las observaciones se recogen individualmente, sin exigencia de consenso. Ver ADR-007. |
 | **Cuestionamiento por doble rol** | 🟢 Alta pero prevista | 🟠 Medio | Permanente | Las 4 mitigaciones de §8.1 operacionalizadas con fecha: criterios pre-registrados (S01) · auditor externo (S31) · triangulación (IS-01 + PRs + entrevistas) · diario de investigación (continuo, anexo). |
 | **Deriva hacia desarrollo de producto** | 🟡 Media | 🟠 Medio | Permanente | ADR-004. Techo duro de 44 h en A3. Si A3 excede presupuesto, se recorta funcionalidad del tablero, nunca la calibración. |
 | **Deriva hacia benchmark de herramientas** | 🟢 Baja | 🟠 Medio | Permanente | Regla escrita: criterios, no rankings (§5.2). Un ranking vence en 6 meses; la defensa es en 2027. |
