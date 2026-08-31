@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 650" width="2400" height="650" style="background-color:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="6" dy="6" stdDeviation="4" flood-color="#cbd5e1" flood-opacity="0.8"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b" />
+    </marker>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="50" y="110" width="370" height="420" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <rect x="53" y="114" width="8" height="412" rx="3" fill="#1e3a8a" />
+  </g>
+  <text x="78" y="150" font-size="28" font-weight="bold" fill="#0f172a">CAPA 1 · TOPOLOGÍA</text>
+  <text x="78" y="188" font-size="28" font-weight="bold" fill="#1e3a8a">(A0)</text>
+  <line x1="78" y1="218" x2="392" y2="218" stroke="#e2e8f0" stroke-width="2" />
+  <text x="78" y="253" font-size="22" fill="#334155">¿Cómo se estructura el</text>
+  <text x="78" y="285" font-size="22" fill="#334155">enjambre de agentes?</text>
+  <text x="78" y="331" font-size="22" fill="#334155">Costuras de inspección y</text>
+  <text x="78" y="363" font-size="22" fill="#334155">fronteras de evidencia.</text>
+  <line x1="430" y1="320" x2="515" y2="320" stroke="#1e293b" stroke-width="2.5" marker-end="url(#arrowhead)" />
+  <text x="472.5" y="254" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">¿Admite</text>
+  <text x="472.5" y="278" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">supervisión</text>
+  <text x="472.5" y="302" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">humana?</text>
+  <g filter="url(#shadow)">
+    <rect x="525" y="110" width="370" height="420" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <rect x="528" y="114" width="8" height="412" rx="3" fill="#1e3a8a" />
+  </g>
+  <text x="553" y="150" font-size="28" font-weight="bold" fill="#0f172a">CAPA 2 · POLÍTICA</text>
+  <text x="553" y="188" font-size="28" font-weight="bold" fill="#1e3a8a">(A1 + A2)</text>
+  <line x1="553" y1="218" x2="867" y2="218" stroke="#e2e8f0" stroke-width="2" />
+  <text x="553" y="253" font-size="22" fill="#334155">Taxonomía de riesgos y</text>
+  <text x="553" y="285" font-size="22" fill="#334155">niveles de autonomía A0–A4.</text>
+  <line x1="905" y1="320" x2="990" y2="320" stroke="#1e293b" stroke-width="2.5" marker-end="url(#arrowhead)" />
+  <text x="947.5" y="278" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">Controles</text>
+  <text x="947.5" y="302" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">proporcionales</text>
+  <g filter="url(#shadow)">
+    <rect x="1000" y="110" width="370" height="420" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <rect x="1003" y="114" width="8" height="412" rx="3" fill="#1e3a8a" />
+  </g>
+  <text x="1028" y="150" font-size="28" font-weight="bold" fill="#0f172a">CAPA 3 · CONTROL</text>
+  <text x="1028" y="188" font-size="28" font-weight="bold" fill="#1e3a8a">(A2 → A3)</text>
+  <line x1="1028" y1="218" x2="1342" y2="218" stroke="#e2e8f0" stroke-width="2" />
+  <text x="1028" y="253" font-size="22" fill="#334155">Compuertas gobernadas</text>
+  <text x="1028" y="285" font-size="22" fill="#334155">(Quality Gates),</text>
+  <text x="1028" y="317" font-size="22" fill="#334155">guardarraíles y punto de</text>
+  <text x="1028" y="349" font-size="22" fill="#334155">firma humana indelegable.</text>
+  <line x1="1380" y1="320" x2="1465" y2="320" stroke="#1e293b" stroke-width="2.5" marker-end="url(#arrowhead)" />
+  <text x="1422.5" y="278" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">Registro</text>
+  <text x="1422.5" y="302" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">obligatorio</text>
+  <g filter="url(#shadow)">
+    <rect x="1475" y="110" width="370" height="420" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <rect x="1478" y="114" width="8" height="412" rx="3" fill="#1e3a8a" />
+  </g>
+  <text x="1503" y="150" font-size="28" font-weight="bold" fill="#0f172a">CAPA 4 · EVIDENCIA</text>
+  <text x="1503" y="188" font-size="28" font-weight="bold" fill="#1e3a8a">(A3)</text>
+  <line x1="1503" y1="218" x2="1817" y2="218" stroke="#e2e8f0" stroke-width="2" />
+  <text x="1503" y="253" font-size="22" fill="#334155">Telemetría de gobernanza en</text>
+  <text x="1503" y="285" font-size="22" fill="#334155">CI/CD, reconciliación con</text>
+  <text x="1503" y="317" font-size="22" fill="#334155">Git y Motor Evaluador de</text>
+  <text x="1503" y="349" font-size="22" fill="#334155">Conformidad.</text>
+  <line x1="1855" y1="320" x2="1940" y2="320" stroke="#1e293b" stroke-width="2.5" marker-end="url(#arrowhead)" />
+  <text x="1897.5" y="278" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">Telemetría</text>
+  <text x="1897.5" y="302" font-size="20" font-style="italic" text-anchor="middle" fill="#0f172a">agregada</text>
+  <g filter="url(#shadow)">
+    <rect x="1950" y="110" width="370" height="420" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <rect x="1953" y="114" width="8" height="412" rx="3" fill="#1e3a8a" />
+  </g>
+  <text x="1978" y="150" font-size="28" font-weight="bold" fill="#0f172a">CAPA 5 · DECISIÓN</text>
+  <text x="1978" y="188" font-size="28" font-weight="bold" fill="#1e3a8a">(A3)</text>
+  <line x1="1978" y1="218" x2="2292" y2="218" stroke="#e2e8f0" stroke-width="2" />
+  <text x="1978" y="253" font-size="22" fill="#334155">Tablero de gobernanza y KRIs</text>
+  <text x="1978" y="285" font-size="22" fill="#334155">directivos: delegar, ampliar</text>
+  <text x="1978" y="317" font-size="22" fill="#334155">o revertir autonomía.</text>
+</svg>

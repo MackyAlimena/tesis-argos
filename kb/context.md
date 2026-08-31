@@ -500,4 +500,8 @@ Todo lo demás son detalles de implementación.
 13. **Carga horaria y calendarización de línea de base (Acuerdo 22/08/2026):**
     - Se formaliza una carga de **8 horas semanales durante 40 semanas (total 320 horas)**, acorde a un proyecto individual de ingeniería (Gestión).
     - La recolección de datos y línea de base histórica se calendariza como actividad metodológica regular de la Fase 1 (Septiembre–Octubre 2026), desacoplando presiones o bloqueos inmediatos de extracción en agosto.
+14. **Artefacto A3 como plantilla de referencia *plug & play* (Acuerdo 31/08/2026):**
+    - Se clarifica el alcance y *wording* del artefacto A3: la contribución técnica transferible es una **plantilla de telemetría y gobernanza *plug & play*** (esquema de evidencia normalizado, motor evaluador declarativo y componentes de visualización) aplicable a cualquier organización.
+    - La tesis valida esta plantilla instanciándola y completándola con los datos de evidencia y trazas del pipeline real de la PyME tecnológica objeto de estudio. Se evita presentar A3 como una herramienta propietaria cerrada o producto acoplado exclusivamente a una empresa.
+
 

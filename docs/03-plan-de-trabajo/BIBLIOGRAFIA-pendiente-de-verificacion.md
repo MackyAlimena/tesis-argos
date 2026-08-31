@@ -11,30 +11,38 @@
 
 Para cada una: confirmar autoría completa, año, título exacto, sede de publicación, y DOI o identificador. Si no se localiza la fuente, **eliminar la referencia**, no reformularla.
 
-| # | Referencia preliminar | Qué falta confirmar |
+| # | Referencia preliminar | Situación / Resolución |
 |---|---|---|
-| B1 | Otoum, S., et al. (2026). *Autonomous agent frameworks for software engineering: A systematic survey and taxonomy*. IEEE Access. | Autoría completa (no «et al.»), volumen, número de página o artículo, DOI. |
-| B2 | He, J., et al. (2025/2026). *Multi-agent collaboration in software development: Architectures, protocols, and empirical evidence*. ACM TOSEM. | Año definitivo (figura como 2025/2026), autoría completa, volumen y número. |
-| B3 | CooperBench. (2026). *Benchmarking multi-agent collaboration, context drift, and task handoffs in software engineering*. arXiv:2601.09123. | **Prioridad alta.** Falta autoría (un benchmark no es autor corporativo de sí mismo) y el identificador arXiv debe confirmarse. |
-| B4 | Zhang, J., et al. (2025). *A survey on evaluation of LLM-based autonomous agents*. arXiv:2503.16416. | Autoría completa y correspondencia del identificador con el título. |
-| B5 | Wang, L., et al. (2025). *Multi-agent agile effort estimation by analogy*. arXiv:2509.14483. | Autoría completa y correspondencia del identificador. Citado en el catálogo de Giagnorio (ítem 1.2). |
-| B6 | Empirical Software Engineering. (2026). *Does AI code review lead to code changes? A case study of GitHub Actions*. EMSE. | **Falta autoría por completo.** El journal no es el autor. |
-| B7 | *Evaluating LLMs for Code Review* (2025). ACM TOSEM / arXiv:2502.11245. | **Falta autoría por completo** y el título parece descriptivo, no el título real. |
-| B8 | Project Management Institute. (2025). *AI in PM Global Report 2025 / PMBOK Guide* (8.ª ed.). | Son dos obras distintas: separarlas. Confirmar que la 8.ª edición del PMBOK está publicada y su año. |
-| B9 | Thoughtworks. (2025/2026). *Technology Radar* (Vol. 33). | Confirmar número de volumen y fecha de publicación. |
-| B10 | Hou, X., et al. (2024). *Large language models for software engineering: A systematic literature review*. | El identificador arXiv anotado en `kb/context.md` (2404.04834) **no coincide** con el habitualmente asociado a este SLR. Verificar cuál corresponde antes de citar el preprint; en el Plan se cita la versión de journal, sin identificador. |
+| **B1** | Otoum, N. A., & Elkhalili, N. (2026). *Methods and techniques of agentic software engineering: A systematic literature review*. IEEE Access, 14, 7443–7465. | ✅ **VERIFICADA E INCORPORADA AL PLAN.** Metadatos confirmados contra IEEE Access (doc 11343819). |
+| **B2** | Garg, S., Omidvar-Tehrani, B., & Ray, B. (2026). *Collaborative LLM agents for end-to-end software development*. WWW '26 (ACM). | ✅ **VERIFICADA E INCORPORADA AL PLAN.** DOI: `10.1145/3774905.3793914`. |
+| **B3** | CooperBench. (2026). *Benchmarking multi-agent collaboration, context drift, and task handoffs in software engineering*. arXiv:2601.09123. | ⏳ **PENDIENTE.** Falta autoría humana y confirmación de preprint. |
+| **B4** | Yehudai, A., Eden, L., Li, A., Uziel, G., Zhao, Y., Bar-Haim, R., Cohan, A., & Shmueli-Scheuer, M. (2025). *Survey on evaluation of LLM-based agents*. arXiv:2503.16416. | ✅ **VERIFICADA E INCORPORADA AL PLAN.** Metadatos completos confirmados contra arXiv. |
+| **B5** | Bui, T.-L., Dam, H. K., & Hoda, R. (2025). *An LLM-based multi-agent framework for agile effort estimation*. arXiv:2509.14483 (ICSE 2026). | ✅ **VERIFICADA E INCORPORADA AL PLAN.** Metadatos completos confirmados contra arXiv / ICSE 2026. |
+| **B6** | Empirical Software Engineering. (2026). *Does AI code review lead to code changes? A case study of GitHub Actions*. EMSE. | ⏳ **PENDIENTE.** Falta autoría por completo (el journal no es el autor). |
+| **B7** | *Evaluating LLMs for Code Review* (2025). arXiv:2502.11245. | ❌ **DESCARTADA DEL PLAN (Regla 1).** El identificador arXiv 2502.11245 corresponde a otro paper (Bortolotti et al.) y el título era descriptivo/alucinado. El tema queda respaldado por OWASP LLM09, Perry et al. y Sandoval et al. |
+| **B8** | Project Management Institute. (2025). *AI in PM Global Report 2025 / PMBOK Guide* (8.ª ed.). | 🔒 **EN RESERVA.** Estándar cerrado no accesible libremente; reservado para cuando se disponga de acceso institucional. |
+| **B9** | Thoughtworks. (2025, 5 de noviembre). *Technology Radar (Vol. 33)*. | ✅ **VERIFICADA E INCORPORADA AL PLAN.** Publicación oficial confirmada. |
+| **B10** | Hou, X., et al. (2024). *Large language models for software engineering: A systematic literature review*. ACM TOSEM, 33(5), 1–49. | ✅ **VERIFICADA E INCORPORADA AL PLAN.** DOI: `10.1145/3643675`. |
 
-## 2. Referencias que salieron del Plan al recortarlo
+## 2. Referencias reservadas para la memoria final / Informe Ético
 
-Al calibrar la extensión del Plan contra el plan de referencia de Ballesteros y Alcázar, la bibliografía pasó de 30 a 27 entradas. Estas quedaron fuera **por no estar citadas en el cuerpo del texto**, no por dudas sobre su validez. Todas son sólidas y vuelven a la memoria final:
+Estas referencias quedaron fuera del Plan de Trabajo **para concentrar la bibliografía del Plan en el núcleo operativo y normativo**, no por dudas sobre su validez. Todas son sólidas y vuelven a la memoria final o entregables posteriores:
 
-| Referencia | Dónde vuelve |
-|---|---|
-| Susman, G. I., & Evered, R. D. (1978). An assessment of the scientific merits of action research. *ASQ, 23*(4), 582–603. | Capítulo de metodología: fundamenta la investigación-acción. |
+| Bainbridge, L. (1983). Ironies of automation. *Automatica, 19*(6), 775–779. | Capítulo de estado del arte: fundamentación teórica de la degradación HITL. |
+| Parasuraman, R., & Riley, V. (1997). Humans and automation. *Human Factors*. | Capítulo de estado del arte: taxonomía de niveles de automatización. |
+| Hevner, A. R., et al. (2004). Design science in information systems research. *MISQ*. | Capítulo de metodología: fundamentación epistemológica de DSR. |
+| Peffers, K., et al. (2007). A design science research methodology for IS. *JMIS*. | Capítulo de metodología: modelo de proceso DSR en 6 pasos. |
+| Yin, R. K. (2018). *Case study research and applications* (6.ª ed.). | Capítulo de metodología: diseño del caso único holístico. |
+| Runeson, P., & Höst, M. (2009). Guidelines for conducting and reporting case studies in SE. *EMSE*. | Capítulo de metodología: rigor metodológico en ingeniería de software empírica. |
+| Susman, G. I., & Evered, R. D. (1978). An assessment of the scientific merits of action research. *ASQ*. | Capítulo de metodología: fundamenta la investigación-acción. |
+| Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate*. | Capítulo de resultados y discusión: métricas de entrega y estabilidad. |
 | Vaithilingam, P., Zhang, T., & Glassman, E. L. (2022). Expectation vs. experience. *CHI EA 2022*. | Capítulo de estado del arte: percepción de utilidad frente a corrección real. |
 | Qian, C., et al. (2024). Communicative agents for software development. *ACL 2024*. | Capítulo de estado del arte: topologías multiagente (artefacto A0). |
-| ISO/IEC 27701 — gestión de privacidad | Capítulo normativo, junto al tratamiento del riesgo E8. |
-| ISO/IEC/IEEE 12207 — procesos del ciclo de vida del software | Capítulo normativo, si se decide anclar el modelo de proceso. |
+| ISO/IEC 27002:2022 — Controles de seguridad de la información | Capítulo normativo: detalle de controles operacionales. |
+| ISO/IEC 23894:2023 — Gestión de riesgos de IA | Capítulo normativo / Artefacto A1. |
+| ISO/IEC 5338:2023 — Procesos de ciclo de vida de IA | Capítulo normativo / Artefacto A0. |
+| ISO/IEC 27701 — Gestión de privacidad | Capítulo normativo, junto al tratamiento del riesgo E8. |
+| ISO/IEC/IEEE 12207 — Procesos del ciclo de vida del software | Capítulo normativo, si se decide anclar el modelo de proceso. |
 | Francisco. (2024). Discurso del G7 sobre IA / Mensaje 57.ª Jornada Mundial de la Paz. | **Informe Ético y Social** (entrega del 15/09), no el Plan. |
 | Pontificia Academia para la Vida. (2020). *Rome call for AI ethics*. | **Informe Ético y Social**. |
 

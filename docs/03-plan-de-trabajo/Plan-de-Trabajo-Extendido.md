@@ -123,58 +123,131 @@ Una objeción previsible sostiene que este mecanismo equivale a las *quality gat
 
 ## Tecnologías propuestas
 
-* **Recolector de telemetría de gobernanza (Python):** captura eventos del orquestador de agentes y del pipeline de integración continua mediante las API del sistema de control de versiones y de la plataforma de CI/CD, los normaliza al esquema de evidencia y reconcilia de manera determinística lo declarado por el orquestador contra lo efectivamente registrado en el repositorio.
-* **Motor evaluador de conformidad (Python):** evalúa cada traza contra la política derivada de la matriz de autonomía mediante un motor de reglas declarativo, y se integra como etapa del pipeline resolviendo permitir, marcar, bloquear o escalar.
-* **Banco de pruebas de calibración y re-evaluación periódica:** conjunto de casos de referencia (golden dataset con código vulnerable, alucinaciones de dependencias y violaciones de política) y arnés de pruebas automatizado para verificar la efectividad de detección de los agentes, adherencia a fronteras de rol, deriva de contexto (context drift) y comportamiento ante inyección de fallos. Este banco se establece como una compuerta de recalibración periódica (trimestral o ante cambio de modelo/prompt) para certificar que los agentes mantienen su precisión de detección y no degradan los guardarraíles.
-* **Herramientas de análisis:** scripts de procesamiento del conjunto de datos históricos de solicitudes de integración y cálculo de las métricas comparativas antes y después de la intervención.
+> ⚠️ **A REVISAR CON MARCOS.** Esta sección enumera el instrumental previsto y su alcance. Las definiciones concretas de implementación quedan sujetas a revisión con el Director antes de comprometerse en el Plan.
+
+*   **Recolector de telemetría de gobernanza (Python):** captura eventos del orquestador de agentes y del pipeline de integración continua mediante las API del sistema de control de versiones y de la plataforma de CI/CD, los normaliza al esquema de evidencia y reconcilia de manera determinística lo declarado por el orquestador contra lo efectivamente registrado en el repositorio.
+*   **Motor evaluador de conformidad (Python):** evalúa cada traza contra la política derivada de la matriz de autonomía mediante un motor de reglas declarativo, y se integra como etapa del pipeline resolviendo permitir, marcar, bloquear o escalar.
+*   **Tablero de gobernanza:** aplicación web ligera que presenta los indicadores de riesgo, la salud de las compuertas y la brecha entre autonomía declarada y real.
+*   **Banco de pruebas de calibración y re-evaluación periódica:** conjunto de casos de referencia (*golden dataset* con código vulnerable, alucinaciones de dependencias y violaciones de política) y arnés de pruebas automatizado para verificar la efectividad de detección de los agentes, adherencia a fronteras de rol, deriva de contexto (*context drift*) y comportamiento ante inyección de fallos. Este banco se establece como una compuerta de recalibración periódica (trimestral o ante cambio de modelo/prompt) para certificar que los agentes mantienen su precisión de detección y no degradan los guardarraíles.
+*   **Herramientas de análisis:** scripts de procesamiento del conjunto de datos históricos de solicitudes de integración y cálculo de las métricas comparativas antes y después de la intervención.
+*   **Corpus normativo de referencia:** ISO/IEC 42001:2023 y su Anexo A; ISO/IEC 27001:2022 y 27002:2022; ISO/IEC 23894:2023; ISO/IEC 5338:2023; NIST AI RMF 1.0 y NIST AI 600-1; NIST SP 800-218A; Reglamento (UE) 2024/1689, con atención a su artículo 14; OWASP *Top 10 for LLM Applications*; y Ley 25.326.
+
+Se deja constancia del alcance del componente instrumental: **no se construye una plataforma de producto comercial cerrado**. El esfuerzo de investigación cubre el diseño de la arquitectura/plantilla de referencia (*plug & play*) de A3 —esquema de evidencia normalizado, motor evaluador declarativo, arnés de calibración y componentes de tablero directivo— y su documentación formal; la instanciación e integración operativa de dicha plantilla con los datos y trazas del pipeline real de la PyME se realiza en el marco de la actividad profesional de la autora, lo cual constituye la modalidad de investigación-acción adoptada.
+
+Un punto de diseño central es que ARGOS **integra** el sistema de gestión de seguridad de la información con el de gestión de IA en lugar de proponer dos sistemas paralelos, dado que en una organización de porte pequeño la duplicación de sistemas de gestión es la causa más frecuente de que ninguno de los dos se mantenga vigente.
 
 ## Arquitectura
 
 ARGOS se estructura como una arquitectura de gobernanza en capas superpuesta al ciclo de desarrollo. Cada capa produce la entrada de la siguiente, y el orden entre ellas no es arbitrario: constituye el hallazgo principal del artefacto A0.
 
-![Diagrama de Arquitectura de Gobernanza ARGOS](assets/diagrama-arquitectura-argos.png)
+```text
+   CAPA 1 · TOPOLOGÍA (A0)          ¿cómo se estructura el enjambre de agentes?
+   ───────────────────────          Determina dónde existen costuras de inspección
+              │                     humana y fronteras de captura de evidencia.
+              ▼  ¿este diseño admite supervisión?
+   CAPA 2 · POLÍTICA (A1+A2)        ¿cuánta libertad se delega, contra qué riesgos?
+   ─────────────────────────        Taxonomía de riesgos → niveles A0–A4.
+              │
+              ▼  a este nivel, estos controles
+   CAPA 3 · CONTROL (A2→A3)         Compuertas gobernadas, guardarraíles y punto
+   ────────────────────────         de firma humana indelegable.
+              │
+              ▼  y este registro obligatorio
+   CAPA 4 · EVIDENCIA (A3)          Telemetría emitida desde la ejecución y
+   ───────────────────────          reconciliada contra el control de versiones.
+              │                     Motor evaluador: permite, marca, bloquea, escala.
+              ▼  que se agrega y se mide
+   CAPA 5 · DECISIÓN (A3)           Indicadores de riesgo para la dirección:
+   ──────────────────────           delegar, ampliar o revertir autonomía.
+```
 
 **La forma del enjambre determina si el sistema puede ser gobernado.** Dos configuraciones funcionalmente equivalentes no son igualmente gobernables. Un agente único que recibe el requerimiento y devuelve el cambio terminado —diseña, implementa, prueba y documenta— no ofrece punto alguno donde insertar supervisión humana, porque no hay costura; ni dónde capturar evidencia, porque lo ocurrido internamente no dejó frontera observable. Un conjunto de agentes acotados que se transfieren el trabajo produce un punto de control natural y una frontera de evidencia natural en cada pase de mano. La capacidad de supervisar quedó decidida al elegir la topología, meses antes de que la palabra gobernanza apareciera en la conversación: la gobernanza no puede atornillarse a una arquitectura que no la admite.
 
 De allí se desprende un corolario aplicable: **un agente que revisa el trabajo de otro agente no constituye un control**. Si ambos operan sobre modelos de arquitectura semejante comparten puntos ciegos y fallan de manera correlacionada. La configuración aparenta segregación de funciones pero produce duplicación. El principio de independencia del revisor es patrimonio del control interno desde hace décadas; su traducción al escenario agéntico es una de las contribuciones que este trabajo propone.
 
-Bajo esta premisa, **la autonomía delegada a los agentes debe graduarse en niveles operativos claramente diferenciados**. A modo de ejemplo, el marco discriminará desde escenarios de baja delegación (donde el agente solo sugiere código o autocompleta y la persona revisa y firma obligatoriamente) hasta escenarios de mayor delegación (donde el agente ejecuta dentro de guardarraíles determinísticos y la intervención humana opera por excepción o muestreo). A cada nivel corresponderá un punto de control humano indelegable y una exigencia de evidencia proporcional asociada. La formulación sistemática de estos cortes entre niveles y la especificación de la evidencia suficiente en cada uno constituye uno de los resultados principales de la investigación.
+La matriz Autonomía × Control, en su formulación preliminar, ordena los niveles del siguiente modo:
+
+| Nivel | Qué hace el agente | Control humano | Evidencia obligatoria |
+|---|---|---|---|
+| **A0** | Sugiere (autocompletado) | Aceptación implícita | Registro de uso |
+| **A1** | Redacta el cambio; la persona revisa y firma | Revisión sustantiva obligatoria | Diferencia + revisor identificado + tiempo de revisión |
+| **A2** | Ejecuta dentro de guardarraíles | Aprobación por excepción | Traza completa + política aplicada + resultado de compuertas |
+| **A3** | Autónomo de extremo a extremo en dominio acotado | Supervisión por muestreo + indicadores | Traza + reconstrucción de la decisión + plan de reversión probado |
+| **A4** | Autónomo hasta producción | Interruptor de corte + auditoría continua | Todo lo anterior + evidencia de contención |
+
+La formulación definitiva de los cortes entre niveles y de la evidencia suficiente en cada uno constituye parte del resultado del trabajo, no un supuesto de partida.
 
 # Metodología y cronograma
 
-El proyecto se fundamenta en el paradigma de **Design Science Research (DSR)**, complementado con un enfoque de **investigación-acción sobre un caso de estudio real en una PyME tecnológica**. Esta combinación metodológica permite abordar el problema desde una doble perspectiva: el diseño sistemático de artefactos de gobernanza (criterios topológicos, taxonomía de riesgos, matriz de control y plantilla de telemetría) y su contrastación empírica directa sobre el flujo de integración continua de la organización. La planificación se organiza en fases progresivas orientadas a hitos académicos, permitiendo calibrar los artefactos conceptuales y los componentes instrumentales a partir de los hallazgos obtenidos en cada ciclo de iteración.
+Se adopta **Design Science Research** como paradigma principal, por ser el marco aceptado en ingeniería y sistemas de información para investigación cuyo resultado es la construcción y evaluación rigurosa de un artefacto. Se complementa con **investigación-acción sobre caso único** (Runeson y Höst, 2009), lo que habilita una condición poco frecuente: intervenir por diseño, instrumentando la telemetría mientras el pipeline se construye, en lugar de reconstruirla retrospectivamente. La validación externa se apoya en instancias de verificación independientes de la autora, descriptas más adelante.
 
-**Diseño de la validación.** La evaluación del marco de gobernanza se estructura mediante un enfoque empírico comparativo (medición de indicadores del flujo de integración antes y después de aplicar la intervención gobernada sobre el pipeline real), complementado con pruebas de reconstrucción de trazabilidad de decisiones y verificación externa a través de consultas a especialistas independientes y seguimiento de auditorías de procesos.
+**Criterios de éxito pre-registrados.** Los umbrales siguientes se fijan en este Plan, antes de cualquier medición, y no se modifican con posterioridad a ella:
 
-**Mitigación del sesgo por doble rol.** La autora construye el marco conceptual, participa de su instrumentación y evalúa los resultados en su entorno profesional. Para asegurar la objetividad científica, se adoptan mecanismos de triangulación de fuentes (datos del pipeline, control de versiones y consultas a terceros), verificación externa independiente y el registro sistemático de un diario de investigación que documenta de manera transparente las decisiones metodológicas.
+> ⚠️ **A REVISAR CON MARCOS.** Los umbrales de C1 a C5 son la apuesta central del trabajo: una vez pre-registrados no se modifican, de modo que su calibración debe acordarse con el Director antes de la entrega. Pre-registrarlos es, además, la principal mitigación del sesgo por doble rol.
 
-**Carga horaria.** La carga horaria estimada es de 8 horas semanales durante 40 semanas —del 31 de agosto de 2026 al 6 de junio de 2027—, alcanzando un total de 320 horas.
+| # | Criterio | Umbral de éxito |
+|---|---|---|
+| **C1** | Reconstrucción de decisiones: porcentaje de cambios en los que un auditor externo y ciego reconstruye origen, nivel de autonomía, controles ejecutados y firma con su evidencia | Δ ≥ 40 puntos porcentuales entre las mediciones posterior y anterior |
+| **C2** | Fidelidad de la traza: discrepancia entre lo declarado por el orquestador y lo registrado en el repositorio y el pipeline | 0 % (tolerancia cero) |
+| **C3** | Profundidad de revisión: proporción de cambios de origen agéntico aprobados sin comentario y con menos de 60 segundos por cada 100 líneas | Reducción ≥ 30 % |
+| **C4** | No degradación de la entrega *(restricción)*: indicadores DORA de *lead time* y frecuencia de despliegue | Deterioro ≤ 15 % |
+| **C5** | Validación externa: verificación del marco por instancias independientes de la autora, mediante la auditoría externa de certificación ISO/IEC 27001 sobre el proceso de desarrollo intervenido y entrevistas a especialistas ajenos al trabajo | Ausencia de no conformidades y de observaciones atribuibles al proceso de desarrollo gobernado, y acuerdo de al menos tres de cada cuatro especialistas consultados sobre la aplicabilidad de cada artefacto |
+
+C4 se declara como restricción y no como objetivo: un marco que mejorara la trazabilidad destruyendo el tiempo de entrega no resolvería el problema planteado, lo trasladaría.
+
+**Diseño de la validación.** Se emplean cuatro instrumentos complementarios:
+1. Una prueba de reconstrucción de evidencia sobre 40 cambios ya integrados (20 anteriores y 20 posteriores a la intervención), auditados por una persona externa y ciega a la condición según rúbrica fijada de antemano.
+2. La medición cuantitativa y comparativa previa y posterior sobre el conjunto histórico y productivo de solicitudes de integración, contrastando los indicadores del ciclo de desarrollo antes y después de aplicar la combinación gobernada de agentes.
+3. La verificación externa del marco por dos vías independientes de la autora. La primera es la **auditoría externa de certificación ISO/IEC 27001** a la que se somete la organización, en cuyo alcance queda comprendido el proceso de desarrollo intervenido: se trata de una revisión practicada por un tercero acreditado, con criterios que la autora no controla y con consecuencias reales para la empresa. La segunda son **entrevistas semiestructuradas a un conjunto acotado de especialistas externos** —auditores de sistemas de gestión y líderes técnicos— sobre relevancia, completitud y aplicabilidad de los artefactos.
+4. El banco de pruebas de calibración y verificación del orquestador, que evalúa la fidelidad de la traza, adherencia a fronteras de rol, deriva de contexto (*context drift*) e inyección de fallos, instaurando una compuerta periódica (evaluación trimestral sobre *golden dataset*) para auditar que los agentes mantengan su capacidad de detección de riesgos y no degraden los controles con el tiempo.
+
+La intervención se despliega en dos momentos deliberadamente separados: **T0 (15/02/2027)**, instrumentación silenciosa con telemetría pasiva, sin compuertas ni cambio de política, que no contamina la ventana previa; y **T1 (15/03/2027)**, intervención plena con la combinación gobernada de agentes activa. La ventana previa comprende del 01/03/2026 al 14/03/2027 y la posterior del 15/03/2027 al 16/05/2027, con un mínimo declarado de 60 casos.
+
+**Mitigación del sesgo por doble rol.** La autora construye el marco, lo implementa y participa de su evaluación. Esa condición es a la vez el activo que hace posible el trabajo y su principal amenaza de validez. Se adoptan cuatro mitigaciones, todas con fecha comprometida: el pre-registro de los criterios de éxito en este Plan; la evaluación externa mediante auditor ciego para la prueba de reconstrucción y la verificación independiente por auditoría de certificación; la triangulación de fuentes entre datos del pipeline, inventario documental y entrevistas al equipo; y un diario de investigación fechado que distingue las intervenciones realizadas en calidad de ingeniera de las realizadas en calidad de investigadora, que se incorpora como anexo de la memoria.
+
+**Carga horaria.** La carga horaria será de 8 horas semanales, durante 40 semanas —del 31 de agosto de 2026 al 6 de junio de 2027—, alcanzando un total de 320 horas. La distribución no es uniforme: se declara un receso de dos semanas entre el 28 de diciembre y el 10 de enero, se concentra mayor dedicación en las semanas previas a cada entrega, y se reserva un 9,4 % del presupuesto sin asignar, destinado exclusivamente a absorber desvíos declarados y no a incorporar alcance adicional.
 
 Las fases de trabajo se estructuran en torno a los hitos académicos definidos:
 
 * **Fase 1: Entregas formales y diagnóstico (septiembre – octubre 2026) — 56 h**
   * Redacción y entrega del Plan de Trabajo y del Informe Ético y Social.
-  * Relevamiento del estado de facto de la superficie agéntica en el pipeline y recopilación de la línea de base histórica de solicitudes de integración.
+  * Inventario del estado de facto de la superficie agéntica: qué agentes y verificaciones operan hoy en el pipeline, con qué autonomía efectiva y qué evidencia dejan.
+  * Solicitud, anonimización y análisis exploratorio del conjunto de datos históricos de solicitudes de integración, que constituye la línea de base previa a la intervención.
   * *Hitos académicos: entrega del Plan de Trabajo (1 de septiembre) y del Informe Ético y Social (15 de septiembre).*
 
 * **Fase 2: Construcción de los artefactos conceptuales (noviembre 2026 – enero 2027) — 80 h**
-  * Desarrollo de la taxonomía de riesgos del desarrollo agentizado (A1), los criterios de gobernabilidad de topologías agénticas (A0) y la matriz de Autonomía × Control (A2).
-  * Coordinación de las instancias de validación y consulta a especialistas.
+  * Taxonomía de riesgos del desarrollo agentizado (A1), mapeada a controles del Anexo A de ISO/IEC 42001 y de ISO/IEC 27002.
+  * Criterios de gobernabilidad de topologías agénticas (A0) y su aplicación diagnóstica sobre el pipeline real.
+  * Matriz Autonomía × Control (A2) y clasificación de los agentes relevados, con cálculo de la brecha entre autonomía declarada y real.
+  * Coordinación de la validación externa: agenda de las entrevistas a especialistas y alineación con el calendario de la auditoría de certificación.
 
 * **Fase 3: Instrumentación, calibración y pitch (febrero – marzo 2027) — 48 h**
-  * Formalización del esquema de telemetría, implementación de las compuertas de conformidad y prototipado del tablero de gobernanza (A3).
-  * Calibración del arnés de pruebas sobre casos de referencia.
+  * Definición del esquema de evidencia e implementación del recolector de telemetría.
+  * Implementación del motor evaluador de conformidad y del tablero de indicadores.
+  * Calibración de las compuertas sobre conjunto de referencia y ejecución del banco de pruebas del orquestador.
   * *Hito académico: pitch de tesis, defensa intermedia de avance (23 de febrero).*
 
 * **Fase 4: Validación empírica (marzo – mayo 2027) — 60 h**
-  * Despliegue de la intervención gobernada en el caso de estudio y recolección de mediciones posteriores.
-  * Ejecución de pruebas de reconstrucción de trazabilidad y entrevistas de validación externa.
+  * Entrevistas a especialistas externos y sistematización de sus observaciones; seguimiento de la auditoría de certificación sobre el proceso de desarrollo intervenido.
+  * Pruebas de reconstrucción de evidencia sobre las ventanas previa y posterior.
+  * Análisis comparativo contra los umbrales pre-registrados y cálculo del tamaño del efecto.
 
 * **Fase 5: Consolidación y cierre (mayo – junio 2027) — 46 h**
-  * Integración de la memoria final de grado, análisis de resultados, discusión de limitaciones y conclusiones.
+  * Integración de los capítulos redactados de manera incremental al cierre de cada fase, discusión, limitaciones y anexos metodológicos.
   * *Hito académico: entrega del borrador completo de la memoria (6 de junio) y defensa final ante el tribunal (junio–julio 2027).*
 
-Las 30 horas restantes se reservan para contingencias y absorción de desvíos operativos propios de la naturaleza iterativa del proyecto.
+Las 30 horas restantes corresponden a la reserva sin asignar para contingencias y absorción de desvíos declarados.
+
+**Riesgos y plan de contingencia.** Cada riesgo se declara junto con la fecha en que se sabrá si efectivamente ocurrió y con la acción prevista, de modo que la contingencia esté decidida de antemano y no deba resolverse bajo presión:
+
+| Riesgo | Cuándo se sabe si ocurrió | Plan alternativo |
+|---|---|---|
+| **No se recibe el conjunto de datos históricos** de solicitudes de integración, con el cual se construye la línea de base previa a la intervención. Sin él no hay ventana anterior con la que comparar. | **9 de octubre de 2026**, fecha comprometida de entrega por parte de la organización. | El eje empírico se traslada al inventario del estado de facto y a la prueba de reconstrucción sobre la ventana posterior. C1 se reformula como porcentaje absoluto de reconstrucción posterior, auditando además los cambios anteriores que resulten reconstruibles directamente desde el control de versiones. |
+| **La intervención plena se demora.** Cada semana de retraso acorta en la misma medida la ventana de medición posterior. | **29 de marzo de 2027**, piso absoluto declarado para el inicio de la intervención. | Se despliega una configuración mínima viable —matriz de autonomía y evidencia obligatoria activas— prescindiendo del tablero de indicadores, que no condiciona la medición. |
+| **El volumen de cambios posteriores resulta insuficiente** para sostener el análisis comparativo. | **25 de abril de 2027**, con menos de 60 casos acumulados. | Se extiende la ventana posterior hasta el 9 de mayo con cargo a la reserva horaria, comprimiendo la fase de consolidación. |
+| **La validación externa no se concreta**: la auditoría de certificación se reprograma fuera de la ventana del trabajo o los especialistas no responden. | **Marzo de 2027**, al cerrarse la agenda de la fase de validación. | La validación externa se sostiene sobre el auditor ciego de la prueba de reconstrucción, que es independiente de ambos instrumentos, y las observaciones de especialistas se recogen de manera individual sin exigencia de consenso. |
+
+Se deja constancia de que **el trabajo no depende de que la organización obtenga certificación alguna**: la auditoría se emplea como instancia de verificación externa ya disponible, y su eventual reprogramación afecta a un instrumento complementario y no al diseño central. La empresa es caso de estudio, no dependencia del diseño.
 
 # Bibliografía
 
